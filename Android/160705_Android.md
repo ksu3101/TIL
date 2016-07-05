@@ -56,4 +56,28 @@ public class RetrofitAdapter {
   }
 }
 ```  
-  
+---
+### 2. Realm 이슈
+- `RealmObject`를 상속한 data bean객체의 생성자에서 데이터를 초기화 해 주는 `init()`메소드를 콜 하고 있었는데 이 때문에 `Realm`에서 `io.realm.ProxyState.getRealm$realm()' on a null object reference`예외가 발생.  
+- 그래서 해결 방법을 찾다 보니 구버전의 문서 에서 `RealmObject`를 상속하는 클래스에서는 비어있는 `public`생성자가 필요 한데 그 생성자의 내부 내용은 비어있어야 한다 라는 제한조건이 걸려 있었던 것.  
+- 생각지도 못한 제한 사항이라 일단 수정 하였음.
+- 그리고 `Application`을 상속한 클래스의 `onCreate()`메소드에서 `Realm`의 설정을 하도록 추가 하였음. 
+```java
+public class LegoLibApplication
+    extends Application {
+  private Realm realm;
+  @Override
+  public void onCreate() {
+    super.onCreate();
+
+    RealmConfiguration config = new RealmConfiguration.Builder(this).build();
+    Realm.deleteRealm(config);
+    Realm.setDefaultConfiguration(config);
+  }
+}
+```
+- `Fragment`의 라이프 사이클에 맞추어서 `onActivityCreated()`에서 `Realm`인스턴스를 생성 하고 `RealmChangeListner`를 등록 할 수 있게 했음. 
+- 그리고 `onPause()`와 `onStop()`, `onResume()`등의 메소드를 통해서 `Realm`의 라이프사이클을 관리 할 수 있도록 부모 `Fragment`를 만들고 상속받아서 사용 하게 설정 함. 
+
+
+
