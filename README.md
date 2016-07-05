@@ -10,7 +10,7 @@
 ### 분류
 ---
 #### Android
-- [160705_Android / LegoLibrary 프로젝트 이슈 / RetrofitAdapter class](https://github.com/ksu3101/TIL/blob/master/Android/160705_Android.md)
+- [160705_Android / LegoLibrary 프로젝트 이슈 / Retrofit, Realm issue](https://github.com/ksu3101/TIL/blob/master/Android/160705_Android.md)
 
 #### Algorithm  
 -   
