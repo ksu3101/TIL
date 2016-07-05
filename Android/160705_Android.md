@@ -71,7 +71,7 @@ public class LegoLibApplication
     super.onCreate();
 
     RealmConfiguration config = new RealmConfiguration.Builder(this).build();
-    Realm.deleteRealm(config);
+    //Realm.deleteRealm(config);
     Realm.setDefaultConfiguration(config);
   }
 }
