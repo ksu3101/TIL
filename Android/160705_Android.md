@@ -57,7 +57,7 @@ public class RetrofitAdapter {
 }
 ```  
 ---
-### 2. Realm 이슈
+#### 2. Realm 이슈
 - `RealmObject`를 상속한 data bean객체의 생성자에서 데이터를 초기화 해 주는 `init()`메소드를 콜 하고 있었는데 이 때문에 `Realm`에서 `io.realm.ProxyState.getRealm$realm()' on a null object reference`예외가 발생.  
 - 그래서 해결 방법을 찾다 보니 구버전의 문서 에서 `RealmObject`를 상속하는 클래스에서는 비어있는 `public`생성자가 필요 한데 그 생성자의 내부 내용은 비어있어야 한다 라는 제한조건이 걸려 있었던 것.  
 - 생각지도 못한 제한 사항이라 일단 수정 하였음.
