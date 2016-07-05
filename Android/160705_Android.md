@@ -40,7 +40,6 @@ public class DefaultParameterBuilder {
 ---
 
 ##### 예제로 만들어본 Adapter클래스. 여기에서 API의 Interface와 baseUrl만 바뀐다.  
----
 ```java
 public class RetrofitAdapter {
   private static NJobInterface netJobInterfaceInstance;
