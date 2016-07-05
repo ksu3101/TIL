@@ -9,7 +9,7 @@
 --- 
  
 ##### 기본적으로 세팅된 인스턴스를 만들어주는 static 메소드를 가진 Builder클래스.   
-```
+```java
 public class DefaultParameterBuilder {
   public static final int DEFAULT_TIMEOUT_SEC       = 10;
   public static final int DEFAULT_WRITE_TIMEOUT_SEC = 10;
@@ -41,7 +41,7 @@ public class DefaultParameterBuilder {
 
 ##### 예제로 만들어본 Adapter클래스. 여기에서 API의 Interface와 baseUrl만 바뀐다.  
 ---
-```
+```java
 public class RetrofitAdapter {
   private static NJobInterface netJobInterfaceInstance;
 
