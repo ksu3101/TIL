@@ -7,7 +7,7 @@ c. `Picasso`에서는 `Target`인터페이스를 익명 클래스로 구현하�
 
 - 발생한 이슈 설명   
 a. `ViewPager`의 페이징을 할때마다 새로 페이지를 불러오면서 `Picasso`를 통해서 이미지를 최소 0개에서 최대 21개 (프로필 사진같은 조그만 썸네일을 포함하면 더 많을 수도 있음)까지 비동기로 불러 오게 됨.  
-b. `ViewPager`에서는 기본적으로 current index의 page에서 다음 불러올 페이지를 예측(n-1, n+1) 하여 다음 페이지를 미리 pre-loading하게 됨.(이는 `ViewPager`의 `setOffscreenPageLimit()`메소드를 통해서 설정 할 수 있으므로 바뀔 수 있음)  
+b. `ViewPager`에서는 기본적으로 current index의 page에서 다음 불러올 페이지를 예측(index-n, index+n) 하여 다음 페이지를 미리 pre-loading하게 됨.(이는 `ViewPager`의 `setOffscreenPageLimit()`메소드를 통해서 설정 할 수 있으므로 바뀔 수 있음)  
 c. pre-load된 이미지는 `Picasso`내에서 **디스크 캐시**만 사용하도록 설정을 변경 함.  
 d. **문제는, 페이징을 한참 하다보면 destroy되어 하단 메소드를 통해서 gc 되어야 할 이미지 객체가 gc되지 않아 메모리를 계속 차지 하고 있는 문제 였음.**  
 e. 그래서 한참 페이징을 하다 보면 메모리에 `Bitmap`이미지 가 제거되지 않고 계속 남아있어 결국 `OutOfMemory`예외가 발생하는 크리티컬한 이슈 엿음.   
