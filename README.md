@@ -11,7 +11,10 @@
 ---
 #### Android
 - [160705_Android / LegoLibrary 프로젝트 이슈 / Retrofit, Realm issue](https://github.com/ksu3101/TIL/blob/master/Android/160705_Android.md)
-- [160708_Android / LegoLibrary 프로젝트 이슈 / private key 관리 해 보기](https://github.com/ksu3101/TIL/blob/master/Android/160706_Android.md)
+- [160706_Android / LegoLibrary 프로젝트 이슈 / private key 관리 해 보기](https://github.com/ksu3101/TIL/blob/master/Android/160706_Android.md)
+
+#### Git  
+- [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
 
 #### Algorithm  
 -   
