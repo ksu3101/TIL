@@ -12,7 +12,7 @@ c. pre-load된 이미지는 `Picasso`내에서 **디스크 캐시**만 사용하
 d. **문제는, 페이징을 한참 하다보면 destroy되어 하단 메소드를 통해서 gc 되어야 할 이미지 객체가 gc되지 않아 메모리를 계속 차지 하고 있는 문제 였음.**  
 e. 그래서 한참 페이징을 하다 보면 메모리에 `Bitmap`이미지 가 제거되지 않고 계속 남아있어 결국 `OutOfMemory`예외가 발생하는 크리티컬한 이슈 엿음.   
 f. 찾아본 바로는 `Picasso`뿐만 아니라 `AIUL`에서도 비슷한 오류가 있다고 함. (확실하지는 않음)
-g. 안드로이드에서는 비트맵의 실제 데이터를 `Native heap`에 저장 하는데 이 데이터들에 대한 `reference`가 계속 유지되면서 앱에 할당된 heap을 gc하지 않고 계속 채우면서 발생한 버그로 예상된다. [참고-Naver D2/Android 앱 메모리 최적화](http://d2.naver.com/helloworld/539525)  
+g. 안드로이드에서는 비트맵의 실제 데이터를 `Native heap`에 저장 하는데 이 데이터들에 대한 `reference`가 계속 유지되면서 앱에 할당된 heap을 gc하지 않고 계속 채우면서 발생한 버그로 예상된다. ([참고-Naver D2/Android 앱 메모리 최적화](http://d2.naver.com/helloworld/539525))   
 h. 그래서 `Context`를 받아서 처리 하는 `Picasso`를 사용하지 않고 비슷하게 `Builder`패턴과 재사용 가능 한 `Transformer`등을 적용 하여 비동기로 이미지를 웹에서 로드 하고 후처리 할 수 있게 [비동기 이미지 로더](https://github.com/ksu3101/TIL/blob/master/Android/java/160707_AsyncImageLoader.java)를 만들고 적용. 
 
 - 문제 해결 방법  
