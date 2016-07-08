@@ -75,6 +75,7 @@ public class MainActivity
 - Presenter의 부모 클래스를 만들고 `CompositeSubscription`의 멤버변수를 추가 한다.  
 - 부모 클래스의 생성자에서는 `CompositeSubscription`의 인스턴스를 생성 한다.  
 - 부모 클래스에는 만들게 될 `Subscriber`의 인스턴스를 `add()`하는 메소드와 lifecycle의 `onDestroy()`에 맞춰 `unsubscribe()`하는 메소드인 `destroy()`메소드를 추가 한다. 
+- 앞으로 만들게 되는 모든 Presenter들은 부모 Presenter를 상속해서 만든다.  
 - 그리고 Activity나 Fragment를 상속한 부모 클래스들을 또 만들고, `onCreate()`메소드 군 에서는 presenter의 인스턴스를 생성 한다.  
 - 또한 `onDestroy()`에서는 presenter의 `destroy()`메소드를 꼭 호출 하여 생성된 모든 `Subscription`을 `unsubscribe()`하게 해 준다.  
 
