@@ -13,7 +13,8 @@
 - [160705_Android / LegoLibrary 프로젝트 이슈 / Retrofit, Realm issue](https://github.com/ksu3101/TIL/blob/master/Android/160705_Android.md)  
 - [160706_Android / LegoLibrary 프로젝트 이슈 / private key 관리 해 보기](https://github.com/ksu3101/TIL/blob/master/Android/160706_Android.md)  
 - [160707_Android / ViewPager 이슈 / Picasso와 비트맵 OOM](https://github.com/ksu3101/TIL/blob/master/Android/160707_Android.md)  
-- [160708_Android / RxAndroid 이슈 / CompositeSubscription을 이용한 LifeCycle 관리](https://github.com/ksu3101/TIL/blob/master/Android/160708_Android.md)
+- [160708_Android / RxAndroid 이슈 / CompositeSubscription을 이용한 LifeCycle 관리](https://github.com/ksu3101/TIL/blob/master/Android/160708_Android.md)  
+- [160709_Android / Daily development learning / Generic RecyclerView  Adapter (작성 중)](https://github.com/ksu3101/TIL/blob/master/Android/160709_Android.md)
 
 #### Git  
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
