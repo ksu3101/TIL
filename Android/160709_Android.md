@@ -155,5 +155,6 @@ public abstract class SwRecyclerViewAdapter<T>
   }
 
 }
-
 ```
+----
+
