@@ -20,7 +20,7 @@
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
 
 #### Algorithm  
--   
+- [160710 / 기본기 BFS, DFS](https://github.com/ksu3101/TIL/blob/master/Algorithm/160710.md)  
 
 #### Etc
 - 
