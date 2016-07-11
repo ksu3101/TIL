@@ -4,29 +4,23 @@
 - `RecyclerView`를 사용 하다보면 비슷한 코드를 `Adapter`나 `ViewHolder`에서 작성하는 것을 많이 경험 했다. 
 - 반복되는 내용을 정리 하고 `RecyclerView`의 `Adapter`구현에 Generic한 형태를 만들어 이를 상속받아서 자주 사용되며 반복되는 코드를 줄이고 추후 유지, 보수에도 쓸만한 `Adapter`이다.  
 ```java
-package kr.teamlego.legolibrary.utils.commons;
-
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * @author KangSung-Woo
- * @since 2016/07/09
- */
 public abstract class SwRecyclerViewAdapter<T>
     extends RecyclerView.Adapter<SwRecyclerViewAdapter.ViewHolder> {
-  private   OnViewClickListener clickListener;
   protected List<T>             list;
   protected Context             context;
+  private   OnViewClickListener clickListener;
+
+  public SwRecyclerViewAdapter(@NonNull Context context, @NonNull List<T> list) {
+    this(context, list, null);
+  }
+
+  public SwRecyclerViewAdapter(@NonNull Context context, @NonNull List<T> list, OnViewClickListener clickListener) {
+    super();
+    this.context = context;
+    this.clickListener = clickListener;
+    this.list = new ArrayList<>();
+    setItem(list, false);
+  }
 
   /**
    * viewType에 따라서 ViewHolder를만들고 bind할 View의 인스턴스를 반환 한다.
@@ -37,16 +31,6 @@ public abstract class SwRecyclerViewAdapter<T>
    * createView()에서 생성한 View와 position의 Data를 기반으로 뷰를 업데이트 한다.
    */
   protected abstract void bindView(T item, ViewHolder viewHolder);
-
-  public SwRecyclerViewAdapter(@NonNull Context context) {
-    this(context, null);
-  }
-
-  public SwRecyclerViewAdapter(@NonNull Context context, OnViewClickListener clickListener) {
-    super();
-    this.context = context;
-    this.clickListener = clickListener;
-  }
 
   public void clearItems() {
     if (list != null && !list.isEmpty()) {
@@ -103,7 +87,7 @@ public abstract class SwRecyclerViewAdapter<T>
 
   @Override
   public int getItemCount() {
-    return list.size();
+    return (list != null ? list.size() : 0);
   }
 
   public T getItem(@IntRange(from = 0) int position) {
@@ -118,12 +102,13 @@ public abstract class SwRecyclerViewAdapter<T>
 
     public ViewHolder(View view, OnViewClickListener clickListener) {
       super(view);
-      views = new HashMap<>();
-      views.put(0, view);
       this.clickListener = clickListener;
       if (this.clickListener != null) {
         view.setOnClickListener(this);
       }
+      views = new HashMap<>();
+      // insert RootView
+      views.put(0, view);
     }
 
     public View getView(@IdRes int id) {
@@ -134,9 +119,12 @@ public abstract class SwRecyclerViewAdapter<T>
     }
 
     public void initViewById(@IdRes int id) {
+      // get RootView
       View view = (getView(0) != null ? getView(0).findViewById(id) : null);
       if (view != null) {
-        view.setOnClickListener(this);
+        if (view.isClickable()) {
+          view.setOnClickListener(this);
+        }
         views.put(id, view);
       }
     }
@@ -147,13 +135,8 @@ public abstract class SwRecyclerViewAdapter<T>
         clickListener.onClick(v, getAdapterPosition());
       }
     }
-
   }// end of ViewHolder class
-
-  public interface OnViewClickListener {
-    void onClick(@NonNull View v, int position);
-  }
-
+  
 }
 ```
 ----
