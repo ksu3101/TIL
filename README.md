@@ -15,7 +15,7 @@
 - [160707_Android / ViewPager 이슈 / Picasso와 비트맵 OOM](https://github.com/ksu3101/TIL/blob/master/Android/160707_Android.md)  
 - [160708_Android / RxAndroid 이슈 / CompositeSubscription을 이용한 LifeCycle 관리](https://github.com/ksu3101/TIL/blob/master/Android/160708_Android.md)  
 - [160709_Android / Daily development learning / Generic RecyclerView Adapter 1](https://github.com/ksu3101/TIL/blob/master/Android/160709_Android.md)
-- [160711_Android / Daily development learning / Generic RecyclerView Adapter ](https://github.com/ksu3101/TIL/blob/master/Android/160711_Android.md)
+- [160711_Android / Daily development learning / Generic RecyclerView Adapter  2](https://github.com/ksu3101/TIL/blob/master/Android/160711_Android.md)
 
 #### Git  
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
