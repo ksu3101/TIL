@@ -1,26 +1,3 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.os.AsyncTask;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-
-import java.io.BufferedInputStream;
-import java.net.URL;
-import java.net.URLConnection;
-
 /**
  * @author KangSung-Woo
  * @since 2016/06/16
