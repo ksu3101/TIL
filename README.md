@@ -23,6 +23,7 @@
 
 #### Algorithm  
 - [160710 / 기본기 BFS, DFS](https://github.com/ksu3101/TIL/blob/master/Algorithm/160710.md)  
+- [160712 / 백준 온라인 저지 / 문제 풀이 기록](https://github.com/ksu3101/TIL/blob/master/Algorithm/160712.md)
 
 #### Etc
 - 
