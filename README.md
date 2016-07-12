@@ -21,7 +21,7 @@
 #### Git  
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
 
-#### Algorithm  
+#### Algorithm ([ACMICPC 계정 링크](https://www.acmicpc.net/user/ksu3101))  
 - [160710 / 기본기 BFS, DFS](https://github.com/ksu3101/TIL/blob/master/Algorithm/160710.md)  
 - [160712 / 백준 온라인 저지 / 문제 풀이 기록](https://github.com/ksu3101/TIL/blob/master/Algorithm/160712.md)
 
