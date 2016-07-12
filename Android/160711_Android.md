@@ -67,3 +67,34 @@ public class RecentLegoItemListAdapter
   }
 }
 ```
+- Activity나 Fragment에서는 아래와 같이 사용 한다. 
+```java
+    adapter = new RecentLegoItemListAdapter(getContext(), new ArrayList<LegoModel>(), this);
+    rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+    rv.setAdapter(adapter);
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
+        0, ItemTouchHelper.UP | ItemTouchHelper.DOWN) {
+      @Override
+      public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        return false;
+      }
+
+      @Override
+      public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        final int position = viewHolder.getAdapterPosition();
+        if (direction == ItemTouchHelper.UP || direction == ItemTouchHelper.DOWN) {
+          final LegoModel legoModel = adapter.getItem(position);
+          if (legoModel != null) {
+            if (presenter != null) {
+              presenter.deleteRecentlyLegoItem(legoModel);
+            }
+          }
+        }
+      }
+
+    };
+    ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+    itemTouchHelper.attachToRecyclerView(rv);
+```
+- 위의 Adapter를 생성 하고 `RecyclerView`에 바인딩 하는 소스는 하나의 예로서, `LayoutManager`와 `ItemTouchHelper`등을 기존과 동일하게 사용 하고 있음을 알 수 있다. 
