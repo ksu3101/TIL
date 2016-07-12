@@ -2,13 +2,14 @@
 #### 1. Android method counting 
 - `Dexcount Gradle Plugin`을 이용해서 쉽게 앱에서 사용중인 메소드의 갯수를 파악 할 수 있다. 
 - 기능은 비슷 하지만 메소드의 수를 줄여서 앱의 사이즈를 줄이는데 도움을 줄 수 있다고 한다. [링크참고](http://jeroenmols.com/blog/2016/05/06/methodcount/)
-- 예를 들어 비동기 이미지로더 라이브러리의 경우 자체적으로 사용되는 메소드의 숫자는 다음과 같다.   
+- 예를 들어 비동기 이미지로더 라이브러리의 경우 자체적으로 사용되는 메소드의 숫자는 다음과 같다. 이런식으로 메소드 카운팅이 되면 적합한 라이브러리를 선택 하는데 더 도움이 될 것이다. 
+
 Library | Method count  
-------- | ------------  
+--- | ---  
 Picasso 2.5.2 | 849  
-Universal Image Loader 1.9.5 | 1206 
-Glide 3.7.0 | 2879 
-Fresco 0.9.0 | 12984
+Universal Image Loader 1.9.5 | 1206  
+Glide 3.7.0 | 2879   
+Fresco 0.9.0 | 12984  
 - 앱의 프로젝트 root `build.gradle`파일의 `dependencies`항목에 내용을 추가 한다. 
 ```
 classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.0'
