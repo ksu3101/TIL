@@ -10,6 +10,19 @@
 char c ='1';
 int number = Character.getNumericValue(c);
  ```
+##### 1.2.2 숫자 역전 시키기 
+```java
+public static int reverse(int n) {
+      int reverse = 0;
+      while(n != 0) {
+          reverse *= 10;
+          reverse += (n % 10);
+          n = n / 10;
+      }
+      return reverse;
+  }
+```
+
 ---
 #### 1.3 Swap
 ```java
