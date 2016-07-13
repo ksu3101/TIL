@@ -87,7 +87,7 @@ public void swap(int x, int y) {
          }
      }
 ```
-- List구현체 버전
+- List구현체 버전 ([참고](https://gist.github.com/djitz/2152957))
 ```java
  private List<Integer> quicksort(List<Integer> input){
 		if(input.size() <= 1){
@@ -112,6 +112,21 @@ public void swap(int x, int y) {
 			}
 		}
 		return concatenate(quicksort(less), pivot, quicksort(greater));
+	}
+	
+	private List<Integer> concatenate(List<Integer> less, int pivot, List<Integer> greater){
+		List<Integer> list = new ArrayList<Integer>();
+		
+		for (int i = 0; i < less.size(); i++) {
+			list.add(less.get(i));
+		}
+		
+		list.add(pivot);
+		
+		for (int i = 0; i < greater.size(); i++) {
+			list.add(greater.get(i));
+		}
+		return list;
 	}
 ```
 ---
