@@ -24,7 +24,10 @@
 #### Algorithm ([ACMICPC 계정 링크](https://www.acmicpc.net/user/ksu3101))  
 - [기본적으로 알아둬야 할 것들 정리](https://github.com/ksu3101/TIL/blob/master/Algorithm/base.md)  
 - [160710 / 기본기 BFS, DFS](https://github.com/ksu3101/TIL/blob/master/Algorithm/160710.md)  
-- [160712 / 백준 온라인 저지 / 문제 풀이 기록](https://github.com/ksu3101/TIL/blob/master/Algorithm/160712.md)
+- [160712 / 백준 온라인 저지 / 문제 풀이 기록 1](https://github.com/ksu3101/TIL/blob/master/Algorithm/160712.md)
+ - 주로 문자열 처리 관련 문제.  
+- [160713 / 백준 온라인 저지 / 문제 풀이 기록 2](https://github.com/ksu3101/TIL/blob/master/Algorithm/160712.md)
+ - 정렬
 
 #### Etc
 - 
