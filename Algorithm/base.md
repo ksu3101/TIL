@@ -3,7 +3,15 @@
 ![최소한 A,Z,a,z정도는 기억해 둡시다](https://github.com/ksu3101/TIL/blob/master/Algorithm/Images/1275273992_asciitable.gif)
 
 ---
-#### 1.2 Swap
+
+#### 1.2 자주 사용되는 코드 
+##### 1.2.1 character to integer
+ ```
+char c ='1';
+int number = Character.getNumericValue(c);
+ ```
+---
+#### 1.3 Swap
 ```java
 // 기본 스왑 
 public void swap(int x, int y) {
