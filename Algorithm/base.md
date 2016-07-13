@@ -87,6 +87,33 @@ public void swap(int x, int y) {
          }
      }
 ```
+- List구현체 버전
+```java
+ private List<Integer> quicksort(List<Integer> input){
+		if(input.size() <= 1){
+			return input;
+		}
+		
+		int middle = (int) Math.ceil((double)input.size() / 2);
+		int pivot = input.get(middle);
+
+		List<Integer> less = new ArrayList<Integer>();
+		List<Integer> greater = new ArrayList<Integer>();
+		
+		for (int i = 0; i < input.size(); i++) {
+			if(input.get(i) <= pivot){
+				if(i == middle){
+					continue;
+				}
+				less.add(input.get(i));
+			}
+			else{
+				greater.add(input.get(i));
+			}
+		}
+		return concatenate(quicksort(less), pivot, quicksort(greater));
+	}
+```
 ---
 #### 2.2 Merge sort (병합, 합병 정렬)  
 - 시간 복잡도 : `O(n long n)`
