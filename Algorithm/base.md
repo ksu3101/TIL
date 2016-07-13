@@ -76,6 +76,7 @@ public void swap(int x, int y) {
   c. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.  
   d. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.  
 
+---
 ### 3. 탐색 
 #### 3.1 BFS (너비 우선 탐색) 
 - 너비 우선 탐색(Breadth-first search, BFS)은 맹목적 탐색방법의 하나로 시작 정점을 방문한 후 시작 정점에 인접한 모든 정점들을 우선 방문하는 방법이다. 더 이상 방문하지 않은 정점이 없을 때까지 방문하지 않은 모든 정점들에 대해서도 넓이 우선 검색을 적용한다. OPEN List 는 큐를 사용해야만 레벨 순서대로 접근이 가능하다.
@@ -130,6 +131,5 @@ void dfs(int vertexSize, int v) {
 }
  ```
 ___
-#### 3.3 Greedy algorithm
-#### 3.4 Dijkstra algorithm
+#### 3.3 Dijkstra algorithm
 #### 3.4 소수 - 에라토스테네스의 체 
