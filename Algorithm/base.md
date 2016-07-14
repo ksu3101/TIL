@@ -14,17 +14,46 @@ int number = Character.getNumericValue(c);
 ##### 1.2.2 숫자 역전 시키기 
 ```java
 public static int reverse(int n) {
-      int reverse = 0;
-      while(n != 0) {
-          reverse *= 10;
-          reverse += (n % 10);
-          n = n / 10;
-      }
-      return reverse;
+  int reverse = 0;
+  while(n != 0) {
+    reverse *= 10;
+    reverse += (n % 10);
+    n = n / 10;
   }
+  return reverse;
+}
 ```
 
-#### 1.2.3 Swap
+
+#### 1.2.3 문자열 역전 시키기
+```java
+// 추가 공간을 사용하지 않는 방법 
+public static String reverseString(String original) {
+  char[] chs = original.toCharArray();
+  int length = chs.length;
+	    
+  for(int i=0; i<length/2; i++) {
+    // swap characters
+    char tmp = chs[i];
+    chs[i] = chs[length-1-i];
+    chs[length-1-i] = tmp;
+  }
+  return new String(chs);
+}
+
+// 추가 공간을 사용 하는 방법
+public static String reverseString(Strign original) {
+  char[] chs = original.toCharArray();
+  char[] result = new char[chs.length];
+  
+  for(int i=0; i<chs.length - 1; i++) {
+    result[i] = chs[chs.length - i - 1];
+  }
+  return new String(result);
+}
+```
+
+#### 1.2.4 Swap
 ```java
 // 기본 스왑 
 public void swap(int x, int y) {
@@ -44,21 +73,6 @@ public void swap(int x, int y) {
  - [참고 링크 1](https://betterexplained.com/articles/swap-two-variables-using-xor/)
  - [참고 링크 2](https://en.wikipedia.org/wiki/XOR_swap_algorithm)
  
-#### 1.2.4 문자열 역전 시키기
-```java
-public static String reverseString(String original) {
-  char[] chs = original.toCharArray();
-  int length = chs.length;
-	    
-  for(int i=0; i<length/2; i++) {
-    // swap characters
-    char tmp = chs[i];
-    chs[i] = chs[length-1-i];
-    chs[length-1-i] = tmp;
-  }
-  return new String(chs);
-}
-```
 ---
 
 ### 2. 정렬
