@@ -10,6 +10,7 @@
 char c ='1';
 int number = Character.getNumericValue(c);
  ```
+ 
 ##### 1.2.2 숫자 역전 시키기 
 ```java
 public static int reverse(int n) {
@@ -23,8 +24,7 @@ public static int reverse(int n) {
   }
 ```
 
----
-#### 1.3 Swap
+#### 1.2.3 Swap
 ```java
 // 기본 스왑 
 public void swap(int x, int y) {
@@ -44,6 +44,21 @@ public void swap(int x, int y) {
  - [참고 링크 1](https://betterexplained.com/articles/swap-two-variables-using-xor/)
  - [참고 링크 2](https://en.wikipedia.org/wiki/XOR_swap_algorithm)
  
+#### 1.2.4 문자열 역전 시키기
+```java
+public static String reverseString(String original) {
+  char[] chs = original.toCharArray();
+  int length = chs.length;
+	    
+  for(int i=0; i<length/2; i++) {
+    // swap characters
+    char tmp = chs[i];
+    chs[i] = chs[length-1-i];
+    chs[length-1-i] = tmp;
+  }
+  return new String(chs);
+}
+```
 ---
 
 ### 2. 정렬
