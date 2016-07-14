@@ -6,7 +6,7 @@
 
 #### 1.2 자주 사용되는 코드 
 ##### 1.2.1 character to integer
- ```
+ ```java
 char c ='1';
 int number = Character.getNumericValue(c);
  ```
