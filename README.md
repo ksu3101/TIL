@@ -27,7 +27,9 @@
 - [160712 / 백준 온라인 저지 / 문제 풀이 기록 1](https://github.com/ksu3101/TIL/blob/master/Algorithm/160712.md)
  - 주로 문자열 처리 관련 문제.  
 - [160713 / 백준 온라인 저지 / 문제 풀이 기록 2](https://github.com/ksu3101/TIL/blob/master/Algorithm/160713.md)
- - 정렬
+ - 정렬, 피보나치의수(DP)
+- [160714 / 백준 온라인 저지 / 문제 풀이 기록 3](https://github.com/ksu3101/TIL/blob/master/Algorithm/160714.md)
+ - 문자열 처리, 정렬
 
 #### Etc
 - 
