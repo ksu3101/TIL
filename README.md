@@ -17,6 +17,7 @@
 - [160709_Android / Daily development learning / Generic RecyclerView Adapter 1](https://github.com/ksu3101/TIL/blob/master/Android/160709_Android.md)
 - [160711_Android / Daily development learning / Generic RecyclerView Adapter  2](https://github.com/ksu3101/TIL/blob/master/Android/160711_Android.md)
 - [160712_Android / Daily development learning / Method counting](https://github.com/ksu3101/TIL/blob/master/Android/160712_Android.md)
+- [160715_Android / SpannableTextView library module](https://github.com/ksu3101/SpannableTextView)
 
 #### Git  
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
