@@ -33,4 +33,4 @@
  - 문자열 처리, 정렬
 
 #### Etc
-- [160717_TDD / 개발 방법론 정리](https://github.com/ksu3101/TIL/blob/master/ETC/160717_TDD.md)
+- [160717_TDD / 테스트 주도 개발 방법론 정리](https://github.com/ksu3101/TIL/blob/master/ETC/160717_TDD.md)
