@@ -20,6 +20,7 @@
 - [160715_Android / SpannableTextView library module](https://github.com/ksu3101/SpannableTextView)
 - [160720_Android / Nested Recycler View example project (개발 중)](https://github.com/ksu3101/NestedRecyclerView)
  - MVP, RxAndroid 적용. 
+- [160722_Android / Nested Recycler View / Infinite loop ViewPager, position Indicator ](https://github.com/ksu3101/TIL/blob/master/Android/160722_Android.md)  
 
 #### Git  
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
