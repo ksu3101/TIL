@@ -115,27 +115,3 @@ public class MainRvItemDecoration
 }
 ```
 
----
-### 3. [RecyclerView LoadMore pattern](https://github.com/ksu3101/NestedRecyclerView/blob/master/app/src/main/java/kr/swkang/nestedrecyclerview/main/MainActivity.java#L100)
-- RecyclerView에서 다음 페이지를 불러오기 위한 구현 기술. 
-- 스크롤을 하다가 현재 보여지는 아이템들 중 마지막으로 완전히 보여지는 아이템이 adapter상에서의 마지막 아이템 이라면 다음 페이지를 불러 오게 한다. 
-```java
-rv.addOnScrollListener(
-        new RecyclerView.OnScrollListener() {
-          @Override
-          public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-
-            if (adapter != null && recyclerView.getLayoutManager() != null 
-                    && recyclerView.getLayoutManager() instanceof GridLayoutManager) {
-              GridLayoutManager layoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
-              if (layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1) {
-                // load next page..
-                Log.d(TAG, "///// START LOAD MORE");
-                retrieveMainListDatas(true);
-              }
-            }
-          }
-        }
-    );
-```
