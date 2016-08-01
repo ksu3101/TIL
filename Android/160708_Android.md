@@ -49,9 +49,8 @@ public class MainActivity
 #### 2. MVP 패턴에서의 `CompositeSubscription`   
  - (1)의 방법에서는 Activity나 Fragment에 바로 `Subscription`을 생성하고 멤버변수로 `CompositeSubscription`을 생성하여 `add()`, `unsubscribe()`하는 것을 알 수 있다. 
  - 하지만, MVP패턴에서는 `Subscription`을 실제로 생성하고 비동기 작업을 요청 하는곳이 Activity나 Fragment가 아닌 **Presenter**에서 하게 된다. 
- - Presenter에 `CompositeSubscription`을 멤버로 두고 관리하게 하는건 무리가 없을것이다. 하지만 Activity나 Fragment의 Lifecycle에 맞추어 `Subscription`을 관리 하려 하는 목적에 어긋난다.  
- - 단점이 있다면, Prsenter에서 `Subscriber`를 생성해서 Model에 던지는데 이때마다 `addSubscriber()`를 개발자가 명시적으로 호출 해서 add해야 해 줘야 한다. 만약에 개발자가 실수로 이 부분을 빼먹으면 Memory leak이 발생 할 수 있는 것이다. Model에서 처리 하는것도 방법이겠지만 Activity나 Fragment의 life cycle과 동기화 시키기 좀 까다롭다. (Observer 패턴을 응용하면 괜찮을 거 같다.)
- - 해결 방법은 다음과 같다.  
+ - Presenter에 `CompositeSubscription`을 멤버로 두고 관리하게 하는건 무리가 없을것이다. 하지만 Activity나 Fragment의 Lifecycle에 맞추어 `Subscription`을 관리 하려 하는 목적에 어긋난다.
+ - 아래 소스는 Presenter의 부모 클래스로서 `CompositeSubscription`에 `Subscriber`를 등록 하고 `destroy()`메소드를 액티비티나 프래그먼트의 라이프 사이클에 맞추어 콜 하는 그 예 이다. 
  ```java
  public class BasePresenter {
   private CompositeSubscription compositeSubscriptionl;
