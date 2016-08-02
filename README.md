@@ -25,6 +25,7 @@
 - [160726_Android / Nested Recycler View / Load More Pattern](https://github.com/ksu3101/TIL/blob/master/Android/160726_Android.md)  
 - [160727_Android / Nested Recycler View / Empty View](https://github.com/ksu3101/TIL/blob/master/Android/160727_Android.md)
 - [160801_Android / Nested Recycler View / Scroll state with Picasso](https://github.com/ksu3101/TIL/blob/master/Android/160801_Android.md)
+- [160802_Android / RxAndroid lifecycle management ](https://github.com/ksu3101/TIL/blob/master/Android/160802_Android.md)
 
 ---
 #### Algorithm ([ACMICPC 계정 링크](https://www.acmicpc.net/user/ksu3101))  
