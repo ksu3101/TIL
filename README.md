@@ -29,6 +29,7 @@
 - [160803_Android / SwImageView Library module](https://github.com/ksu3101/SwImageView)
  - Rounded corner, Circle 이미지 뷰. 
  - 외각선 효과, 터치시 dimm효과, 이미지 로드 후 Transition효과. 
+- [160808_Android / Gradle error : processReleaseResource issue](https://github.com/ksu3101/TIL/blob/master/Android/160808_Android.md)
 
 ---
 #### Algorithm ([ACMICPC 계정 링크](https://www.acmicpc.net/user/ksu3101))  
