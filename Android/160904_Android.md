@@ -1,11 +1,11 @@
 # [CarouselViewPager](https://github.com/ksu3101/CarouselViewPager)
 
-## 1. 설명
+### 1. 설명
 ![sample image](https://github.com/ksu3101/TIL/blob/master/Android/images/carousel_s.gif)
 - 자주 사용되는 UI형태인 Carousel패턴을 `ViewPager`와 `Transformer`의 재정의를 통해서 구현한 예. 
 - 스와이프 액션 시 어떠한 값에 따라서 내부 레이아웃의 상대적 위치나 구성을 변경 한다. 상황에 따라서 parallax효과를 주거나 translate, alpha를 수정한 효과들이 주로 사용 된다. 
 
-## 2. 구현
+### 2. 구현
 - [ViewPagerTransformer](https://github.com/ksu3101/CarouselViewPager/blob/master/app/src/main/java/kr/swkang/carouselviewpager/utils/ViewPagerTransformer.java)에서는 `ViewPager`의 `PageTransformer`인터페이스를 구현한다. 
 - `PageTransformer`를 구현한 클래스 에서는 `transformPage()`메소드의 내부를 구현 한다. 주어진 position의 값에 따라 하위 뷰들의 pivot, scale, alpha를 변경 하며 translate메소드 들을 통해서 위치좌표를 변경 하고 업데이트 한다. 
 ```java
