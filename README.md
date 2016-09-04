@@ -32,6 +32,7 @@
 - [160808_Android / Gradle error : processReleaseResource issue](https://github.com/ksu3101/TIL/blob/master/Android/160808_Android.md)
 - [160816_Android / SoftKeyboard상태 Callback을 구현한 Activity](https://github.com/ksu3101/TIL/blob/master/Android/160816_Android.md)
 - [160823_Android / 비동기 작업의 State에 따라 바뀌는 Customized Button의 구현](https://github.com/ksu3101/TIL/blob/master/Android/160823_Android.md)
+- [160904_Android / ViewPager와 PageTransformer를 활용한 Carousel UI pattern의 구현 ](https://github.com/ksu3101/TIL/blob/master/Android/160904_Android.md)  
 
 ---
 #### Algorithm ([ACMICPC 계정 링크](https://www.acmicpc.net/user/ksu3101))  
