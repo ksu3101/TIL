@@ -34,6 +34,7 @@
 - [160823_Android / 비동기 작업의 State에 따라 바뀌는 Customized Button의 구현](https://github.com/ksu3101/TIL/blob/master/Android/160823_Android.md)
 - [160904_Android / ViewPager와 PageTransformer를 활용한 Carousel UI pattern의 구현 ](https://github.com/ksu3101/TIL/blob/master/Android/160904_Android.md)  
 - [160906_Android / Parallax ViewPager page transition effect](https://github.com/ksu3101/TIL/blob/master/Android/160906_Android.md)  
+- [160909_Android / Gradient transition effect like Instagram](https://github.com/ksu3101/TIL/blob/master/Android/160909_Android.md)
 
 ---
 #### Algorithm ([ACMICPC 계정 링크](https://www.acmicpc.net/user/ksu3101))  
