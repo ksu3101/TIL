@@ -1,4 +1,4 @@
-# Instagram의 Gradent transition effect의 구현
+# Instagram의 Gradient transition effect의 구현
 
 ### 배경
 - 인스타그램 앱 에서 로그인, 가입 화면에서는 배경에 화려한 그라데이션이 트랜지션 효과와 함께 계속 변화하는것을 볼 수 있다. 
