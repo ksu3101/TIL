@@ -3,7 +3,8 @@
 ### 배경
 - 인스타그램 앱 에서 로그인, 가입 화면에서는 배경에 화려한 그라데이션이 트랜지션 효과와 함께 계속 변화하는것을 볼 수 있다. 
 - 디자이너에게 부탁하여 이미지를 만들어 리소스로 두고 관리하는 방법도 있지만 이 방법은 유지 보수가 불편하다. 컬러를 변경하거나 그라데이션 위치 값들을 변경 하려면 다시 이미지를 요청하고 수정한뒤에 적용 해야 한다. 
-- 그라데이션의 이미지 리소스를 추가 하는게 아닌 `Drawable`리소스로 만들어서 관리하는 방법을 구현해 보았다.  
+- 그라데이션의 이미지 리소스를 추가 하는게 아닌 `Drawable`리소스로 만들어서 관리하는 방법을 구현해 보았다. 결과물을 미리 보여주면 아래 gif이미지와 같이 작동하게 될 것이다.  
+![result_captured_image](https://github.com/ksu3101/TIL/blob/master/Android/images/videotogif_2016.09.09_17.53.07.gif)
 
 ### 1. 그라데이션이 적용된 `Drawable`리소스 만들기. 
 - 그라데이션 적용 방법의 예는 다음과 같다. 
@@ -120,5 +121,3 @@ public class LoginActivity
 }
 ```
 
-### 결과물  
-![result_captured_image](https://github.com/ksu3101/TIL/blob/master/Android/images/videotogif_2016.09.09_17.53.07.gif)
