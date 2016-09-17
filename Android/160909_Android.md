@@ -1,5 +1,13 @@
 # Instagram의 Gradient transition effect의 구현
 
+### `16/09/11` 추가 내용  
+- 화면의 컨테이너 레이아웃의 background 속성으로 위의 frame-transition drawable을 그대로 적용 시켜보면 drawable과 drawable의 트랜지션 도 중에 하얀 배경이 그대로 보인다. 
+- 그렇게 보여도 상관없다면 그냥 써도 되지만 인스타 그램의 경우 트랜지션 도중에 하얗게 일어나진 않는다. 
+- 만약 인스타그램처럼 보여지고 싶다면 아래 2가지 방법이 있다. 
+ 1. 컨테이너 레이아웃의 background 속성을 검은색으로 주고, 그 바로 다음 자식 컨테이너 레이아웃에 frame-transition drawable을 background으로 준 뒤에 동일하게 트랜지션 한다. 
+ 2. 액티비티 고유 기본 배경 컬러를 변경 한다. `style.xml`에서 `<item name="android:windowBackground">@color/background</item>`의 형태로 지정하는 방법 이 있겠다.  
+
+---
 ### 배경
 - 인스타그램 앱 에서 로그인, 가입 화면에서는 배경에 화려한 그라데이션이 트랜지션 효과와 함께 계속 변화하는것을 볼 수 있다. 
 - 디자이너에게 부탁하여 이미지를 만들어 리소스로 두고 관리하는 방법도 있지만 이 방법은 유지 보수가 불편하다. 컬러를 변경하거나 그라데이션 위치 값들을 변경 하려면 다시 이미지를 요청하고 수정한뒤에 적용 해야 한다. 
@@ -121,11 +129,5 @@ public class LoginActivity
 }
 ```  
 
----  
-### `16/09/11` 추가 내용  
-- 화면의 컨테이너 레이아웃의 background 속성으로 위의 frame-transition drawable을 그대로 적용 시켜보면 drawable과 drawable의 트랜지션 도 중에 하얀 배경이 그대로 보인다. 
-- 그렇게 보여도 상관없다면 그냥 써도 되지만 인스타 그램의 경우 트랜지션 도중에 하얗게 일어나진 않는다. 
-- 만약 인스타그램처럼 보여지고 싶다면 아래 2가지 방법이 있다. 
- 1. 컨테이너 레이아웃의 background 속성을 검은색으로 주고, 그 바로 다음 자식 컨테이너 레이아웃에 frame-transition drawable을 background으로 준 뒤에 동일하게 트랜지션 한다. 
- 2. 액티비티 고유 기본 배경 컬러를 변경 한다. `style.xml`에서 `<item name="android:windowBackground">@color/background</item>`의 형태로 지정하는 방법 이 있겠다. 
+
 
