@@ -33,7 +33,7 @@
  ```
  Task                                                       Duration Result
 :app                                                        4m26.89s (total)
-:app:transformClassesWithDexForDebug 4m19.59s
+:app:transformClassesWithDexForDebug  4m19.59s
  ```
  위 내용은 4분 26초 가량이 걸린 빌드의 profile내용이다. `app:transformClassesWithDexForDebug`를 하는 동안에만 4분 19초를 사용함을 알 수 있다. 그 외에는 10초 이내로 다 하는데 말이다. 
  아마도 자바 컴파일러에서 앱, 라이브러리 모듈 등의 클래스 파일들을 dex파일로 패키징 하는 과정으로 추정되었다. 하지만 이는 정상적인 케이스 보다 너무나도 느렸다! [참고](https://developer.android.com/studio/build/index.html?hl=ko)
@@ -56,11 +56,11 @@ dexOptions {
 ```
 Task                                                        Duration Result
 :app                                                        33.766s (total)
-:app:transformClassesWithDexForDebug 27.566s
+:app:transformClassesWithDexForDebug  27.566s
 
 Task                                                        Duration Result
 :app                                                       44.171s (total)
-:app:transformClassesWithDexForDebug 26.768s
+:app:transformClassesWithDexForDebug  26.768s
 ```
 확연히 빨라진 컴파일, 빌드 타임을 확인 할 수 있었다. 
 
