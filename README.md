@@ -36,6 +36,7 @@
 - [160906_Android / Parallax ViewPager page transition effect](https://github.com/ksu3101/TIL/blob/master/Android/160906_Android.md)  
 - [160909_Android / Gradient transition effect like Instagram](https://github.com/ksu3101/TIL/blob/master/Android/160909_Android.md)
 - [160912_Android / Configure Android Status Bar](https://github.com/ksu3101/TIL/blob/master/Android/160912_Android.md)
+- [160921_Android / multiDexOptions속성이 true인 상태에서 Android Studio의 컴파일, 빌드가 너무나도 느려졌을 경우](https://github.com/ksu3101/TIL/blob/master/Android/160921_Android.md)
 
 ---
 ### AWS
