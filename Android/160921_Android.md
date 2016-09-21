@@ -25,8 +25,8 @@
  ![프로파일링 속성 추가](http://burkdog.cafe24.com/wp/wp-content/uploads/2015/11/asprofile.png)  
  Android studio의 `File -> Settings -> Build, Execution, Deployment -> Compiler` 항목에 가서 `Command-line Options`의 내용에 `--profile`을 입력 하면 된다. 
 
- 프로파일링 패러미터를 추가 하여 build를 하게 되면 프로젝트의 `app`폴더 내 `build`폴더에서 `reports`라는 폴더가 생성된다. 그리고 내부에 빌드 결과들과 시간 정보들이 저장된 profile파일들이 생성된다. 내용은 아래 이미지와 같다.  
- ![프로파일링 결과물](http://burkdog.cafe24.com/wp/wp-content/uploads/2015/11/gradle_profiling.png)  
+ 프로파일링 패러미터를 추가 하여 build를 하게 되면 프로젝트의 `app`폴더 내 `build`폴더에서 `reports`라는 폴더가 생성된다. 그리고 내부에 빌드 결과들과 시간 정보들이 저장된 profile파일들이 생성된다. 내용은 아래 이미지와 같다.    
+ ![프로파일링 결과물](http://burkdog.cafe24.com/wp/wp-content/uploads/2015/11/gradle_profiling.png)   
 
 ## 3. 해결
  profiling build를 시작하고 결과는 다음과 같았다.  
