@@ -1,8 +1,7 @@
 # Android Studio의 Gradle 빌드가 너무 느려졌을 경우
 
 과거에 Android Studio를 이용한 gradle빌드 과정중에 발생한 크리티컬 이슈를 다시 정리해 보았다. 당시 이슈에 해당하는 개발 환경은 다음과 같다.
-- Windows 7 + Android Studio 2버전 이하 (버전에 상관 없을듯)
-- 낮은 퍼포먼스의 개발 PC
+- Windows 10 + Android Studio 2버전 이하 (버전에 상관 없을듯)
 - 65k 메소드 제한옵션을 풀기 위한 `multiDexEnable`속성의 `true`세팅. 
 - 높은 타 라이브러리 모듈의 의존성 
 
