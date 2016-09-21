@@ -49,7 +49,17 @@ dexOptions {
     javaMaxHeapSize "2048M"
 }
  ```
-클래스 파일을 dex파일로 패키징 하면서 사용되는 자바 힙 메모리의 사이즈가 생각보다 작은거 같다. 적은 메모리를 가지고 수많은 라이브러리 모듈들의 class들 까지 같이 패키징 하다가 OOM도 발생하고 그런것 같았다. 
+JVM에서 클래스 파일을 dex파일로 패키징 하면서 사용되는 자바 힙 메모리의 사이즈가 생각보다 작은거 같다. 적은 메모리를 가지고 수많은 라이브러리 모듈들의 class들 까지 같이 패키징 하다가 OOM도 발생하고 그런것 같았다. 
+
+```java
+if (theJavaMaxHeapSize.matches("\\d+[kKmMgGtT]?")) {
+    javaMaxHeapSize = theJavaMaxHeapSize
+} else {
+    throw new IllegalArgumentException(
+            "Invalid max heap size DexOption. See `man java` for valid -Xmx arguments.")
+} 
+```  
+찾아보니  `M`외 에도 kilobyte의 `K`등 정규식을 활용한 용량 설정이 가능 한 것 같다. [참고](http://stackoverflow.com/questions/33750404/android-gradle-what-is-javamaxheapsize-4g)
 
 옵션을 적용 후 다시 빌드 한뒤에 프로파일링 된 내용을 확인 하니,
 ```
