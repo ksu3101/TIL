@@ -1,4 +1,4 @@
-# JUnit을 활용한 TDD 개발 
+# JUnit과 Espresso를 이용한 TDD 개발 
 
 ## 1. 배경
  **테스트 주도 개발 프로세스(TDD)**는 최근 개발 트렌드에서 자동화된 테스트, 컴파일-빌드, 배포 단위에서  중요한 역할을 하고 있다. 이미 TDD 개발 프로세스를 적용한 개발팀들도 많은 편 이다. 특히 민첩한 대응을 요구하는 Agile이나 DevOps환경에서 자동화 도구들은 필수라고 할 수 있다.  
@@ -105,10 +105,6 @@ public class Calculator {
 ```
 
 ## 4. 간단한 단위 테스트 해 보기
-`Calculator` 클래스를 이용 해서 테스트 할 내용은 아래와 같다.    
-1. `testAddNumbers()` : 어떠한 값 `a`와 `b`를 더하고 그 결과가 맞는지 확인 한다.  
-2. `testMinusNumbers()` : 어떠한 값 `a`와 `b`를 뺀 뒤 그 결과가 맞는지 확인 한다.  
-
 ```java
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -129,14 +125,15 @@ public class TestCalculator {
   @Test
   public void testMinusNumbers() {
     int result = calculator.minus(25, 10);
-    assertThat(result, is(10));
+    assertThat(result, is(15));
   }
 }
 ```
-- `TestCalculator` 클래스 : 
-- `initTest()` :
-- `testAddNumbers()` :
-- `testMinusNumbers()` :
+`Calculator` 클래스를 이용 해서 테스트 할 내용은 아래와 같다.   
+- `TestCalculator` 클래스 : 테스트들을 정의한 클래스. `@RunWith`어노테이션을 이용하여 `AndroidJUnit4`라이브러리를 사용 하고, `@Test`어노테이션으로 단위 테스트 메소드들을 정의 했다. 
+- `initTest()` : `@Before`는 테스트 클래스가 만들어지고 난 뒤 각 단위 테스트를 하기 전에 가장 먼저 한번 실행되는 메소드 이다.  
+- `testAddNumbers()` : 어떠한 값 `a`와 `b`를 더하고 그 결과가 맞는지 확인 한다.  
+- `testMinusNumbers()` : 어떠한 값 `a`와 `b`를 뺀 뒤 그 결과가 맞는지 확인 한다.  
 
 ### 4.1  테스트 빌드 설정 하기
 1.  좌측 최 상단의 '+' 버튼을 누른다.   
@@ -147,15 +144,20 @@ public class TestCalculator {
    
 3. 추가된 테스트의 정보를 수정 한다.    
 ![3](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_03.png)  
- 1. Name : 테스트들을 구분하기 위한 이름   
- 2. Test - Class : 개발자가 만든 테스트 클래스들을 명시한다. 지금은 `TestCalculator`을 테스트 할 것이다.  
- 3. runner : Junit Runner로 설정 한다.     
+ 1. `Name` : 테스트들을 구분하기 위한 이름   
+ 2. `Test - Class` : 개발자가 만든 테스트 클래스들을 명시한다. 지금은 `TestCalculator`을 테스트 할 것이다.  
+ 3. `runner` : Junit Runner로 설정 한다.     
     
 4. 제대로 설정 됬 다면 위 Selector란에 만든 테스트가 추가 될 것 이다. 테스트용 디바이스나 에뮬레이터를 연결 하고 빌드 하면 테스트를 진행 하게 된다.   
 ![4](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_04.png)  
     
-### 4.1 테스트 도중 오류가 발생했을 경우 
+### 4.1 테스트 도중 오류가 발생했을 경우
+![4.1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_05.png)
+- `testMinusNumbers()`메소드에서 잘못된 값을 반환하여 `AssertionError`예외가 발생했음을 알려 준다.  
+
 ### 4.2 정상적으로 테스트를 완료 했을 경우  
+![4.1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_06.png)
+- 정상적으로 테스트 완료 후 빌드 되었음을 알려 준다. 
 
 ## 5. 실제와 비슷한 단위 테스트용 클래스 만들기 
 
