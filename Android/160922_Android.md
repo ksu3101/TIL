@@ -59,7 +59,7 @@ Android Studio 2.2와 gradle 2.2환경에서 프로젝트를 만들면 JUnit 모
 ## 3. 간단한 단위 테스트용 클래스 만들기 
 생성된 안드로이드 프로젝트 내부에 테스트 패키지가 만들어 졌을 것 이다. 보통 이 내부에 테스트용 클래스를 정의하고 테스트 시나리오를 작성 하면 된다. 
 
-시간이 없으니 앱 메인 패키지 아래에 아래와 같안 간단한 사칙연산을 수행하는 클래스인 `Calculator`를 만들었다. 이 클래스가 정상적으로 테스트를 하는지 확인할 것 이다.  
+시간이 없으니 앱 메인 패키지 아래에 아래와 같안 간단한 사칙연산을 수행하는 클래스인 `Calculator`를 만들었다. 이 클래스의 기능들이 정상적으로 작동 하는지 테스트를 해 볼 것이다.   
 ```java
 public class Calculator {
   private int a;
@@ -133,6 +133,27 @@ public class TestCalculator {
   }
 }
 ```
+- `TestCalculator` 클래스 : 
+- `initTest()` :
+- `testAddNumbers()` :
+- `testMinusNumbers()` :
+
+### 4.1  테스트 빌드 설정 하기
+1.  좌측 최 상단의 '+' 버튼을 누른다.   
+![1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_01.png)  
+   
+2. '+'버튼을 누르면 여러 메뉴들이 보이는데 그 중 `Android Test`를 눌러 안드로이드 테스트를 추가 한다.    
+![2](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_02.png)  
+   
+3. 추가된 테스트의 정보를 수정 한다.    
+![3](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_03.png)  
+ 1. Name : 테스트들을 구분하기 위한 이름   
+ 2. Test - Class : 개발자가 만든 테스트 클래스들을 명시한다. 지금은 `TestCalculator`을 테스트 할 것이다.  
+ 3. runner : Junit Runner로 설정 한다.     
+    
+4. 제대로 설정 됬 다면 위 Selector란에 만든 테스트가 추가 될 것 이다. 테스트용 디바이스나 에뮬레이터를 연결 하고 빌드 하면 테스트를 진행 하게 된다.   
+![4](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_04.png)  
+    
 ### 4.1 테스트 도중 오류가 발생했을 경우 
 ### 4.2 정상적으로 테스트를 완료 했을 경우  
 
