@@ -54,7 +54,19 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 ```
-Android Studio 2.2와 gradle 2.2환경에서 프로젝트를 만들면 JUnit 모듈과 Espresso모듈이 이미 추가되어 있다. `defaultConfig`속성 내부에 `testInstrumentationRunner`속성과 `dependencies`속성의 `espresso-core`가 추가된것을 확인 해 볼 수 있다. 
+Android Studio 2.2와 gradle 2.2환경에서 프로젝트를 만들면 JUnit 모듈과 Espresso모듈이 이미 추가되어 있다. `defaultConfig`속성 내부에 `testInstrumentationRunner`속성과 `dependencies`속성의 `espresso-core`가 추가된것을 확인 해 볼 수 있다.
+
+Espresso모듈이 추가 되어 있지 않은 경우 아래와 같이 추가 해 준다.  
+```gradle
+dependencies {
+  ...
+  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+}
+```
+**그리고 안드로이드 OS에서 제공하는 애니메이션의 사용 설정을 끈 다**. UI테스트의 경우 애니메이션으로 인하 즉각적인 UI의 변화를 업데이트/감지 하지 못하여 테스트 실패가 될 수 있다고 한다. `개발자 옵션`에서 다음 애니메이션 항목의 사용 설정을 끄면 된다. 
+- `Window animation scale`
+- `Transition animation scale`
+- `Animatior duration scale`
 
 ## 3. 간단한 단위 테스트용 클래스 만들기 
 생성된 안드로이드 프로젝트 내부에 테스트 패키지가 만들어 졌을 것 이다. 보통 이 내부에 테스트용 클래스를 정의하고 테스트 시나리오를 작성 하면 된다. 
