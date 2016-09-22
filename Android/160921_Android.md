@@ -1,9 +1,10 @@
 # Android Studio의 Gradle 빌드가 너무 느려졌을 경우
 
-과거에 Android Studio를 이용한 gradle빌드 과정중에 발생한 크리티컬 이슈를 다시 정리해 보았다. 당시 이슈에 해당하는 개발 환경은 다음과 같다.
+과거에 Android Studio를 이용한 gradle빌드 과정중에 발생한 크리티컬 이슈를 다시 정리해 보았다. 이슈가 발생했을 때의 배경 환경은 다음과 같았다. 
 - Windows 10 + Android Studio 2버전 이하 (버전에 상관 없을듯)
 - 65k 메소드 제한옵션을 풀기 위한 `multiDexEnable`속성의 `true`세팅. 
 - 높은 타 라이브러리 모듈의 의존성 
+- gradle의 컴파일, 빌드 속도가 약 5 ~ 20분 가량 늦어짐. 간혹 도중에 OOM(Out Of Memory exception)발생.   
 
 ## 1. 배경 
  전 회사에서 근무 하면서 작업 했던 안드로이드 앱 프로젝트에 라이브러리 모듈의 의존성 추가가 많아지면서 여러가지 설정을 하게 되었다. 
