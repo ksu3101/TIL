@@ -164,13 +164,13 @@ public class TestCalculator {
     
 4. 제대로 설정 됬 다면 위 Selector란에 만든 테스트가 추가 될 것 이다. 테스트용 디바이스나 에뮬레이터를 연결 하고 빌드 하면 테스트를 진행 하게 된다.   
 ![4](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_04.png)  
-    
-### 4.1 테스트 도중 오류가 발생했을 경우
-![4.1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_05.png)
+      
+### 4.1 테스트 도중 오류가 발생했을 경우   
+ ![4.1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_05.png)
 - `testMinusNumbers()`메소드에서 잘못된 값을 반환하여 `AssertionError`예외가 발생했음을 알려 준다.  
 
-### 4.2 정상적으로 테스트를 완료 했을 경우  
-![4.1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_06.png)
+### 4.2 정상적으로 테스트를 완료 했을 경우    
+ ![4.1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_06.png)
 - 정상적으로 테스트 완료 후 빌드 되었음을 알려 준다. 
      
 ## 5. 실제처럼 단위 테스트용 클래스 만들기  
