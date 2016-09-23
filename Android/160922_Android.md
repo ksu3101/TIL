@@ -14,7 +14,7 @@
 4. RxAndroid 1.2.1
 
 ### 1.2 목표 
-1. JUnit과 Espresso의 설정
+1. JUnit과 [Espresso의 설정](https://developer.android.com/training/testing/start/index.html#config-instrumented-tests)
  1. Espresso : UI 테스팅 모듈. 앱에서 추가한 UI의 기능에 대한 테스트에 적합 하다. 사용자의 UX(클릭, 스와이프 등)에 따른 뷰의 변화도 테스트 할 수 있다. (일명 Coded UI Test)    
 2. 테스트 코드의 작성 
 3. 실제로 테스트 코드를 실행하여 케이스별 대응 
@@ -51,10 +51,12 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
     testCompile 'junit:junit:4.12'
 }
 ```
-Android Studio 2.2와 gradle 2.2환경에서 프로젝트를 만들면 JUnit 모듈과 Espresso모듈이 이미 추가되어 있다. `defaultConfig`속성 내부에 `testInstrumentationRunner`속성과 `dependencies`속성의 `espresso-core`가 추가된것을 확인 해 볼 수 있다.
+Android Studio 2.2와 gradle 2.2환경에서 프로젝트를 만들면 JUnit 모듈과 Espresso모듈이 이미 추가되어 있다. `defaultConfig`속성 내부에 `testInstrumentationRunner`속성과 `dependencies`속성의 `espresso-core`가 추가된것을 확인 해 볼 수 있다.    
+`espresso-idling-resource`는 추후에 설명할 비동기 작업과 연관된 것 이다. 
 
 Espresso모듈이 추가 되어 있지 않은 경우 아래와 같이 추가 해 준다.  
 ```gradle
@@ -143,7 +145,7 @@ public class TestCalculator {
 ```
 `Calculator` 클래스를 이용 해서 테스트 할 내용은 아래와 같다.   
 - `TestCalculator` 클래스 : 테스트들을 정의한 클래스. `@RunWith`어노테이션을 이용하여 `AndroidJUnit4`라이브러리를 사용 하고, `@Test`어노테이션으로 단위 테스트 메소드들을 정의 했다. 
-- `initTest()` : `@Before`는 테스트 클래스가 만들어지고 난 뒤 각 단위 테스트를 하기 전에 가장 먼저 한번 실행되는 메소드 이다.  
+- `initTest()` : `@Before`는 테스트 클래스가 만들어지고 난 뒤 각 단위 테스트를 하기 전에 가장 먼저 한번 실행되는 메소드 이다.  테스트 후 어떠한 작업을 하고 싶다면 `@After`를 사용 할 수 있다. 
 - `testAddNumbers()` : 어떠한 값 `a`와 `b`를 더하고 그 결과가 맞는지 확인 한다.  
 - `testMinusNumbers()` : 어떠한 값 `a`와 `b`를 뺀 뒤 그 결과가 맞는지 확인 한다.  
 
@@ -170,12 +172,46 @@ public class TestCalculator {
 ### 4.2 정상적으로 테스트를 완료 했을 경우  
 ![4.1](https://github.com/ksu3101/TIL/blob/master/Android/images/0922tdd_06.png)
 - 정상적으로 테스트 완료 후 빌드 되었음을 알려 준다. 
-  
-## 5. 실제와 비슷한 단위 테스트용 클래스 만들기   
-작성중..   
+     
+## 5. 실제처럼 단위 테스트용 클래스 만들기  
+테스트 케이스 작성 방법은 다음과 같다.    
+### 5.1  `ActivityTestRule`을 이용한 테스트 케이스 작성 법      
+구글에서 권장하고 있는 테스트 케이스 작성 법 이다. `ActivityTestRule`이라는 보일러플레이트 코드를 기반으로 작성 한다. 기반 코드는 아래와 같은 형식으로 UI테스트를 진행 한다.    
+```java
+onView(withId(R.id.some_vew))
+    .perform(click())
+    .check(matches(isDisplayed()));
+```  
+- `onView()` : 리소스 id로 명시된 특정 뷰를 찾는다. 
+- `perform()` : 찾은 특정 뷰에 어떠한 액션을 한다. 액션에 대해선 하단의 *6.2*를 참고 할 것
+- `check()` : 상태를 체크 한다. 보여지고 있는지 입력된 텍스트는 어떠한지 등을 체크 한다.
+이 방법을 이용하여 테스트 코드를 작성하면 다음과 같을 것 이다. 
+
+#### 5.1.1 비동기작업과 테스트 코드
+네트워크나 I/O등 비동기 작업을 동반한 테스트를 해야 할 때가 있다. 네트워크 API를 비동기로 작업 후 다른 스레드를 통해 데이터를 가져와 파싱한 데이터를 기반으로 뷰를 메인스레드에서 업데이트 하는 등의 작업이다. 
+[참고](https://github.com/googlesamples/android-testing/tree/master/ui/espresso/IdlingResourceSample)   
+
+### 5.2 `ActivityInstrumentationTestCase2`을 이용한 테스트 케이스 작성 법 
+API 24 이후로 이 방법은 **deprecated**상태 이다. 구글에서는 현재 이 테스트케이스를 권장 하지 않는다고 한다.  
+> Note: For new UI tests, we strongly recommend that you write your test in the JUnit 4 style and use the ActivityTestRule class, instead of ActivityInstrumentationTestCase2.  
+방법은 `ActivityInstrumentationTestCase2`를 상속한 클래스 내부에서 테스트 케이스를 구현하는 방법이다. 이 방법은 deprecated되었으므로 따로 작성하지는 않았다. 
+
 
 ## 6. 실제처럼 테스트 해 보기 
 작성중..  
 
+### 6.1 Espresso에서 제공하는 안드로이드 액션 들 
+`ViewInteraction.perform()`나  `DataInteraction.perform()`메소드를 호출 하여 UI요소들의 테스트를 할 수 있다. 테스트 할 수 있는 사용자가 시나리오 내 에서 할 것이라고 예측 가능한 일반적인 액션 들은 아래와 같다.    
+- `viewActions.click()` 
+- `viewActions.typeText()` : 어떤 뷰를 클릭 하고 설정한 텍스트를 입력 하게 한다. 
+- `viewActions.scrollTo()` : 어떤 뷰를 스크롤 한다. 테스트 할 대상 뷰는 `ScrollView`와 같이 스크롤이 구현되어진 뷰 로서 `android:visibility`속성이 `VISIBLE`상태 이어야 한다. 참고로 보여질 뷰가 `AdapterView`등을 상속한 뷰(`ListView`나 `RecyclerView`등)라면 `onData()`메소드 등을 통해서 스크롤을 할 수 있을 것 이다. 
+- `viewActions.pressKey()` : 어떤 뷰를 대상으로 특정한 물리 키를 누른다. keycode를 참고 할 것.
+- `viewActions.clearText()` :  어떤 뷰에 입력된 텍스트르 모두 제거 한다. 
+
+### 6.2 결과의 확인 
+`ViewInteraction.check()`나 `DataInteraction.check()`메소드를 이용하여 특정 UI요소들의 상태나 입력된 값 등을 비교 하여 테스트 결과를 확인 할 수도 있다. `ViewAssertion`에서 제공 하는 것들은 다음과 같다. 
+- `doesNotExist` :  특정 뷰를 찾지 못한 경우. 
+- `matches` : 특정 뷰에서 어떠한 값이 맞는지 여부 확인. 
+- `selectedDescendentsMatch` : 자식뷰들ㅇ
 
 
