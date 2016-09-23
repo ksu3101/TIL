@@ -176,11 +176,13 @@ public class TestCalculator {
 ## 5. 실제처럼 단위 테스트용 클래스 만들기  
 테스트 케이스 작성 방법은 다음과 같다.    
 ### 5.1  `ActivityTestRule`을 이용한 테스트 케이스 작성 법      
-구글에서 권장하고 있는 테스트 케이스 작성 법 이다. `ActivityTestRule`이라는 보일러플레이트 코드를 기반으로 작성 한다. 기반 코드는 아래와 같은 형식으로 UI테스트를 진행 한다.    
+구글에서 권장하고 있는 테스트 케이스 작성 법 이다. `ActivityTestRule`이라는 보일러플레이트 코드를 기반으로 작성 한다. 기반 코드는 아래와 같은 형식으로 UI테스트를 진행 한다.   
+  
+![Espresso 2.0](http://i.stack.imgur.com/SKODS.png)      
 ```java
-onView(withId(R.id.some_vew))
-    .perform(click())
-    .check(matches(isDisplayed()));
+onView(withId(R.id.some_vew))            // Matchers
+    .perform(click())                             // View Actions 
+    .check(matches(isDisplayed()));     // View Assertions
 ```  
 - `onView()` : 리소스 id로 명시된 특정 뷰를 찾는다. 
 - `perform()` : 찾은 특정 뷰에 어떠한 액션을 한다. 액션에 대해선 하단의 *6.2*를 참고 할 것
@@ -194,18 +196,19 @@ onView(withId(R.id.some_vew))
 ### 5.2 `ActivityInstrumentationTestCase2`을 이용한 테스트 케이스 작성 법 
 API 24 이후로 이 방법은 **deprecated**상태 이다. 구글에서는 현재 이 테스트케이스를 권장 하지 않는다고 한다.  
 > Note: For new UI tests, we strongly recommend that you write your test in the JUnit 4 style and use the ActivityTestRule class, instead of ActivityInstrumentationTestCase2.  
-방법은 `ActivityInstrumentationTestCase2`를 상속한 클래스 내부에서 테스트 케이스를 구현하는 방법이다. 이 방법은 deprecated되었으므로 따로 작성하지는 않았다. 
-
-
+방법은 `ActivityInstrumentationTestCase2`를 상속한 클래스 내부에서 테스트 케이스를 구현하는 방법이다. 이 방법은 deprecated되었으므로 따로 작성하지는 않았다.   
+  
 ## 6. 실제처럼 테스트 해 보기 
 작성중..  
 
 ### 6.1 Espresso에서 제공하는 안드로이드 액션 들 
 `ViewInteraction.perform()`나  `DataInteraction.perform()`메소드를 호출 하여 UI요소들의 테스트를 할 수 있다. 테스트 할 수 있는 사용자가 시나리오 내 에서 할 것이라고 예측 가능한 일반적인 액션 들은 아래와 같다.    
-- `viewActions.click()` 
+- `viewActions.click()`, `doubleClick()`, `longClick()`
+- `pressBack()`, `pressImeActionButton()`, `pressKey(keycode)`, `pressMenuKey()`
 - `viewActions.typeText()` : 어떤 뷰를 클릭 하고 설정한 텍스트를 입력 하게 한다. 
+- `typeTextIntoFocusedView()`, `replaceText()` 
 - `viewActions.scrollTo()` : 어떤 뷰를 스크롤 한다. 테스트 할 대상 뷰는 `ScrollView`와 같이 스크롤이 구현되어진 뷰 로서 `android:visibility`속성이 `VISIBLE`상태 이어야 한다. 참고로 보여질 뷰가 `AdapterView`등을 상속한 뷰(`ListView`나 `RecyclerView`등)라면 `onData()`메소드 등을 통해서 스크롤을 할 수 있을 것 이다. 
-- `viewActions.pressKey()` : 어떤 뷰를 대상으로 특정한 물리 키를 누른다. keycode를 참고 할 것.
+- `swipeLeft()`, `swipeRight()`, `swipeUp()`, `swipeDown()`
 - `viewActions.clearText()` :  어떤 뷰에 입력된 텍스트르 모두 제거 한다. 
 
 ### 6.2 결과의 확인 
