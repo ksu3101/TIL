@@ -195,13 +195,170 @@ onView(withId(R.id.some_vew))            // Matchers
 
 ### 5.2 `ActivityInstrumentationTestCase2`을 이용한 테스트 케이스 작성 법 
 API 24 이후로 이 방법은 **deprecated**상태 이다. 구글에서는 현재 이 테스트케이스를 권장 하지 않는다고 한다.  
-> Note: For new UI tests, we strongly recommend that you write your test in the JUnit 4 style and use the ActivityTestRule class, instead of ActivityInstrumentationTestCase2.  
+> Note: For new UI tests, we strongly recommend that you write your test in the JUnit 4 style and use the ActivityTestRule class, instead of ActivityInstrumentationTestCase2.    
+  
 방법은 `ActivityInstrumentationTestCase2`를 상속한 클래스 내부에서 테스트 케이스를 구현하는 방법이다. 이 방법은 deprecated되었으므로 따로 작성하지는 않았다.   
   
 ## 6. 실제처럼 테스트 해 보기 
-작성중..  
 
-### 6.1 Espresso에서 제공하는 안드로이드 액션 들 
+### 6.1 테스트 코드의 작성  
+```java
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.pressKey;
+import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+
+@RunWith(AndroidJUnit4.class)
+@LargeTest
+public class TestMainActivity {
+  
+  @Rule
+  public ActivityTestRule<MainActivity> activityTestRule
+      = new ActivityTestRule<MainActivity>(MainActivity.class);
+
+  private IdlingResource idlingResource;
+
+  @Before
+  public void initTest() {
+    idlingResource = activityTestRule.getActivity().getIdlingResource();
+    Espresso.registerIdlingResources(idlingResource);
+  }
+
+  @Test
+  public void testTextView() {
+    onView(withId(R.id.main_textview))
+        .perform(click())
+        .check(matches(isDisplayed()));
+
+    onView(withId(R.id.main_textview))
+        .check(matches(withText("KANG")));
+
+    onView(withId(R.id.main_edittext))
+        .perform(
+            click(),
+            //pressKey(KeyEvent.KEYCODE_LANGUAGE_SWITCH),  // 안됨
+            //pressKey(new EspressoKey.Builder().withKeyCode(KeyEvent.KEYCODE_SPACE).withShiftPressed(true).build()), // 이것도 안됨.. 
+            typeText("rkdtjddn"),
+            closeSoftKeyboard()
+        )
+        .check(matches(withText("강성우")));
+  }
+
+  @After
+  public void unregisterIdlingResources() {
+    if (idlingResource != null) {
+      Espresso.unregisterIdlingResources(idlingResource);
+    }
+  }
+}
+```
+- espresso의 static메소드들을 사용해서 UI테스트를 진행하는 것 을 볼 수 있다. 
+- 첫번째 테스트는 텍스트뷰를 클릭(기능 없음) 하고 현재 보여지고 있는지 여부를 체크 한다.
+- 두번째 테스트는 텍스트뷰에 입력되어진 텍스트가 현재 "KANG"인지 여부를 체크 한다. 
+- 세번째 테스트는 에디트 텍스트를 클릭 하고 난 뒤 키보드를 바꾸고 "강성우"를 입력 한다. 그리고 입력한 결과가 "강성우"라고 제대로 입력되었는지 여부를 확인 한다.  
+  
+### 6.2 비동기 작업에 대한 View 변화에 대한 테스트    
+위 테스트 중에서 두번째의 경우 `MainActivity`에서 `MainActivityPresenter`를 통해서 Rx이용하여 어떠한 비동기 상황을 가정 하고 아래처럼 구성 했다.   
+```java
+public class MainActivityPresenter
+    extends BasePresenter {
+  private static final String TAG = MainActivityPresenter.class.getSimpleName();
+
+  private MainActivityPresenter.View view;
+  private SimpleIdlingResource       idlingResource;
+
+  public MainActivityPresenter(@NonNull MainActivityPresenter.View activity) {
+    this.view = activity;
+    if (activity instanceof MainActivity) {
+      idlingResource = ((MainActivity) activity).getIdlingResource();
+    }
+  }
+
+  public void getTextDatas() {
+    Observable observable = Observable.create(
+        new Observable.OnSubscribe<String>() {
+          @Override
+          public void call(Subscriber<? super String> subscriber) {
+            try {
+              Thread.sleep(1000); // DUMMY VALUE
+            } catch (InterruptedException ie) {
+              subscriber.onError(ie);
+            } finally {
+              subscriber.onNext("KANG");
+            }
+          }
+        }
+    ).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread());
+    observable.subscribe(
+        new Subscriber<String>() {
+          @Override
+          public void onCompleted() {
+          }
+
+          @Override
+          public void onError(Throwable e) {
+            idlingResource.setIdleState(true);
+            view.onError(TAG, e != null ? e.getMessage() : "ERROR");
+          }
+
+          @Override
+          public void onNext(String result) {
+            idlingResource.setIdleState(true);
+            view.updateTextView(result);
+          }
+        }
+    );
+    idlingResource.setIdleState(false);
+  }
+
+  public interface View
+      extends BaseView {
+    void updateTextView(String message);
+  }
+}
+```
+1초간 잠시 대기 했다가 "KANG"라는 텍스트를 서브스크라이버에게 전달하는 간단한 Rx구현체 이다. 네트워크나 파일 등 I/O상황이 많아지면 이러한 비동기 작업에 대한 테스트를 어떻게 하는지 궁금 하다.  
+비동기 작업에 대한 UI테스트는 `IdlingResource`인터페이스를 구현하여 설정한다. 아래 클래스는 그 예 이다. 
+```java
+public class SimpleIdlingResource
+    implements IdlingResource {
+  private volatile ResourceCallback resourceCallback;
+  private AtomicBoolean isIdleNow = new AtomicBoolean();
+
+  @Override
+  public String getName() {
+    return this.getClass().getSimpleName();
+  }
+
+  @Override
+  public boolean isIdleNow() {
+    return isIdleNow.get();
+  }
+
+  @Override
+  public void registerIdleTransitionCallback(ResourceCallback callback) {
+    this.resourceCallback = callback;
+  }
+
+  public void setIdleState(boolean isIdleNow) {
+    this.isIdleNow.set(isIdleNow);
+    if (isIdleNow && resourceCallback != null) {
+      resourceCallback.onTransitionToIdle();
+    }
+  }
+}
+```
+외부 클래스(아까의 `MainActivityPresenter`가 그 예)에서는 `setIdleState()`메소드를 통해서 테스트의 Idling상태를 설정 한다. 만약 idling상태가 되면 콜백을 통해서 state를 변경 하기 전까지 대기 한다. 
+
+이렇게 구현되어진 `SimpleIdlingResource`을 `MainActivityPresenter`에서 멤버 변수로 두고 `setIdleState()`메소드를 적시 적소에 호출 하면서 테스트의 대기, 진행을 설정 할 수 있다. 
+그 전에 테스트를 구현한 클래스에서 `@Before`어노테이션을 이용하여 `SimpleIdlingResource`을 register하고 `@After`어노테이션에서 un-register 하는것을 잊지 말자.     
+   
+### 6.2 Espresso에서 제공하는 안드로이드 액션 들 
 `ViewInteraction.perform()`나  `DataInteraction.perform()`메소드를 호출 하여 UI요소들의 테스트를 할 수 있다. 테스트 할 수 있는 사용자가 시나리오 내 에서 할 것이라고 예측 가능한 일반적인 액션 들은 아래와 같다.    
 - `viewActions.click()`, `doubleClick()`, `longClick()`
 - `pressBack()`, `pressImeActionButton()`, `pressKey(keycode)`, `pressMenuKey()`
@@ -211,10 +368,6 @@ API 24 이후로 이 방법은 **deprecated**상태 이다. 구글에서는 현�
 - `swipeLeft()`, `swipeRight()`, `swipeUp()`, `swipeDown()`
 - `viewActions.clearText()` :  어떤 뷰에 입력된 텍스트르 모두 제거 한다. 
 
-### 6.2 결과의 확인 
-`ViewInteraction.check()`나 `DataInteraction.check()`메소드를 이용하여 특정 UI요소들의 상태나 입력된 값 등을 비교 하여 테스트 결과를 확인 할 수도 있다. `ViewAssertion`에서 제공 하는 것들은 다음과 같다. 
-- `doesNotExist` :  특정 뷰를 찾지 못한 경우. 
-- `matches` : 특정 뷰에서 어떠한 값이 맞는지 여부 확인. 
-- `selectedDescendentsMatch` : 자식뷰들ㅇ
+
 
 
