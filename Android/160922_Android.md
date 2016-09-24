@@ -261,6 +261,11 @@ public class TestMainActivity {
 - 첫번째 테스트는 텍스트뷰를 클릭(기능 없음) 하고 현재 보여지고 있는지 여부를 체크 한다.
 - 두번째 테스트는 텍스트뷰에 입력되어진 텍스트가 현재 "KANG"인지 여부를 체크 한다. 
 - 세번째 테스트는 에디트 텍스트를 클릭 하고 난 뒤 키보드를 바꾸고 "강성우"를 입력 한다. 그리고 입력한 결과가 "강성우"라고 제대로 입력되었는지 여부를 확인 한다.  
+- 테스트 당시 사용하던 기기는 `LG G2`였는데, 제공하는 OEM 기본 소프트 키보드에서는 **한글 키보드**가 먼저 보여진다. 그래서 영문입력의 테스트를 위해서는 키보드를 바꿔 줄 필요가 있다. 
+ 1. `pressKey()`메소드와  `KeyEvent.KEYCODE_LANGUAGE_SWITCH`를 이용한 스위칭 : *안됨*   
+ 2. `pressKey()`메소드와 Espresso에서 제공하는 키 입력을 이용한 `Shift`키와 `Space`키 동시 입력을 이용한 스위칭 : *안됨*  
+ 3. 키보드 팝업시 처음 보여지는 키보드를 변경 한다. 
+- 위 방법중 1번과 2번이 왜 안되는지는 모르겠다. 아마 OEM키보드 라서 그런거 일지도.. 
   
 ### 6.2 비동기 작업에 대한 View 변화에 대한 테스트    
 위 테스트 중에서 두번째의 경우 `MainActivity`에서 `MainActivityPresenter`를 통해서 Rx이용하여 어떠한 비동기 상황을 가정 하고 아래처럼 구성 했다.   
@@ -353,7 +358,9 @@ public class SimpleIdlingResource
   }
 }
 ```
-외부 클래스(아까의 `MainActivityPresenter`가 그 예)에서는 `setIdleState()`메소드를 통해서 테스트의 Idling상태를 설정 한다. 만약 idling상태가 되면 콜백을 통해서 state를 변경 하기 전까지 대기 한다. 
+등록 되어진 `IdlingResource`을 구현한 클래스는 여러개의 스레드에서 동시에 접근 할 수 있다. 비동기 상황에 리소스에 대한 접근에 대해서 스레드 세이프 하게 동작하게 하기 위해서 접근 하기 위한 `ResourceCallback`과 boolean값인 현재 상태의 플래그등의 오브젝트들에 읽기/쓰기 대해 *원자성*을 보장 해 줘야 한다.   
+
+외부 클래스(아까의 `MainActivityPresenter`가 그 예)에서는 `setIdleState()`메소드를 통해서 테스트의 Idling상태를 설정 한다. 만약 idling상태가 되면 콜백을 통해서 state를 변경 하기 전까지 대기 한다.  
 
 이렇게 구현되어진 `SimpleIdlingResource`을 `MainActivityPresenter`에서 멤버 변수로 두고 `setIdleState()`메소드를 적시 적소에 호출 하면서 테스트의 대기, 진행을 설정 할 수 있다. 
 그 전에 테스트를 구현한 클래스에서 `@Before`어노테이션을 이용하여 `SimpleIdlingResource`을 register하고 `@After`어노테이션에서 un-register 하는것을 잊지 말자.     
