@@ -65,7 +65,7 @@ dependencies {
   androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
 }
 ```
-**그리고 안드로이드 OS에서 제공하는 애니메이션의 사용 설정을 끈 다**. UI테스트의 경우 애니메이션으로 인하 즉각적인 UI의 변화를 업데이트/감지 하지 못하여 테스트 실패가 될 수 있다고 한다. `개발자 옵션`에서 다음 애니메이션 항목의 사용 설정을 끄면 된다. 
+**그리고 안드로이드 OS에서 제공하는 애니메이션의 사용 설정을 끄고 테스트 하는 것을 권장 한다**. UI테스트의 경우 애니메이션으로 인하 즉각적인 UI의 변화를 업데이트/감지 하지 못하여 테스트 실패가 될 수 있다고 한다. `개발자 옵션`에서 다음 애니메이션 항목의 사용 설정을 끄면 된다. 
 - `Window animation scale`
 - `Transition animation scale`
 - `Animatior duration scale`
@@ -190,8 +190,9 @@ onView(withId(R.id.some_vew))            // Matchers
 이 방법을 이용하여 테스트 코드를 작성하면 다음과 같을 것 이다. 
 
 #### 5.1.1 비동기작업과 테스트 코드
-네트워크나 I/O등 비동기 작업을 동반한 테스트를 해야 할 때가 있다. 네트워크 API를 비동기로 작업 후 다른 스레드를 통해 데이터를 가져와 파싱한 데이터를 기반으로 뷰를 메인스레드에서 업데이트 하는 등의 작업이다. 
-[참고](https://github.com/googlesamples/android-testing/tree/master/ui/espresso/IdlingResourceSample)   
+네트워크나 I/O등 비동기 작업을 동반한 테스트를 해야 할 때가 있다. 네트워크 API를 비동기로 작업 후 다른 스레드를 통해 데이터를 가져와 파싱한 데이터를 기반으로 뷰를 메인스레드에서 업데이트 하는 등의 작업이다.   
+  
+하단의 [6.2 비동기 작업에 대한 View 변화에 대한 테스트](https://github.com/ksu3101/TIL/blob/master/Android/160922_Android.md#62-비동기-작업에-대한-view-변화에-대한-테스트)을 참고 하자.    
 
 ### 5.2 `ActivityInstrumentationTestCase2`을 이용한 테스트 케이스 작성 법 
 API 24 이후로 이 방법은 **deprecated**상태 이다. 구글에서는 현재 이 테스트케이스를 권장 하지 않는다고 한다.  
