@@ -19,9 +19,12 @@
 2. 테스트 코드의 작성 
 3. 실제로 테스트 코드를 실행하여 케이스별 대응 
 - 참고 : [TDD 개발 프로세스](https://github.com/ksu3101/TIL/blob/master/ETC/160717_TDD.md)
-- 롤리팝 이상 버전을 대상으로 글을 작성 하였다. 미만 버전에서 무슨 문제가 발생 할 지 모른다..   
+- 롤리팝 이상 버전을 대상으로 글을 작성 하였다. 미만 버전에서 무슨 문제가 발생 할 지 모른다..
 
-## 2. JUnit설정을 위한 프로젝트 `build.gradle`
+### 1.3 예제 앱 프로젝트   
+- [링크 참조](https://github.com/ksu3101/TestDrivenDev)     
+
+## 2. JUnit설정을 위한 프로젝트 [build.gradle](https://github.com/ksu3101/TestDrivenDev/blob/master/app/build.gradle)  
 ```gradle
 apply plugin: 'com.android.application'
 
@@ -73,7 +76,7 @@ dependencies {
 ## 3. 간단한 단위 테스트용 클래스 만들기 
 생성된 안드로이드 프로젝트 내부에 테스트 패키지가 만들어 졌을 것 이다. 보통 이 내부에 테스트용 클래스를 정의하고 테스트 시나리오를 작성 하면 된다. 
 
-시간이 없으니 앱 메인 패키지 아래에 아래와 같안 간단한 사칙연산을 수행하는 클래스인 `Calculator`를 만들었다. 이 클래스의 기능들이 정상적으로 작동 하는지 테스트를 해 볼 것이다.   
+시간이 없으니 앱 메인 패키지 아래에 아래와 같안 간단한 사칙연산을 수행하는 클래스인 [Calculator](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/main/java/kr/swkang/testdrivendev/utils/Calculator.java)를 만들었다. 이 클래스의 기능들이 정상적으로 작동 하는지 테스트를 해 볼 것이다.   
 ```java
 public class Calculator {
   private int a;
@@ -144,7 +147,7 @@ public class TestCalculator {
 }
 ```
 `Calculator` 클래스를 이용 해서 테스트 할 내용은 아래와 같다.   
-- `TestCalculator` 클래스 : 테스트들을 정의한 클래스. `@RunWith`어노테이션을 이용하여 `AndroidJUnit4`라이브러리를 사용 하고, `@Test`어노테이션으로 단위 테스트 메소드들을 정의 했다. 
+- [TestCalculator](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/androidTest/java/kr/swkang/testdrivendev/TestCalculator.java) 클래스 : 테스트들을 정의한 클래스. `@RunWith`어노테이션을 이용하여 `AndroidJUnit4`라이브러리를 사용 하고, `@Test`어노테이션으로 단위 테스트 메소드들을 정의 했다. 
 - `initTest()` : `@Before`는 테스트 클래스가 만들어지고 난 뒤 각 단위 테스트를 하기 전에 가장 먼저 한번 실행되는 메소드 이다.  테스트 후 어떠한 작업을 하고 싶다면 `@After`를 사용 할 수 있다. 
 - `testAddNumbers()` : 어떠한 값 `a`와 `b`를 더하고 그 결과가 맞는지 확인 한다.  
 - `testMinusNumbers()` : 어떠한 값 `a`와 `b`를 뺀 뒤 그 결과가 맞는지 확인 한다.  
@@ -202,7 +205,7 @@ API 24 이후로 이 방법은 **deprecated**상태 이다. 구글에서는 현�
   
 ## 6. 실제처럼 테스트 해 보기 
 
-### 6.1 테스트 코드의 작성  
+### 6.1 [테스트 코드](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/androidTest/java/kr/swkang/testdrivendev/TestMainActivity.java)의 작성  
 ```java
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -269,7 +272,7 @@ public class TestMainActivity {
 - 위 방법중 1번과 2번이 왜 안되는지는 모르겠다. 아마 OEM키보드 라서 그런거 일지도.. 
   
 ### 6.2 비동기 작업에 대한 View 변화에 대한 테스트    
-위 테스트 중에서 두번째의 경우 `MainActivity`에서 `MainActivityPresenter`를 통해서 Rx이용하여 어떠한 비동기 상황을 가정 하고 아래처럼 구성 했다.   
+위 테스트 중에서 두번째의 경우 [MainActivity](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/androidTest/java/kr/swkang/testdrivendev/TestMainActivity.java)에서 [MainActivityPresenter](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/main/java/kr/swkang/testdrivendev/MainActivityPresenter.java)를 통해서 Rx이용하여 어떠한 비동기 상황을 가정 하고 아래처럼 구성 했다.   
 ```java
 public class MainActivityPresenter
     extends BasePresenter {
@@ -329,7 +332,7 @@ public class MainActivityPresenter
 }
 ```
 1초간 잠시 대기 했다가 "KANG"라는 텍스트를 서브스크라이버에게 전달하는 간단한 Rx구현체 이다. 네트워크나 파일 등 I/O상황이 많아지면 이러한 비동기 작업에 대한 테스트를 어떻게 하는지 궁금 하다.  
-비동기 작업에 대한 UI테스트는 `IdlingResource`인터페이스를 구현하여 설정한다. 아래 클래스는 그 예 이다. 
+비동기 작업에 대한 UI테스트는 `IdlingResource`인터페이스를 [구현](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/main/java/kr/swkang/testdrivendev/utils/SimpleIdlingResource.java)하여 설정한다. 아래 클래스는 그 예 이다. 
 ```java
 public class SimpleIdlingResource
     implements IdlingResource {
