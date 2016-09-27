@@ -13,7 +13,7 @@
 - [160707_Android / ViewPager 이슈 / Picasso와 비트맵 OOM](https://github.com/ksu3101/TIL/blob/master/Android/160707_Android.md)  
 - [160708_Android / RxAndroid 이슈 / CompositeSubscription을 이용한 LifeCycle 관리](https://github.com/ksu3101/TIL/blob/master/Android/160708_Android.md)  
 - [160709_Android / Daily development learning / Generic RecyclerView Adapter 1](https://github.com/ksu3101/TIL/blob/master/Android/160709_Android.md)
- - [160927 / Generic RecyclerView Adapter / `NestedRecyclerView`의 지원에 따른 내부 메소드 추가/변경점 업데이트]  
+ - [160927 / Generic RecyclerView Adapter / `NestedRecyclerView`의 지원에 따른 내부 메소드 추가/변경점 업데이트](https://github.com/ksu3101/TIL/blob/master/Android/160927_Android.md)  
 - [160711_Android / Daily development learning / Generic RecyclerView Adapter  2](https://github.com/ksu3101/TIL/blob/master/Android/160711_Android.md)
 - [160712_Android / Daily development learning / Method counting](https://github.com/ksu3101/TIL/blob/master/Android/160712_Android.md)
 - [160715_Android / SpannableTextView library module](https://github.com/ksu3101/SpannableTextView)
