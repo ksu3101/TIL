@@ -34,11 +34,10 @@ realm.commitTransaction();
 
 // Listeners will be notified when data changes
 puppies.addChangeListener(new RealmChangeListener<RealmResults<Dog>>() {
-    @Override
-    public void onChange(RealmResults<Dog> results) {
-        // Query results are updated in real time
-        puppies.size(); // => 1
-    }
+  @Override
+  public void onChange(RealmResults<Dog> results) {
+    puppies.size(); // => 1
+  }
 });
  ```  
 
