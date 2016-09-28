@@ -38,6 +38,7 @@
 - [160921_Android / multiDexOptions속성이 true인 상태에서 Android Studio의 컴파일, 빌드가 너무나도 느려졌을 경우](https://github.com/ksu3101/TIL/blob/master/Android/160921_Android.md)
 - [160922_Android / JUnit과 Espresso를 이용한 TDD 개발](https://github.com/ksu3101/TIL/blob/master/Android/160922_Android.md)  
  - 160926 / 예제 소스 추가  
+- [160928_Android / Realm 2.0 release](https://github.com/ksu3101/TIL/blob/master/Android/160928_Android.md)
 
 ---
 ### AWS
