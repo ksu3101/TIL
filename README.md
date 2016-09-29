@@ -57,6 +57,7 @@
 - [160718 / Daily algorithms learning](https://github.com/ksu3101/TIL/blob/master/Algorithm/160718.md)
 - [160722 / 백준 온라인 저지 / 문제 풀이 기록 4](https://github.com/ksu3101/TIL/blob/master/Algorithm/160722.md)
 - [160922 / 문자열 관련 알고리즘](https://github.com/ksu3101/TIL/blob/master/Algorithm/160922.md)
+- [160929 / 알고리즘 공부 정리](https://github.com/ksu3101/TIL/blob/master/Algorithm/160929.md)
 
 ---
 ### Etc
