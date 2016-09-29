@@ -60,8 +60,8 @@ public class RetrofitAdapter {
     return netJobInterfaceInstance;
   }
 }
-```  
----
+```
+  
 ## 2. Realm
  `RealmObject`를 상속한 data bean객체의 생성자에서 데이터를 초기화 해 주는 `init()`메소드를 콜 하고 있었는데 이 때문에 `Realm`에서 `io.realm.ProxyState.getRealm$realm() on a null object reference`예외가 발생했었다.  
 
@@ -84,6 +84,7 @@ public class LegoLibApplication
 }
 ```
 `Fragment`의 라이프 사이클에 맞추어서 `onActivityCreated()`에서 `Realm`인스턴스를 생성 하고 `RealmChangeListner`를 등록 할 수 있게 했다. 
+
 그리고 `onPause()`와 `onStop()`, `onResume()`등의 메소드를 통해서 `Realm`의 라이프사이클을 관리 할 수 있도록 부모 `Fragment`를 만들고 상속받아서 사용 하게 설정 하였다. 
 
 
