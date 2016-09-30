@@ -1,12 +1,15 @@
-## NestedRecyclerView - RecyclerView Item Decoration 
+# NestedRecyclerView - RecyclerView Item Decoration 
 
-### 1. [Horizontal RecyclerView Item Decoration](https://github.com/ksu3101/NestedRecyclerView/blob/master/app/src/main/java/kr/swkang/nestedrecyclerview/main/list/SubHorRvItemDecoration.java)
-- Horizontal RecyclerView의 Item view의 왼쪽, 오른쪽에 공간(Space)를 추가 한다. 이는 각 아이템 간 간격을 추가 하기 위해서 이다. 
-- 하지만 맨 왼쪽(`0`)과 맨 오른쪽 (`itemCount() - 1`)은 각 왼쪽과 오른쪽에 공간을 추가 하면 안 된다. 예를 들면 다음과 같다.   
+## 1. [Horizontal RecyclerView Item Decoration](https://github.com/ksu3101/NestedRecyclerView/blob/master/app/src/main/java/kr/swkang/nestedrecyclerview/main/list/SubHorRvItemDecoration.java)
+Horizontal RecyclerView의 Item view의 왼쪽, 오른쪽에 공간(Space)를 추가 한다. 이는 각 아이템 간 간격을 추가 하기 위해서 이다.
+
+하지만 맨 왼쪽(`0`)과 맨 오른쪽 (`itemCount() - 1`)은 각 왼쪽과 오른쪽에 공간을 추가 하면 안 된다. 예를 들면 다음과 같다.   
 
 |   | ITEM 0 | 6dp | ITEM 1 | 6dp | ITEM ... | 6dp | ITEM n-1 |   |
 |---|--------|-----|--------|-----|----------|-----|----------|---|
-- `ITEM 0`부터 `ITEM n-1`까지 보여 주게 되는데 중간에 `6dp`사이즈의 공간이 있는 것을 알 수 있다. 이 공간을 위해서 각각 아이템뷰들이 `3dp`씩 left, right를 설정 하는 것 이다. 
+
+`ITEM 0`부터 `ITEM n-1`까지 보여 주게 되는데 중간에 `6dp`사이즈의 공간이 있는 것을 알 수 있다. 이 공간을 위해서 각각 아이템뷰들이 `3dp`씩 left, right를 설정 하는 것 이다.
+
 ```java
 public class SubHorRvItemDecoration
     extends RecyclerView.ItemDecoration {
@@ -26,17 +29,20 @@ public class SubHorRvItemDecoration
 }
 ```
 
----
-### 2. [Multiple ViewType Grid RecyclerView Item Decoration](https://github.com/ksu3101/NestedRecyclerView/blob/master/app/src/main/java/kr/swkang/nestedrecyclerview/main/list/MainRvItemDecoration.java)
-- 크게 나누어 `Header`와 `BODY_FULL`, `BODY_HALF`, `SECTION_HEADER`, `FOOTER`로 나뉘어 진 Multiple ViewType RecyclerView에서 각 `ViewType`에 따라 분기 하여 아이템 간 공간을 계산하고 적용 하는 Item Decoration 이다. 
-- 구현 될 RecyclerView는 `GridLayoutManager`를 사용 하며, 이 레이아웃 매니저의 `setSpanSizeLookup()`의 구현을 통해서 각 `ViewType`에 따라 `Span`사이즈를 설정 한다. 기본적으로 Column수가 2개 이므로 Span사이즈가 2 이면 Full width를 사용 하며, Span 사이즈가 1 이면 Half width를 사용 하게 된다. 
-- 각 ViewType에 대한 정보와 보여지는 순서는 다음과 같다.  
+## 2. [Multiple ViewType Grid RecyclerView Item Decoration](https://github.com/ksu3101/NestedRecyclerView/blob/master/app/src/main/java/kr/swkang/nestedrecyclerview/main/list/MainRvItemDecoration.java)
+크게 나누어 `Header`와 `BODY_FULL`, `BODY_HALF`, `SECTION_HEADER`, `FOOTER`로 나뉘어 진 Multiple ViewType RecyclerView에서 각 `ViewType`에 따라 분기 하여 아이템 간 공간을 계산하고 적용 하는 Item Decoration 이다. 
+
+구현 될 RecyclerView는 `GridLayoutManager`를 사용 하며, 이 레이아웃 매니저의 `setSpanSizeLookup()`의 구현을 통해서 각 `ViewType`에 따라 `Span`사이즈를 설정 한다. 기본적으로 Column수가 2개 이므로 Span사이즈가 2 이면 Full width를 사용 하며, Span 사이즈가 1 이면 Half width를 사용 하게 된다.
+
+각 ViewType에 대한 정보와 보여지는 순서는 다음과 같다.   
  - `HEADER` : 내부에 ViewPager를 보유. Span 2. 
  - `BODY_FULL` : 내부에 Horizontal RecyclerView를 보유. Span 2. RecyclerView에 Padding left, right가 설정 되어 있으며, clip to padding 설정이 `false`로 설정 되어 있다. 
  - `BODY_HALF` : CardView. Span 1. 
  - `SECTION_HEADER` : TextView. Span 2. (섹션 헤더는 어디에서든 등장 할 수 있다)
  - `FOOTER` : Span 2. 
-- Footer이전에 Half body의 하단 간격도 잘 설정 되어야 한다. 
+
+Footer이전에 Half body의 하단 간격도 잘 설정 되어야 한다.
+ 
 ```java
 public class MainRvItemDecoration
     extends RecyclerView.ItemDecoration {
