@@ -94,7 +94,6 @@ Presenter에 `CompositeSubscription`을 멤버로 두고 관리하게 하는건 
 5. 그리고 Activity나 Fragment를 상속한 부모 클래스들을 또 만들고, `onCreate()`메소드 군 에서는 presenter의 인스턴스를 생성 한다.  
 6. 또한 `onDestroy()`에서는 presenter의 `destroy()`메소드를 꼭 호출 하여 생성된 모든 `Subscription`을 `unsubscribe()`하게 해 준다.  
 
-----
 ## 3. RxLifeCycle  
 
 - 다 귀찮다면 그냥 Trello에서 개발 한 [RxLifecycle](https://github.com/trello/RxLifecycle)을 사용 하면 된다.  

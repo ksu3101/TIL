@@ -1,9 +1,12 @@
-### Daily development learning  
-#### 1. RecyclerView generic Adapter  
-- 안드로이드의 UI를 개발 하다보면 비슷비슷한 형태를 가진 UI를 구현 하는 경우가 많다. 그 중에서도 자주 사용되는 것 이 있다면 목록을 표현하는 `RecyclerView`가 아닐까 싶다. 
-- `RecyclerView`를 사용 하다보면 비슷한 코드를 `Adapter`나 `ViewHolder`에서 작성하는 것을 많이 경험 했다. 
-- 반복되는 내용을 정리 하고 `RecyclerView`의 `Adapter`구현에 Generic한 형태를 만들어 이를 상속받아서 자주 사용되며 반복되는 코드를 줄이고 추후 유지, 보수에도 쓸만한 `Adapter`이다.  
-- 이 Adapter를 이용한 실제 구현은 [링크](https://github.com/ksu3101/TIL/blob/master/Android/160711_Android.md)를 참고 하자.
+# Daily development learning  
+## 1. RecyclerView generic Adapter  
+안드로이드의 UI를 개발 하다보면 비슷비슷한 형태를 가진 UI를 구현 하는 경우가 많다. 그 중에서도 자주 사용되는 것 이 있다면 목록을 표현하는 `RecyclerView`가 아닐까 싶다.   
+
+`RecyclerView`를 사용 하다보면 비슷한 코드를 `Adapter`나 `ViewHolder`에서 작성하는 것을 많이 경험 했다.   
+반복되는 내용을 정리 하고 `RecyclerView`의 `Adapter`구현에 Generic한 형태를 만들어 이를 상속받아서 자주 사용되며 반복되는 코드를 줄이고 추후 유지, 보수에도 쓸만한 `Adapter`이다.  
+
+이 Adapter를 이용한 실제 구현은 [링크](https://github.com/ksu3101/TIL/blob/master/Android/160711_Android.md)를 참고 하자.
+
 ```java
 public abstract class SwRecyclerViewAdapter<T>
     extends RecyclerView.Adapter<SwRecyclerViewAdapter.ViewHolder> {
@@ -167,5 +170,4 @@ public abstract class SwRecyclerViewAdapter<T>
   
 }
 ```
-----
 
