@@ -30,6 +30,7 @@
 
 ## 3. 해결
  profiling build를 시작하고 결과는 다음과 같았다.  
+ 
  ```
  Task                                                       Duration Result
 :app                                                        4m26.89s (total)

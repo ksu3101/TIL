@@ -273,6 +273,7 @@ public class TestMainActivity {
   
 ### 6.2 비동기 작업에 대한 View 변화에 대한 테스트    
 위 테스트 중에서 두번째의 경우 [MainActivity](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/androidTest/java/kr/swkang/testdrivendev/TestMainActivity.java)에서 [MainActivityPresenter](https://github.com/ksu3101/TestDrivenDev/blob/master/app/src/main/java/kr/swkang/testdrivendev/MainActivityPresenter.java)를 통해서 Rx이용하여 어떠한 비동기 상황을 가정 하고 아래처럼 구성 했다.   
+
 ```java
 public class MainActivityPresenter
     extends BasePresenter {
