@@ -39,6 +39,8 @@
 - [160922_Android / JUnit과 Espresso를 이용한 TDD 개발](https://github.com/ksu3101/TIL/blob/master/Android/160922_Android.md)  
  - 160926 / 예제 소스 추가  
 - [160928_Android / Realm 2.0 release](https://github.com/ksu3101/TIL/blob/master/Android/160928_Android.md)
+- [161007_Android / Flat color ](https://github.com/ksu3101/TIL/blob/master/Android/161007_Android.md)
+ - Android Studio에서 Color resource를 관리하는 유용한 plug in인 [Color Manager](https://github.com/shiraji/color-manager)소개. 
 
 ---
 ### AWS
