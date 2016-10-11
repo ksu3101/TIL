@@ -167,6 +167,65 @@ public void swap(int x, int y) {
   c. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.  
   d. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.  
 
+  ```java
+public class Mergesort {
+        private int[] numbers;
+        private int[] helper;
+
+        private int number;
+
+        public void sort(int[] values) {
+                this.numbers = values;
+                number = values.length;
+                this.helper = new int[number];
+                mergesort(0, number - 1);
+        }
+
+        private void mergesort(int low, int high) {
+                // check if low is smaller then high, if not then the array is sorted
+                if (low < high) {
+                        // Get the index of the element which is in the middle
+                        int middle = low + (high - low) / 2;
+                        // Sort the left side of the array
+                        mergesort(low, middle);
+                        // Sort the right side of the array
+                        mergesort(middle + 1, high);
+                        // Combine them both
+                        merge(low, middle, high);
+                }
+        }
+
+        private void merge(int low, int middle, int high) {
+                // Copy both parts into the helper array
+                for (int i = low; i <= high; i++) {
+                        helper[i] = numbers[i];
+                }
+
+                int i = low;
+                int j = middle + 1;
+                int k = low;
+                // Copy the smallest values from either the left or the right side back
+                // to the original array
+                while (i <= middle && j <= high) {
+                        if (helper[i] <= helper[j]) {
+                                numbers[k] = helper[i];
+                                i++;
+                        } else {
+                                numbers[k] = helper[j];
+                                j++;
+                        }
+                        k++;
+                }
+                // Copy the rest of the left side of the array into the target array
+                while (i <= middle) {
+                        numbers[k] = helper[i];
+                        k++;
+                        i++;
+                }
+        }
+}
+  ```
+
 ## 3. 탐색 
 ### 3.1 BFS (너비 우선 탐색) 
 - 너비 우선 탐색(Breadth-first search, BFS)은 맹목적 탐색방법의 하나로 시작 정점을 방문한 후 시작 정점에 인접한 모든 정점들을 우선 방문하는 방법이다. 더 이상 방문하지 않은 정점이 없을 때까지 방문하지 않은 모든 정점들에 대해서도 넓이 우선 검색을 적용한다. OPEN List 는 큐를 사용해야만 레벨 순서대로 접근이 가능하다.
