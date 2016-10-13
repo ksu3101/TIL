@@ -62,6 +62,7 @@
 - [160929 / 알고리즘 공부 정리](https://github.com/ksu3101/TIL/blob/master/Algorithm/160929.md)
 - [161012 / 백준 온라인 저지 / 문제 풀이 기록 5](https://github.com/ksu3101/TIL/blob/master/Algorithm/161012.md)
 - [161013 / 백준 온라인 저지 / 문제 풀이 기록 6](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md)
+ - [161014 / 소수 구하는 방법 중 `에라토스테네스의 체`의 접근 방법 추가.](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md#11-소수-찾기---에라토스테네스의-체) 
 
 ---
 ### Etc
