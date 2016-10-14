@@ -65,6 +65,7 @@
 - [161013 / 백준 온라인 저지 / 문제 풀이 기록 6](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md)
  - [161014 / 소수 구하는 방법 중 `에라토스테네스의 체`의 접근 방법 추가.](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md#11-소수-찾기---에라토스테네스의-체) 
 - [161014 / 백준 온라인 저지 / 문제 풀이 기록 7](https://github.com/ksu3101/TIL/blob/master/Algorithm/161014.md)
+
 ---
 ### Etc
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
