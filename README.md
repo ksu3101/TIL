@@ -54,6 +54,7 @@
  - 주로 문자열 처리 관련 문제.  
 - [160713 / 백준 온라인 저지 / 문제 풀이 기록 2](https://github.com/ksu3101/TIL/blob/master/Algorithm/160713.md)
  - 정렬, 피보나치의수(DP)
+ - [161014 / 추가 피보나치의 수 2, 3](https://github.com/ksu3101/TIL/blob/master/Algorithm/161014.md)
 - [160714 / 백준 온라인 저지 / 문제 풀이 기록 3](https://github.com/ksu3101/TIL/blob/master/Algorithm/160714.md)
  - 문자열 처리, 정렬
 - [160718 / Daily algorithms learning](https://github.com/ksu3101/TIL/blob/master/Algorithm/160718.md)
@@ -63,7 +64,7 @@
 - [161012 / 백준 온라인 저지 / 문제 풀이 기록 5](https://github.com/ksu3101/TIL/blob/master/Algorithm/161012.md)
 - [161013 / 백준 온라인 저지 / 문제 풀이 기록 6](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md)
  - [161014 / 소수 구하는 방법 중 `에라토스테네스의 체`의 접근 방법 추가.](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md#11-소수-찾기---에라토스테네스의-체) 
-
+- [161014 / 백준 온라인 저지 / 문제 풀이 기록 7](https://github.com/ksu3101/TIL/blob/master/Algorithm/161014.md)
 ---
 ### Etc
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
