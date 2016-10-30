@@ -49,6 +49,7 @@
 --- 
 ### DS (자료 구조)
 - [161025 / 이진 탐색 트리 개념 및 Generic을 활용한 구현 예제](https://github.com/ksu3101/TIL/blob/master/DS/161025.md)
+- [161030 / 그래프 개념과 기본 알고리즘 예제](https://github.com/ksu3101/TIL/blob/master/DS/161030.md)
 
 ---
 ### Algorithm ([ACMICPC 계정 링크](https://www.acmicpc.net/user/ksu3101))  
