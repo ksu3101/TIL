@@ -159,9 +159,15 @@ Stack Frame을 이루는 내용은 다음과 같다.
 Java언어 외에 작성된 프로그램, 대표적으로 JNI(Java Native Interface)로 알려진 Native Code로 되어 있는 Function들의 호출들에 대한 정보를 저장하는 곳 이다. 
 Native Function의 Parameter Variable과 Local Variable등을 저장 한다. 
 
-### 4.4 Heap 
+### 4.4 Heap
+
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.png) 
+
+JVM 에서 Heap은 런타임 시 동적으로 할당되어 사용되는 실제 인스턴스들이 생성되어 자리잡는 영역이라고 할 수 있다. 보통 `new`키워드를 통해서 생성되는 인스턴스 객체나 배열의 인스턴스 아이템들이 존재 한다. 이는 다른 영역인 스택 영역이나 static 참조 변수 에서 참조 할 수 있는 인스턴스 객체들도 저장 된다.  
 
 #### 4.4.1 Reference Objects
+
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap.png) 
 
 #### 4.4.2 Garbage Collection
 
