@@ -37,9 +37,9 @@ JVM(Java Virtual Machine)은 아키텍쳐와 플랫폼에 상관없이 실행할
 
 ### 2.3 dex 파일 생성
 
- 생성된 `.class`파일들을 `dxtool`등으로 `.dex`파일로 변환 한다. `.class`파일은 JVM에서는 사용 할 수 있지만 Dalvik VM 에서는 `.dex` 바이트 코드 파일로 변환해서 사용 해야 하기 때문이다. `.dex`파일의 내부에는 모든 클래스, 메소드, 내부 멤버변수등의 정보가 저장 된다.  
+생성된 `.class`파일들을 `dxtool`등으로 `.dex`파일로 변환 한다. `.class`파일은 JVM에서는 사용 할 수 있지만 Dalvik VM 에서는 `.dex` 바이트 코드 파일로 변환해서 사용 해야 하기 때문이다. `.dex`파일의 내부에는 모든 클래스, 메소드, 내부 멤버변수등의 정보가 저장 된다.  
 
- 저장되는 내용들의 설명은 다음과 같다. 
+저장되는 내용들의 설명은 다음과 같다. 
   - [Dalvik byteCode by Google](https://source.android.com/devices/tech/dalvik/dalvik-bytecode.html)
   - [Dalvik Executable format by Google](https://source.android.com/devices/tech/dalvik/dex-format.html#file-layout) 
 
@@ -61,9 +61,9 @@ JVM(Java Virtual Machine)은 아키텍쳐와 플랫폼에 상관없이 실행할
  
  - [Configure Apps with Over 64k Methods by Google](https://developer.android.com/studio/build/multidex.html)
 
- `.dex`파일에는 모든 클래스와 메소드, 멤버 등 모든 정보가 저장 된다. 이 중에 `method_ids`에는 메소드들의 인덱스가 배열로 저장된다. 문제는 Dalvik VM의 DEX파일 포맷에서는 이 필드에서 16비트만 사용 가능 한 것 이다. 그렇기 때문에 최대 메소드의 정보가 **65,535**개 만 저장 된다. 
+`.dex`파일에는 모든 클래스와 메소드, 멤버 등 모든 정보가 저장 된다. 이 중에 `method_ids`에는 메소드들의 인덱스가 배열로 저장된다. 문제는 Dalvik VM의 DEX파일 포맷에서는 이 필드에서 16비트만 사용 가능 한 것 이다. 그렇기 때문에 최대 메소드의 정보가 **65,535**개 만 저장 된다. 
 
- 만약 최대 64k 메소드 제한을 넘겨서 사용 해야 할 경우에는 다음과 같이 사용 하면 된다. 
+만약 최대 64k 메소드 제한을 넘겨서 사용 해야 할 경우에는 다음과 같이 사용 하면 된다. 
 
  - 타겟 디바이스가 5.0 버전 미만이면`multidex support library`를 가져와서 적용 하면 된다. 기타 정보는 따로 찾아보면 알 수 있다. 
  - 타겟 디바이스가 5.0 버전 이상 이라면 `ART` VM을 사용 하기 때문에 신경쓰지 않아도 된다. 
@@ -82,21 +82,21 @@ JVM(Java Virtual Machine)은 아키텍쳐와 플랫폼에 상관없이 실행할
  
  - [ART and Dalvik by Google](https://source.android.com/devices/tech/dalvik/index.html)
 
- 어플리케이션을 설치 후 내부에 존재하는 `.dex`는 dalvik VM 에서 `dexopt`에 의해 `Odex`파일로 optimized 된다. 이렇게 만들어진 `Odex`파일은 Dalvik VM에서 로드 되어 사용 된다. 
+어플리케이션을 설치 후 내부에 존재하는 `.dex`는 dalvik VM 에서 `dexopt`에 의해 `Odex`파일로 optimized 된다. 이렇게 만들어진 `Odex`파일은 Dalvik VM에서 로드 되어 사용 된다. 
 
- dalvik 에서는 **JIT(Just-In-Time)** 컴파일러를 사용 한다. 이는 `.dex` 바이트 코드 를 번역해서 네이티브 코드로 번역 하여 실행 하게 되는데 실행 시점에 번역하고 메모리에 올리는 것 이다. 문제는 번역 할때의 정보들도 메모리에 올리기 때문에 퍼포먼스가 좋지 않다. 
+dalvik 에서는 **JIT(Just-In-Time)** 컴파일러를 사용 한다. 이는 `.dex` 바이트 코드 를 번역해서 네이티브 코드로 번역 하여 실행 하게 되는데 실행 시점에 번역하고 메모리에 올리는 것 이다. 문제는 번역 할때의 정보들도 메모리에 올리기 때문에 퍼포먼스가 좋지 않다. 
 
 ### 3.2 ART VM
 
- 안드로이드 킷캣 버전에서 처음 적용 되었으며 추후 롤리팝버전에서 완전히 적용된 `ART` VM 은 `Android RunTime`의 줄임말 으로서 안드로이드를 위해서 새로 만든 VM 이라고 할 수 있다.  
+안드로이드 킷캣 버전에서 처음 적용 되었으며 추후 롤리팝버전에서 완전히 적용된 `ART` VM 은 `Android RunTime`의 줄임말 으로서 안드로이드를 위해서 새로 만든 VM 이라고 할 수 있다.  
 
- ART 에서는 앱을 설치 할 때 완전히 네이티브 앱으로 변환해서 설치 하게 된다. 이를 **Ahead-Of-Time (AOT)** 컴파일 이라고 한다. 앱의 설치 시점에 바이트 코드를 미리 번역해서 저장해 놓기 때문에 JIT를 사용한 것에 비하면 빠르다. 하지만 앱의 설치 후 혹은 업데이트 후에 앱의 바이트 코드를 번역하기 위한 과정이 오래 걸릴 수 도 있는 단점이 존재 한다. 
+ART 에서는 앱을 설치 할 때 완전히 네이티브 앱으로 변환해서 설치 하게 된다. 이를 **Ahead-Of-Time (AOT)** 컴파일 이라고 한다. 앱의 설치 시점에 바이트 코드를 미리 번역해서 저장해 놓기 때문에 JIT를 사용한 것에 비하면 빠르다. 하지만 앱의 설치 후 혹은 업데이트 후에 앱의 바이트 코드를 번역하기 위한 과정이 오래 걸릴 수 도 있는 단점이 존재 한다. 
 
- 안드로이드 N(누가) 버전에서는 ART에 JIT도 추가 된다고 한다. JIT컴파일러는 ART의 AOT컴파일러를 보완하고 런타임 성능을 개선 하며 저장공간을 절약 하고 앱의 업데이트와 실행 속도를 빠르게 해 준다고 한다.   
+안드로이드 N(누가) 버전에서는 ART에 JIT도 추가 된다고 한다. JIT컴파일러는 ART의 AOT컴파일러를 보완하고 런타임 성능을 개선 하며 저장공간을 절약 하고 앱의 업데이트와 실행 속도를 빠르게 해 준다고 한다.   
 
- dalvikVM 에서는 `.odex`파일을 생성하여 VM에서 실행 하였지만, ART에서는 `dex2oat`을 이용하여 이미 생성된 `ELF`(Executable and Linkable Format)파일을 실행 한다. 이 파일에는  기존의 `dex`정보와 native code가 같이 존재 한다. `ELF`파일에 대한 정보는 아래와 같다. 
+dalvikVM 에서는 `.odex`파일을 생성하여 VM에서 실행 하였지만, ART에서는 `dex2oat`을 이용하여 이미 생성된 `ELF`(Executable and Linkable Format)파일을 실행 한다. 이 파일에는  기존의 `dex`정보와 native code가 같이 존재 한다. `ELF`파일에 대한 정보는 아래와 같다. 
 
-![img](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_elf.png)
+ ![img](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_elf.png)
 
  - ELF 헤더 : 전체 파일 구성의 이미지의 정보가 담겨 있음. 
  - Section (.text, .rodata) : Linking에 필요한 명령어, 데이터, 심볼 테이블, 재배치 정보등 목적 파일 정보가 담겨 있음. 
@@ -107,21 +107,57 @@ JVM(Java Virtual Machine)은 아키텍쳐와 플랫폼에 상관없이 실행할
 
 ![img](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_rda.png)
 
-### 4.1 Pc Register
+### 4.1 PC Register
+
+스레드가 생성될 때 마다 생성되는 메모리 공간 으로서, Thread가 어떠한 명령을 실행하게 될지에 대한 부분을 기록 한다.
+
+이 는 CPU 에서 소스의 명령들을 처리 하는 과정에서 필요한 데이터들을 Stack에서 Operand(피연산자)를 얻어 PC(Program Counter) Register라는 CPU내 기억장치에 저장 한다. 이러한 CPU의 Register의 역할을 JVM의 메모리영역으로 구현된 형태 이다.
+
+PC Register는 각 Thread마다 하나씩 존재 하며, Native Pointer와 Return Address를 갖고 있다. 
 
 #### 4.1.1 volatile 
 
+자바의 `volatile` 키워드는 선언되어진 해당 변수의 암묵적인 동기화 와 멀티 프로세서 환경에서 스레드간 공유 변수의 메모리 가시화를 보장 하는 변수 이다. 이 키워드의 핵심 역할은 다음과 같다.
+
+![volatile_cpu](https://github.com/ksu3101/TIL/blob/master/Android/images/java-volatile-2.png) 
+
+일반적으로 메인메모리의 힙에 자리잡은 인스턴스는 CPU에서 처리 할때 CPU내의 캐시(레지스터)에 저장하고 빠르게 처리 한다. 문제는 서로 다른 스레드 환경에서 서로 멀티 프로세서(여러개의 CPU를 지원하는 환경)로 인해 서로 다른 CPU에서 공유된 인스턴스를 복사해 왔을 때 이다. 
+
+이때, 이 서로 복사된 공유된 변수를 읽기만 한다면 문제는 없지만, 두개 이상의 스레드에서 단 하나라도 수정을 하게 되면 서로 다른 값을 가지게 되므로 이때 공유된 변수는 서로 다른 값이 된다. 보통 이런상황을 메모리 가시성을 확보 해 줘야 한다고 한다. 
+
+이러한 상황을 방지하기 위해서 `volatile`키워드를 사용 하게 되면 공유된 변수를 CPU로 복사하지 않고 메인 메모리에서 사용 할 수 있게 한다. 문제는 여러개의 스레드에서 메인 메모리에 존재하는 인스턴스에 접근 하기 때문에 단 한개 스레드만 접근 할 수 있는 동기화를 지원 한다. 
+
+결론적으로 멀티 스레딩 환경에서 어떤 공용 변수의 값에 대한 쓰기가 생긴 다면 `volatile`을 사용하는게 좋다. 하지만 해당 변수에 대해 읽기만 한다면 `volatile`을 사용할 이유는 없다. 
+
 ### 4.2 Stack
+
+JVM의 Stack은 스레드가 생성 될 때 마다 생성되는 스레드의 정보들을 기록하는 Frame을 저장 하는 메모리 영역이다. 보통 JVM에서는 Stack Frame을 JVM Stack에 넣고(Push) 빼는(Pop) 하는 작업만 수행 한다.  
 
 #### 4.2.1 Stack Frame 
 
-#### 4.2.2 Local Variable Array
+Stack Frame은 해당 Thread가 수행하고 있는 Method단위로 기록 되는 정보들 이다. 어떤 Method가 실행 되면 Class의 메타 정보를 이용하여 적절한 크기로 생성 되어 JVM Stack에 Push하고 Method의 작업을 수행한다. 
 
-#### 4.2.3 Operand Stack
+Stack Frame을 이루는 내용은 다음과 같다. 
 
-#### 4.2.4 Reference to Constant Pool
+#### 4.2.2 Local Variable Array (지역 변수 배열)
+ - Method의 Parameter Variable과 Local Variable을 저장 한다. 
+ - [0] 번째 index에는 Class의 인스턴스에 대한 참조가 저장 된다.
+
+#### 4.2.3 Operand Stack (피연산자 스택)
+ - 실제로 JVM이 Method에 대한 연산을 수행하는 작업 공간. 
+ - Stack내부의 Stack 으로서 데이터를 push하고 연산 한 뒤 pop하는 과정들이 진행 된다.
+
+#### 4.2.4. Reference to Constant Pool (상수 풀 에 대한 참조 배열)
+ - Method Area에 존재 하는 상수들의 참조 목록들. Constant Pool의 Pointer의 정보를 저장 한다. 
+
+#### 4.2.5. Exception Stack (예외 스택)  
+ - Method에서 예외가 발생시 Exception을 Frame Data에 저장 한다. 
+ - Exception이 발생 하면 바이트 코드를 참고 하여 catch영역을 참고 하여 점프 한다. 
 
 ### 4.3 Native Method Stack 
+
+Java언어 외에 작성된 프로그램, 대표적으로 JNI(Java Native Interface)로 알려진 Native Code로 되어 있는 Function들의 호출들에 대한 정보를 저장하는 곳 이다. 
+Native Function의 Parameter Variable과 Local Variable등을 저장 한다. 
 
 ### 4.4 Heap 
 
