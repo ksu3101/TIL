@@ -11,6 +11,66 @@
  
  자세한 내용은 아래에서 다루도록 하겠다. 
 
-## 1. 
-![]()
+## 1. 상세   
+
+![img](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_dalvik_art_rda.png)
+
+## 2. Package
+
+### 2.1 class 파일 생성
+
+### 2.2 proguard / 난독화 프로세스
+
+### 2.3 dex 파일 생성
+
+### 2.4  APK 파일 생성
+
+
+## 3. Install
+
+### 3.1  Dalvik VM
+
+#### 3.1.1 Odex 파일 
+
+#### 3.1.2 JIT / Just-In-Time
+
+### 3.2 ART VM
+
+#### 3.2.1 ELF 파일
+
+#### 3.2.2 ART
+
+
+## 4. Runtime Data Areas
+
+### 4.1 Pc Register
+
+#### 4.1.1 volatile 
+
+### 4.2 Stack
+
+#### 4.2.1 Stack Frame 
+
+#### 4.2.2 Local Variable Array
+
+#### 4.2.3 Operand Stack
+
+#### 4.2.4 Reference to Constant Pool
+
+### 4.3 Native Method Stack 
+
+### 4.4 Heap 
+
+#### 4.4.1 Reference Objects
+
+#### 4.4.2 Garbage Collection
+
+#### 4.4.3 Deep copy & Shallow copy 
+
+### 4.5 Method Area
+
+#### 4.5.1 Runtime Constant Pool 
+
+
+
 
