@@ -161,17 +161,26 @@ Native Function의 Parameter Variable과 Local Variable등을 저장 한다.
 
 ### 4.4 Heap
 
-![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.png) 
+JVM 에서 Heap은 런타임 시 동적으로 할당되어 사용되는 실제 인스턴스들이 생성되어 자리잡는 영역이라고 할 수 있다. 보통 `new`키워드를 통해서 생성되는 인스턴스 객체나 배열의 인스턴스 아이템들이 존재 한다. 이는 다른 영역인 스택 영역이나 static 참조 변수 에서 참조 할 수 있는 인스턴스 객체들도 저장 된다.
 
-JVM 에서 Heap은 런타임 시 동적으로 할당되어 사용되는 실제 인스턴스들이 생성되어 자리잡는 영역이라고 할 수 있다. 보통 `new`키워드를 통해서 생성되는 인스턴스 객체나 배열의 인스턴스 아이템들이 존재 한다. 이는 다른 영역인 스택 영역이나 static 참조 변수 에서 참조 할 수 있는 인스턴스 객체들도 저장 된다.  
+#### 4.4.1 Synchronized
 
-#### 4.4.1 Reference Objects
+JVM의 Heap은 모든 스레드에서 공유 된다. 그러므로 멀티 스레드 환경에선는 공유되는 자원(참조될 인스턴스) 에 대한 동기화가 필요 하다.
+
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap3.png)     
+
+#### 4.4.2 Reference Objects
 
 ![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap.png) 
 
-#### 4.4.2 Garbage Collection
 
-#### 4.4.3 Deep copy & Shallow copy 
+
+
+#### 4.4.3 Garbage Collection
+
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.png) 
+
+#### 4.4.4 Deep copy & Shallow copy 
 
 ### 4.5 Method Area
 
