@@ -210,10 +210,13 @@ GC할때에는 JVM이 GC를 수행하는 스레드를 제외한 나머지 스레
 1. Young Generation area 
  - 새롭게 생성한 객체의 대부분이 이곳에 존재. 
  - 대부분 금방 접근 불가능 상태 (unreachable state)가 되기 때문에 보통 Young 영역에 왔다가 사라진다. 이를 `Minor GC`라고 한다.
- - 내부에서는 Eden, Survivor(2개) 으로 나뉘어 진다. 
+ - 내부에서는 Eden, Survivor(2개) 으로 나뉘어 진다. 그 과정은 다음과 같다. 
+
+ ``` 
   1. 보통 Eden에서 GC 후 살아남으면 Survivor 1로 이동 한다. 
   2. Survivor 1이 계속 차게 되면 Survivor 2로 이동 한다. 그러면 Survivor 1은 비어진다. (두개의 Survivor영역중 무조건 한개는 비어 있어야 한다.)
-  3. 이 과정을 반복하다가 계속해서 살아남는 객체는 Old 영역으로 이동 한다. 
+  3. 이 과정을 반복하다가 계속해서 살아남는 객체는 Old 영역으로 이동 한다.
+ ``` 
 
  2. Old Generation area 
   - 위 영역에서 접근 불가능 상태(unreachable state)가 되지 않아 살아남은 객체가 이곳으로 복사 된다. 
