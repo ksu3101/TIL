@@ -169,22 +169,139 @@ JVM의 Heap은 모든 스레드에서 공유 된다. 그러므로 멀티 스레�
 
 ![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap3.png)     
 
-#### 4.4.2 Reference Objects
+`synchronized` 키워드는 멀티 스레드 환경에서 공유 자원에 대한 읽기/쓰기 시 필요하다고 할 수 있다. 특히 이런 환경에서의 Critical Section상에서의 스레드 제어와 static 메소드 내부에서의 공유 자원에 대한 스레딩 제어지 필수라고 할 수 있다. 하지만 멀티 스레딩 환경에서 잦은 `synchronized`키워드의 남발은 오히려 프로세스의 성능을 낮춰버리는 문제가 존재 한다. 
 
-![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap.png) 
+자바에서 `synchronized` 키워드를 이용한 동기화 방법은 여러가지가 있다. 
 
+ 1. 공유 자원에 대해 접근 하는 메소드에 대한 `synchronized`. 
+  
+  ```java
+  public synchronized void func() {
+    // ... 
+  }
+  ```
+  메소드 자체에 대한 동기화로 인하여 해당 메소드에서의 작업이 끝날때 까지 다른 스레드는 기다려야 한다. 당연히 성능이 가장 좋지 않다. 
 
+  2. 공유 자원에 대한 작업을 할때만 단일 스레드의 접근만 허용하는 `block synchronized`.
 
+  ```java
+  public void func() {
+    // ...
+    synchronized(object) {
+      // ...
+    }
+    // ...
+  }
+  ```
+  공유된 자원에 접근하여 작업을 하는 구역에 대해서 동기화를 설정하는 block을 설정 한다. 필요한 영역에만 스레드의 접근을 제어할 수 있으므로 메소드전체에 대한 동기화 보다는 좋다. 
 
-#### 4.4.3 Garbage Collection
+#### 4.4.2 Garbage Collection
 
-![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.png) 
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.png)
 
+JVM의 Heap에서는 동적으로 물리 메모리에 올라가는 인스턴스들이 존재 한다. 그런데 계속 인스턴스를 생성 하기만 하면 당연히 Out of Memory 예외가 발생할 것 이다. 이를 막기 위해서 JVM에서는 특정한 알고리즘에 의하여 필요시 `Garbage Collection(GC)`라는 작업을 수행 하게 된다. 
+
+GC는 메모리의 힙에 할당되어진 인스턴스 객체를 더이상 사용하지 않는다는 판단(특정 알고리즘)에 의해 참조를 제거 하고 메모리에서 나중에 제거 할 수 있게 해주는 것 이라고 할 수 있다. 
+
+그리고 GC를 개발자가 임의적인 시점에 실행하게 할 수는 없다. 어떤 참조 객체에 대해 `null`을 설정 하는건 문제 없지만, `System.gc()`를 직접적으로 호출하는 것은 매우 지양해야 한다.   
+
+GC할때에는 JVM이 GC를 수행하는 스레드를 제외한 나머지 스레드들을 모두 정지 시킨다. 이를 `stop the world`라고 한다. 그리고 Heap의 영역을 크게 3개로 나눈다. 
+
+1. Young Generation area 
+ - 새롭게 생성한 객체의 대부분이 이곳에 존재. 
+ - 대부분 금방 접근 불가능 상태 (unreachable state)가 되기 때문에 보통 Young 영역에 왔다가 사라진다. 이를 `Minor GC`라고 한다.
+ - 내부에서는 Eden, Survivor(2개) 으로 나뉘어 진다. 
+  1. 보통 Eden에서 GC 후 살아남으면 Survivor 1로 이동 한다. 
+  2. Survivor 1이 계속 차게 되면 Survivor 2로 이동 한다. 그러면 Survivor 1은 비어진다. (두개의 Survivor영역중 무조건 한개는 비어 있어야 한다.)
+  3. 이 과정을 반복하다가 계속해서 살아남는 객체는 Old 영역으로 이동 한다. 
+
+ 2. Old Generation area 
+  - 위 영역에서 접근 불가능 상태(unreachable state)가 되지 않아 살아남은 객체가 이곳으로 복사 된다. 
+  - 대부분 young 영역 보다 크게 할당 되며, 크기가 큰 만큼 GC는 young 영역보다 적게 발생한다. 
+  - 이 영역에서 객체가 사라질때 Major GC(혹은 Full GC)가 발생 한다.
+  - 만약 Old 영역에서 Young 영역의 참조가 발생 하면 이를 512바이트의 chunk로 되어 있는 Card Table로 관리 한다. 
+
+ 3. Permanent Generation area 
+  - Method Area라고도 불리는 영역이다.
+  - 객체나 억류(intern)된 문자열 정보를 저장 하는 곳 이다. 
+  - 이 영역에서 GC가 발생하면 Major GC의 카운터에 포함 된다.
+
+Old Generation Area에서 발생하는 Major GC 의 방식(알고리즘)은 여러가지가 있다. 일단 JDK7을 기준으로는 5가지가 있다. 
+
+ 1. Serial GC
+ 2. Parallen GC
+ 3. Parallel Old GC (Parallel Compacting GC)
+ 4. Concurrent Mark & Sweep GC 
+ 5. G1(Garbage First) GC  
+
+- [참고하면 좋은글 - Naver D2 / Java Garbage Collection](http://d2.naver.com/helloworld/1329)
+
+#### 4.4.3 Reference Objects
+
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap.png)
+
+JVM의 Garbage Collection은 어떠한 객체에 대해 GC 여부를 판단 하는 작업은, 객체의 `Reachability`를 `Strongly`, `Softly`, `Weakly` 순서로 판별 하고 모두 아니라면 `Phantomly`의 Reachability 여부를 확인한다. 그리고 Phantomly 여부를 확인 하기 전에 `finalize()`를 진행 한다.   
+
+GC의 Reference Object에 대한 GC순서는 다음과 같다고 생각 하면 된다. 
+
+ 1. Strongly reference
+  - `new` 키워드를 이용하여 객체를 생성했을때의 참조.
+  - Strongly reachable 하고 Strong reference에 의해 참조되고 있는 객체는 GC에서 일단 제외 된다. 이는 Memory leak에 유심해서 사용 해야 한다.  
+
+ 2. Softly reference 
+  - `SoftReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
+  - Softly reference 는 GC에 의해서 수거 될 수 도 있고 되지 않을 수도 있다. 하지만 만약 OOME 가 발생할 수 있는 상황이 라면 SoftReference는 무조건 GC된다.  
+  - GC되는 시점에 특별한 정책에 의해 GC여부가 결정 되게 할 수도 있다. 
+
+ 3. Weakly reference
+  - `WeakReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
+  - Weakly reference는 GC가 발생하기 전 까지는 객체에 대한 참조를 유지하지만, 만약 GC가 발생하면 무조건 메모리를 수거 한다. 그래서 보통 Cache용도로 많이 사용 한다고 하지만 최근에는 VM에서의 Reference Object에 대한 GC가 공격적이라서 추천하지는 않는다고 한다. 
+
+ 4. finalize();
+  - 일반적으로 인스턴스가 소멸되는 시점에 불리는 메소드로 알려져 있다. 
+  - 하지만 이 메소드가 꼭 콜되는 일은 없다. 불릴수도 있고 안불릴 수도 있기 때문이다. 그래서 이 메소드를 재 정의해서 사용 하는것은 자제 하는것이 좋다. 
+
+ 5. Phantomly reference 
+  - `PhantomReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
+  - Phantomly reference는 `finalize()` 메소드가 호출되고 난 뒤 그 객체와 관련된 작업을 수행할 필요가 있을때 주로 사용 된다. 
+  - 이 reference의 특징은 다시는 이 객체를 참조할 수 없게 된다는 것 이다. 
+ 
 #### 4.4.4 Deep copy & Shallow copy 
+
+참조 변수의 얕은 복사는 하나의 참조를 두개 이상의 변수가 같이 참조 하고 있는 것 이다. 이런 경우 어느 참조 변수를 통해서 데이터를 변형 시켜도 모든 변수들은 같은 값을 보유 한다. 예를 들면 아래 소스와 같다. 
+
+```java
+private void f() {
+  ArrayList<String> list = new ArrayList<>();
+  anotherList = list;
+}
+```
+
+위 메소드에서 list변수와 anotherList는 같은 메모리를 참조 하고 있다. 어느 변수를 통해서 원소를 add하거나, remove를 해도 같은 데이터를 보유 하게 된다. 
+
+하지만 깊은 복사는 다르다. 참조된 원본 데이터에 대한 값 에 대한 복사를 하게 되는 것이다. 방법은 2가지가 존재 한다. 
+
+`Cloneable`인터페이스를 구현하여 `clone()`메소드를 구현 하는 방법이 있는데,`clone()`메소드에서 primitive type은 `=`연산자를 이용하여 복사 하고,  내부에서 참조된 참조 변수들은 `new`연산자를 이용하여 값을 새로 복사 해야 한다. 예를 들면 `new String(buffer)`와 같은 형태가 될 것 이다. 내부에 참조된 변수들이 많다면 일일히 하나씩 다 `new`를 이용하여 생성 해 줘야 한다.
+
+아니면 `new`연산자를 이용하여 생성자를 통해서 복사할 원본을 패러미터로 받아서 생성자 내부에서 값복사를 일일히 하는 방법도 있다. 
+
+Java의 일부 클래스들은 이미 `clone()`이 구현되어진 클래스들이 존재 한다. 예를 들어 `ArrayList`나 `HashMap`같은 컬렉션 메소드들이 그 예 이다.   
 
 ### 4.5 Method Area
 
+프로세스에서 유일하게 하나만 존재하는 Heap과 Method Area중 Method Area는 다른 스레드와도 공유 하는 공간이다. 이 곳 에서는 JVM이 `.class`파일을 로드 할 때 class 팡링나 포함된 바이트 코드 등의 type 정보, class 내 선언된 static 클래스와 변수들을 method area에 설정 한다. 
+
+Method Area라는 것은 로드할 데이터 타입의 정보를 저장하고 static 클래스, 메소드, 변수 등에 대한 인스턴스의 참조를 저장하는 논리적 저장 공간이다.  
+
+type(클래스, 인터페이스, 메소드, 변수 등...) 에 대해서 저장 하는 것은 다음과 같다. 
+
+- type의 전체 이름
+- type의 super class의 전체 이름. (interface나 java.lang.Object일 경우에는 제외)
+- type이 class인지 인터페이스인지 여부
+- public, abstract, final 과 같은 type의 키워드 수식어 
+- type의 직접적인 super interface의 전체 이름에 대한 정렬된 리스트  
+
 #### 4.5.1 Runtime Constant Pool 
 
-
+Method Area에 포함된 정보중에는 `상수 풀`에 대한 정보 또한 저장 된다. 일반 상수와 type, field, method를 참조하는 reference와 같은 type들과 상수들의 정렬된 정보를 저장 한다. 
 
