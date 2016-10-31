@@ -197,7 +197,7 @@ JVM의 Heap은 모든 스레드에서 공유 된다. 그러므로 멀티 스레�
 
 #### 4.4.2 Garbage Collection
 
-![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.png)
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.gif)
 
 JVM의 Heap에서는 동적으로 물리 메모리에 올라가는 인스턴스들이 존재 한다. 그런데 계속 인스턴스를 생성 하기만 하면 당연히 Out of Memory 예외가 발생할 것 이다. 이를 막기 위해서 JVM에서는 특정한 알고리즘에 의하여 필요시 `Garbage Collection(GC)`라는 작업을 수행 하게 된다. 
 
