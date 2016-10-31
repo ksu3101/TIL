@@ -218,16 +218,16 @@ GC할때에는 JVM이 GC를 수행하는 스레드를 제외한 나머지 스레
   3. 이 과정을 반복하다가 계속해서 살아남는 객체는 Old 영역으로 이동 한다.
  ``` 
 
- 2. Old Generation area 
-  - 위 영역에서 접근 불가능 상태(unreachable state)가 되지 않아 살아남은 객체가 이곳으로 복사 된다. 
-  - 대부분 young 영역 보다 크게 할당 되며, 크기가 큰 만큼 GC는 young 영역보다 적게 발생한다. 
-  - 이 영역에서 객체가 사라질때 Major GC(혹은 Full GC)가 발생 한다.
-  - 만약 Old 영역에서 Young 영역의 참조가 발생 하면 이를 512바이트의 chunk로 되어 있는 Card Table로 관리 한다. 
+2. Old Generation area 
+ - 위 영역에서 접근 불가능 상태(unreachable state)가 되지 않아 살아남은 객체가 이곳으로 복사 된다. 
+ - 대부분 young 영역 보다 크게 할당 되며, 크기가 큰 만큼 GC는 young 영역보다 적게 발생한다. 
+ - 이 영역에서 객체가 사라질때 Major GC(혹은 Full GC)가 발생 한다.
+ - 만약 Old 영역에서 Young 영역의 참조가 발생 하면 이를 512바이트의 chunk로 되어 있는 Card Table로 관리 한다. 
 
- 3. Permanent Generation area 
-  - Method Area라고도 불리는 영역이다.
-  - 객체나 억류(intern)된 문자열 정보를 저장 하는 곳 이다. 
-  - 이 영역에서 GC가 발생하면 Major GC의 카운터에 포함 된다.
+3. Permanent Generation area 
+ - Method Area라고도 불리는 영역이다.
+ - 객체나 억류(intern)된 문자열 정보를 저장 하는 곳 이다. 
+ - 이 영역에서 GC가 발생하면 Major GC의 카운터에 포함 된다.
 
 Old Generation Area에서 발생하는 Major GC 의 방식(알고리즘)은 여러가지가 있다. 일단 JDK7을 기준으로는 5가지가 있다. 
 
