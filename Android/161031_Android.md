@@ -30,6 +30,8 @@ JVM(Java Virtual Machine)은 아키텍쳐와 플랫폼에 상관없이 실행할
 
 ## 3. Install
 
+![img](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_install.png)
+
 ### 3.1  Dalvik VM
 
 #### 3.1.1 Odex 파일 
@@ -40,10 +42,14 @@ JVM(Java Virtual Machine)은 아키텍쳐와 플랫폼에 상관없이 실행할
 
 #### 3.2.1 ELF 파일
 
+![img](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_elf.png)
+
 #### 3.2.2 ART
 
 
 ## 4. Runtime Data Areas
+
+![img](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_rda.png)
 
 ### 4.1 Pc Register
 
