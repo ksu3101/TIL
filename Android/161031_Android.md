@@ -135,7 +135,9 @@ JVM의 Stack은 스레드가 생성 될 때 마다 생성되는 스레드의 정
 
 #### 4.2.1 Stack Frame 
 
-Stack Frame은 해당 Thread가 수행하고 있는 Method단위로 기록 되는 정보들 이다. 어떤 Method가 실행 되면 Class의 메타 정보를 이용하여 적절한 크기로 생성 되어 JVM Stack에 Push하고 Method의 작업을 수행한다. 
+Stack Frame은 해당 Thread가 수행하고 있는 Method단위로 기록 되는 정보들 이다. 어떤 Method가 실행 되면 Class의 메타 정보를 이용하여 적절한 크기로 생성 되어 JVM Stack에 Push하고 Method의 작업을 수행한다.
+
+![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap3.png)      
 
 Stack Frame을 이루는 내용은 다음과 같다. 
 
@@ -167,13 +169,11 @@ JVM 에서 Heap은 런타임 시 동적으로 할당되어 사용되는 실제 �
 
 JVM의 Heap은 모든 스레드에서 공유 된다. 그러므로 멀티 스레드 환경에선는 공유되는 자원(참조될 인스턴스) 에 대한 동기화가 필요 하다.
 
-![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap3.png)     
-
 `synchronized` 키워드는 멀티 스레드 환경에서 공유 자원에 대한 읽기/쓰기 시 필요하다고 할 수 있다. 특히 이런 환경에서의 Critical Section상에서의 스레드 제어와 static 메소드 내부에서의 공유 자원에 대한 스레딩 제어지 필수라고 할 수 있다. 하지만 멀티 스레딩 환경에서 잦은 `synchronized`키워드의 남발은 오히려 프로세스의 성능을 낮춰버리는 문제가 존재 한다. 
 
 자바에서 `synchronized` 키워드를 이용한 동기화 방법은 여러가지가 있다. 
 
- 1. 공유 자원에 대해 접근 하는 메소드에 대한 `synchronized`. 
+ **1. 공유 자원에 대해 접근 하는 메소드에 대한 `synchronized`.** 
   
   ```java
   public synchronized void func() {
@@ -182,7 +182,7 @@ JVM의 Heap은 모든 스레드에서 공유 된다. 그러므로 멀티 스레�
   ```
   메소드 자체에 대한 동기화로 인하여 해당 메소드에서의 작업이 끝날때 까지 다른 스레드는 기다려야 한다. 당연히 성능이 가장 좋지 않다. 
 
-  2. 공유 자원에 대한 작업을 할때만 단일 스레드의 접근만 허용하는 `block synchronized`.
+ **2. 공유 자원에 대한 작업을 할때만 단일 스레드의 접근만 허용하는 `block synchronized`.**
 
   ```java
   public void func() {
@@ -197,7 +197,7 @@ JVM의 Heap은 모든 스레드에서 공유 된다. 그러므로 멀티 스레�
 
 #### 4.4.2 Garbage Collection
 
-![jvm_heap](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.gif)
+![jvm_gc](https://github.com/ksu3101/TIL/blob/master/Android/images/jvm_heap2.gif)
 
 JVM의 Heap에서는 동적으로 물리 메모리에 올라가는 인스턴스들이 존재 한다. 그런데 계속 인스턴스를 생성 하기만 하면 당연히 Out of Memory 예외가 발생할 것 이다. 이를 막기 위해서 JVM에서는 특정한 알고리즘에 의하여 필요시 `Garbage Collection(GC)`라는 작업을 수행 하게 된다. 
 
@@ -207,7 +207,7 @@ GC는 메모리의 힙에 할당되어진 인스턴스 객체를 더이상 사�
 
 GC할때에는 JVM이 GC를 수행하는 스레드를 제외한 나머지 스레드들을 모두 정지 시킨다. 이를 `stop the world`라고 한다. 그리고 Heap의 영역을 크게 3개로 나눈다. 
 
-1. Young Generation area 
+**1. Young Generation area** 
  - 새롭게 생성한 객체의 대부분이 이곳에 존재. 
  - 대부분 금방 접근 불가능 상태 (unreachable state)가 되기 때문에 보통 Young 영역에 왔다가 사라진다. 이를 `Minor GC`라고 한다.
  - 내부에서는 Eden, Survivor(2개) 으로 나뉘어 진다. 그 과정은 다음과 같다. 
@@ -218,13 +218,13 @@ GC할때에는 JVM이 GC를 수행하는 스레드를 제외한 나머지 스레
   3. 이 과정을 반복하다가 계속해서 살아남는 객체는 Old 영역으로 이동 한다.
  ``` 
 
-2. Old Generation area 
+**2. Old Generation area** 
  - 위 영역에서 접근 불가능 상태(unreachable state)가 되지 않아 살아남은 객체가 이곳으로 복사 된다. 
  - 대부분 young 영역 보다 크게 할당 되며, 크기가 큰 만큼 GC는 young 영역보다 적게 발생한다. 
  - 이 영역에서 객체가 사라질때 Major GC(혹은 Full GC)가 발생 한다.
  - 만약 Old 영역에서 Young 영역의 참조가 발생 하면 이를 512바이트의 chunk로 되어 있는 Card Table로 관리 한다. 
 
-3. Permanent Generation area 
+**3. Permanent Generation area** 
  - Method Area라고도 불리는 영역이다.
  - 객체나 억류(intern)된 문자열 정보를 저장 하는 곳 이다. 
  - 이 영역에서 GC가 발생하면 Major GC의 카운터에 포함 된다.
@@ -247,24 +247,24 @@ JVM의 Garbage Collection은 어떠한 객체에 대해 GC 여부를 판단 하�
 
 GC의 Reference Object에 대한 GC순서는 다음과 같다고 생각 하면 된다. 
 
- 1. Strongly reference
+ **1. Strongly reference**
   - `new` 키워드를 이용하여 객체를 생성했을때의 참조.
   - Strongly reachable 하고 Strong reference에 의해 참조되고 있는 객체는 GC에서 일단 제외 된다. 이는 Memory leak에 유심해서 사용 해야 한다.  
 
- 2. Softly reference 
+ **2. Softly reference** 
   - `SoftReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
   - Softly reference 는 GC에 의해서 수거 될 수 도 있고 되지 않을 수도 있다. 하지만 만약 OOME 가 발생할 수 있는 상황이 라면 SoftReference는 무조건 GC된다.  
   - GC되는 시점에 특별한 정책에 의해 GC여부가 결정 되게 할 수도 있다. 
 
- 3. Weakly reference
+ **3. Weakly reference**
   - `WeakReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
   - Weakly reference는 GC가 발생하기 전 까지는 객체에 대한 참조를 유지하지만, 만약 GC가 발생하면 무조건 메모리를 수거 한다. 그래서 보통 Cache용도로 많이 사용 한다고 하지만 최근에는 VM에서의 Reference Object에 대한 GC가 공격적이라서 추천하지는 않는다고 한다. 
 
- 4. finalize();
+ **4. finalize();**
   - 일반적으로 인스턴스가 소멸되는 시점에 불리는 메소드로 알려져 있다. 
   - 하지만 이 메소드가 꼭 콜되는 일은 없다. 불릴수도 있고 안불릴 수도 있기 때문이다. 그래서 이 메소드를 재 정의해서 사용 하는것은 자제 하는것이 좋다. 
 
- 5. Phantomly reference 
+ **5. Phantomly reference** 
   - `PhantomReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
   - Phantomly reference는 `finalize()` 메소드가 호출되고 난 뒤 그 객체와 관련된 작업을 수행할 필요가 있을때 주로 사용 된다. 
   - 이 reference의 특징은 다시는 이 객체를 참조할 수 없게 된다는 것 이다. 
