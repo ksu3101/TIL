@@ -14,10 +14,10 @@ RxJava에서 *Observer* 와 *subscribes* 등 인터페이스들의 구현될 클
 
 ## 2. [Async Operators](https://github.com/ReactiveX/RxJava/wiki/Async-Operators) 
 
-아래의 operation들은 `rxjava-async` 모듈의 일부 이다. 
+아래의 operation들은 `rxjava-async` 모듈의 일부 이며 동기화 된 메소드를 `Observable`로 변환하는데 사용 된다. 
 
-- `start( )` — Observable 을 생성하고 구현한 메소드에서 반환한 결과를 내보낸다.
-- `toAsync( ) or asyncAction( ) or asyncFunc( )` — convert a function or Action into an Observable that executes the function and emits its return value
+- `start( )` — Observable 을 생성하고 구현한 메소드에서 반환할 결과를 내보낸다.
+- `toAsync( ) or asyncAction( ) or asyncFunc( )` — 구현한 메소드 및 액션을 `Observable`로 변환하고 반환할 결과값을 내보낸다. 
 - `startFuture( )` — convert a function that returns Future into an Observable that emits that Future's return value
 - `deferFuture( )` — convert a Future that returns an Observable into an Observable, but do not attempt to get the Observable that the Future returns until a Subscriber subscribes
 - `forEachFuture( )` — pass Subscriber methods to an Observable but also have it behave like a Future that blocks until it completes
