@@ -79,3 +79,4 @@
 ### Etc
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
 - [160717_TDD / 테스트 주도 개발 방법론 정리](https://github.com/ksu3101/TIL/blob/master/ETC/160717_TDD.md)
+- [161113 / 객체지향 개발 5 원칙 정리](https://github.com/ksu3101/TIL/blob/master/ETC/161113.md)
