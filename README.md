@@ -46,6 +46,10 @@
 ---
 ### AWS
 - cafe24에서 AWS로 서비스 이전 기록 1 (작성중)  
+
+---
+### Design Pattern
+- [161114 / Iterator Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161114.md)
   
 --- 
 ### DS (자료 구조)
