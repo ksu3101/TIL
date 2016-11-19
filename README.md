@@ -52,6 +52,7 @@
 - [161114 / Iterator Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161114.md)
 - [161117 / Adapter Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161117.md)
 - [161118 / Template Method Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161118.md)
+- [161119 / Factory Method Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161119.md)
 
 --- 
 ### DS (자료 구조)
