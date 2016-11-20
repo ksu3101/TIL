@@ -53,6 +53,7 @@
 - [161117 / Adapter Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161117.md)
 - [161118 / Template Method Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161118.md)
 - [161119 / Factory Method Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161119.md)
+- [161120 / Singleton Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161120.md)
 
 --- 
 ### DS (자료 구조)
