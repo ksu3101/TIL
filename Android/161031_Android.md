@@ -247,27 +247,27 @@ JVM의 Garbage Collection은 어떠한 객체에 대해 GC 여부를 판단 하�
 
 GC의 Reference Object에 대한 GC순서는 다음과 같다고 생각 하면 된다. 
 
- **1. Strongly reference**
-  - `new` 키워드를 이용하여 객체를 생성했을때의 참조.
-  - Strongly reachable 하고 Strong reference에 의해 참조되고 있는 객체는 GC에서 일단 제외 된다. 이는 Memory leak에 유심해서 사용 해야 한다.  
+**1. Strongly reference**
+ - `new` 키워드를 이용하여 객체를 생성했을때의 참조.
+ - Strongly reachable 하고 Strong reference에 의해 참조되고 있는 객체는 GC에서 일단 제외 된다. 이는 Memory leak에 유심해서 사용 해야 한다.  
 
- **2. Softly reference** 
-  - `SoftReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
-  - Softly reference 는 GC에 의해서 수거 될 수 도 있고 되지 않을 수도 있다. 하지만 만약 OOME 가 발생할 수 있는 상황이 라면 SoftReference는 무조건 GC된다.  
-  - GC되는 시점에 특별한 정책에 의해 GC여부가 결정 되게 할 수도 있다. 
+**2. Softly reference** 
+ - `SoftReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
+ - Softly reference 는 GC에 의해서 수거 될 수 도 있고 되지 않을 수도 있다. 하지만 만약 OOME 가 발생할 수 있는 상황이 라면 SoftReference는 무조건 GC된다.  
+ - GC되는 시점에 특별한 정책에 의해 GC여부가 결정 되게 할 수도 있다. 
 
- **3. Weakly reference**
-  - `WeakReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
-  - Weakly reference는 GC가 발생하기 전 까지는 객체에 대한 참조를 유지하지만, 만약 GC가 발생하면 무조건 메모리를 수거 한다. 그래서 보통 Cache용도로 많이 사용 한다고 하지만 최근에는 VM에서의 Reference Object에 대한 GC가 공격적이라서 추천하지는 않는다고 한다. 
+**3. Weakly reference**
+ - `WeakReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
+ - Weakly reference는 GC가 발생하기 전 까지는 객체에 대한 참조를 유지하지만, 만약 GC가 발생하면 무조건 메모리를 수거 한다. 그래서 보통 Cache용도로 많이 사용 한다고 하지만 최근에는 VM에서의 Reference Object에 대한 GC가 공격적이라서 추천하지는 않는다고 한다. 
 
- **4. finalize();**
-  - 일반적으로 인스턴스가 소멸되는 시점에 불리는 메소드로 알려져 있다. 
-  - 하지만 이 메소드가 꼭 콜되는 일은 없다. 불릴수도 있고 안불릴 수도 있기 때문이다. 그래서 이 메소드를 재 정의해서 사용 하는것은 자제 하는것이 좋다. 
+**4. finalize();**
+ - 일반적으로 인스턴스가 소멸되는 시점에 불리는 메소드로 알려져 있다. 
+ - 하지만 이 메소드가 꼭 콜되는 일은 없다. 불릴수도 있고 안불릴 수도 있기 때문이다. 그래서 이 메소드를 재 정의해서 사용 하는것은 자제 하는것이 좋다. 
 
- **5. Phantomly reference** 
-  - `PhantomReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
-  - Phantomly reference는 `finalize()` 메소드가 호출되고 난 뒤 그 객체와 관련된 작업을 수행할 필요가 있을때 주로 사용 된다. 
-  - 이 reference의 특징은 다시는 이 객체를 참조할 수 없게 된다는 것 이다. 
+**5. Phantomly reference** 
+ - `PhantomReference` 래퍼 클래스를 이용하여 참조 변수를 래핑해서 사용 한다. 
+ - Phantomly reference는 `finalize()` 메소드가 호출되고 난 뒤 그 객체와 관련된 작업을 수행할 필요가 있을때 주로 사용 된다. 
+ - 이 reference의 특징은 다시는 이 객체를 참조할 수 없게 된다는 것 이다. 
  
 #### 4.4.4 Deep copy & Shallow copy 
 
