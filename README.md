@@ -55,6 +55,7 @@
 - [161119 / Factory Method Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161119.md)
 - [161120 / Singleton Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161120.md)
 - [161123 / Prototype Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161123.md)
+- [161124 / Builder Pattern](https://github.com/ksu3101/TIL/blob/master/DesignPattern/161124.md)
 
 --- 
 ### DS (자료 구조)
