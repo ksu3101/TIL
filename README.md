@@ -44,6 +44,10 @@
 - [161031_Android / JVM의 Dalvik 과 안드로이드의 ART, 그리고 JAVA의 Runtime Data Area 정리](https://github.com/ksu3101/TIL/blob/master/Android/161031_Android.md)
 
 ---
+### Python Django
+- [170108 / Python3 와 django 세팅 하기 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170108.md)
+
+---
 ### AWS
 - cafe24에서 AWS로 서비스 이전 기록 1 (작성중)  
 
