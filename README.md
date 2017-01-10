@@ -42,6 +42,7 @@
 - [161007_Android / Flat color ](https://github.com/ksu3101/TIL/blob/master/Android/161007_Android.md)
  - Android Studio에서 Color resource를 관리하는 유용한 plug in인 [Color Manager](https://github.com/shiraji/color-manager)소개. 
 - [161031_Android / JVM의 Dalvik 과 안드로이드의 ART, 그리고 JAVA의 Runtime Data Area 정리](https://github.com/ksu3101/TIL/blob/master/Android/161031_Android.md)
+- [170110_Android / DataBinding 과 Rx 를 이용한 View 의 이벤트 제어 ](https://github.com/ksu3101/TIL/blob/master/Android/170110.md)
 
 ---
 ### Python Django
