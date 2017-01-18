@@ -47,7 +47,8 @@
 ---
 ### Python Django
 - [170108 / Python3 와 django 세팅 하기 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170108.md)
-- [170115 / PyCharm 을 이용한 개발 환경 세팅 및 기초 공부 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170115.md)
+- [170115 / PyCharm 을 이용한 개발 환경 세팅 및 기초 공부 첫번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170115.md)
+- [170118 / PyCharm 을 이용한 개발 환경 세팅 및 기초 공부 두번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170118.md)
 
 ---
 ### AWS
