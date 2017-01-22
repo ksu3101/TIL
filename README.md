@@ -50,7 +50,7 @@
 - [170115 / PyCharm 을 이용한 개발 환경 세팅 및 기초 공부 첫번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170115.md)
  - 원시 자료형, 문자열 자료형 및 관련 함수 
 - [170118 / PyCharm 을 이용한 개발 환경 세팅 및 기초 공부 두번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170118.md)
- - 리스트, 튜플, 딕셔너리 자료 구조 
+ - 리스트, 튜플, 딕셔너리, 셋 자료 구조 
 
 ---
 ### AWS
