@@ -55,7 +55,7 @@
  - if-else, do-while, for 
 - [170130 / 반복문과 제어문 연습 문제 풀이 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170130.md)
 - [170201 / Python 기초 공부 네번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170201.md)
- - 함수 
+ - 함수, 사용자 입출력, 파일 입출력 
 
 ---
 ### AWS
