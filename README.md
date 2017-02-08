@@ -57,7 +57,7 @@
 - [170201 / Python 기초 공부 네번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170201.md)
  - 함수, 사용자 입출력, 파일 입출력 
 - [170207 / Python 기초 공부 다섯번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170207.md)
- - 객체지향, 클래스 와 상속, import, 패키지, 예외, 공통 함수 
+ - 클래스 와 상속, import, 패키지, 예외, 공통 함수 
 
 ---
 ### AWS
