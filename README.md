@@ -60,6 +60,7 @@
  - 클래스 와 상속, 오버라이딩, 오버로딩
 - [170214 / Python 기초 공부 여섯번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170214.md)
  - 모듈과 패키지, 내장 메소드 
+- [170225 / Python 기초 간단 정리 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170225.md)
 
 ---
 ### AWS
