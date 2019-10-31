@@ -7,6 +7,11 @@
 - 짧고 간결하며 핵심적인 문장을 사용한다. 필요한 설명이 있으면 관련된 정보가 포함된 외부 링크를 사용 하자.  
 
 ## 분류
+
+
+<details>
+<summary>2016~2017 접기/펼치기</summary>
+<div markdown="old_1">
 ### Android
 - [160705_Android / LegoLibrary 프로젝트 이슈 / Retrofit, Realm issue](https://github.com/ksu3101/TIL/blob/master/Android/160705_Android.md)  
 - [160706_Android / LegoLibrary 프로젝트 이슈 / private key 관리 해 보기](https://github.com/ksu3101/TIL/blob/master/Android/160706_Android.md)  
@@ -111,3 +116,6 @@
 - [160717_TDD / 테스트 주도 개발 방법론 정리](https://github.com/ksu3101/TIL/blob/master/ETC/160717_TDD.md)
 - [161113 / 객체지향 개발 5 원칙 정리](https://github.com/ksu3101/TIL/blob/master/ETC/161113.md)
 - [170106 / 프로그래밍 기초 1](https://github.com/ksu3101/TIL/blob/master/ETC/170106.md)
+
+</div>
+</details>
