@@ -125,6 +125,7 @@
 ### Android
 
 ### Kotlin
+- [191031 / extension, infix function 을 이용한 kotlin unit test](https://github.com/ksu3101/TIL/blob/master/kotlin/191031_infix_testing_codes.md)
 
 ### Etc
 
