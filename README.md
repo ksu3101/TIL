@@ -128,6 +128,7 @@
 ### Kotlin
 - [191031 / extension, infix function 을 이용한 kotlin unit test](https://github.com/ksu3101/TIL/blob/master/kotlin/191031_infix_testing_codes.md)
 - [191102 / high order function, lambda](https://github.com/ksu3101/TIL/blob/master/kotlin/191102_hof_lambda.md)
+- [191103 / Data class mapping 방법 정리](https://github.com/ksu3101/TIL/blob/master/kotlin/191103_dto_problem.md)
 
 ### Etc
 
