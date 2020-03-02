@@ -19,12 +19,12 @@
 - [160707_Android / ViewPager 이슈 / Picasso와 비트맵 OOM](https://github.com/ksu3101/TIL/blob/master/Android/160707_Android.md)  
 - [160708_Android / RxAndroid 이슈 / CompositeSubscription을 이용한 LifeCycle 관리](https://github.com/ksu3101/TIL/blob/master/Android/160708_Android.md)  
 - [160709_Android / Daily development learning / Generic RecyclerView Adapter 1](https://github.com/ksu3101/TIL/blob/master/Android/160709_Android.md)
- - [160927 / Generic RecyclerView Adapter / `NestedRecyclerView`의 지원에 따른 내부 메소드 추가/변경점 업데이트](https://github.com/ksu3101/TIL/blob/master/Android/160927_Android.md)  
+  - [160927 / Generic RecyclerView Adapter / `NestedRecyclerView`의 지원에 따른 내부 메소드 추가/변경점 업데이트](https://github.com/ksu3101/TIL/blob/master/Android/160927_Android.md)  
 - [160711_Android / Daily development learning / Generic RecyclerView Adapter  2](https://github.com/ksu3101/TIL/blob/master/Android/160711_Android.md)
 - [160712_Android / Daily development learning / Method counting](https://github.com/ksu3101/TIL/blob/master/Android/160712_Android.md)
 - [160715_Android / SpannableTextView library module](https://github.com/ksu3101/SpannableTextView)
 - [160720_Android / Nested Recycler View example project](https://github.com/ksu3101/NestedRecyclerView)
- - MVP, RxAndroid 적용. 
+  - MVP, RxAndroid 적용. 
 - [160722_Android / Nested Recycler View / Infinite loop ViewPager, position Indicator ](https://github.com/ksu3101/TIL/blob/master/Android/160722_Android.md)  
 - [160725_Android / Nested Recycler View / RecyclerView Item Decorations](https://github.com/ksu3101/TIL/blob/master/Android/160725_Android.md)
 - [160726_Android / Nested Recycler View / Load More Pattern](https://github.com/ksu3101/TIL/blob/master/Android/160726_Android.md)  
@@ -32,8 +32,8 @@
 - [160801_Android / Nested Recycler View / Scroll state with Picasso](https://github.com/ksu3101/TIL/blob/master/Android/160801_Android.md)
 - [160802_Android / RxAndroid lifecycle management ](https://github.com/ksu3101/TIL/blob/master/Android/160802_Android.md)
 - [160803_Android / SwImageView Library module](https://github.com/ksu3101/SwImageView)
- - Rounded corner, Circle 이미지 뷰. 
- - 외각선 효과, 터치시 dimm효과, 이미지 로드 후 Transition효과. 
+  - Rounded corner, Circle 이미지 뷰. 
+  - 외각선 효과, 터치시 dimm효과, 이미지 로드 후 Transition효과. 
 - [160808_Android / Gradle error : processReleaseResource issue](https://github.com/ksu3101/TIL/blob/master/Android/160808_Android.md)
 - [160816_Android / SoftKeyboard상태 Callback을 구현한 Activity](https://github.com/ksu3101/TIL/blob/master/Android/160816_Android.md)
 - [160823_Android / 비동기 작업의 State에 따라 바뀌는 Customized Button의 구현](https://github.com/ksu3101/TIL/blob/master/Android/160823_Android.md)
@@ -43,10 +43,10 @@
 - [160912_Android / Configure Android Status Bar](https://github.com/ksu3101/TIL/blob/master/Android/160912_Android.md)
 - [160921_Android / multiDexOptions속성이 true인 상태에서 Android Studio의 컴파일, 빌드가 너무나도 느려졌을 경우](https://github.com/ksu3101/TIL/blob/master/Android/160921_Android.md)
 - [160922_Android / JUnit과 Espresso를 이용한 TDD 개발](https://github.com/ksu3101/TIL/blob/master/Android/160922_Android.md)  
- - 160926 / 예제 소스 추가  
+  - 160926 / 예제 소스 추가  
 - [160928_Android / Realm 2.0 release](https://github.com/ksu3101/TIL/blob/master/Android/160928_Android.md)
 - [161007_Android / Flat color ](https://github.com/ksu3101/TIL/blob/master/Android/161007_Android.md)
- - Android Studio에서 Color resource를 관리하는 유용한 plug in인 [Color Manager](https://github.com/shiraji/color-manager)소개. 
+  - Android Studio에서 Color resource를 관리하는 유용한 plug in인 [Color Manager](https://github.com/shiraji/color-manager)소개. 
 - [161031_Android / JVM의 Dalvik 과 안드로이드의 ART, 그리고 JAVA의 Runtime Data Area 정리](https://github.com/ksu3101/TIL/blob/master/Android/161031_Android.md)
 - [170110_Android / DataBinding 과 Rx 를 이용한 View 의 이벤트 제어 ](https://github.com/ksu3101/TIL/blob/master/Android/170110.md)
 
@@ -54,18 +54,18 @@
 ### Python Django
 - [170108 / Python3 와 django 세팅 하기 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170108.md)
 - [170115 / PyCharm 을 이용한 개발 환경 세팅 및 기초 공부 첫번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170115.md)
- - 원시 자료형, 문자열 자료형 및 관련 함수 
+  - 원시 자료형, 문자열 자료형 및 관련 함수 
 - [170118 / Python 기초 공부 두번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170118.md)
- - 리스트, 튜플, 딕셔너리, 셋 자료 구조 
+  - 리스트, 튜플, 딕셔너리, 셋 자료 구조 
 - [170128 / Python 기초 공부 세번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170128.md)
- - if-else, do-while, for 
+  - if-else, do-while, for 
 - [170130 / 반복문과 제어문 연습 문제 풀이 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170130.md)
 - [170201 / Python 기초 공부 네번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170201.md)
- - 함수, 사용자 입출력, 파일 입출력 
+  - 함수, 사용자 입출력, 파일 입출력 
 - [170207 / Python 기초 공부 다섯번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170207.md)
- - 클래스 와 상속, 오버라이딩, 오버로딩
+  - 클래스 와 상속, 오버라이딩, 오버로딩
 - [170214 / Python 기초 공부 여섯번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170214.md)
- - 모듈과 패키지, 내장 메소드 
+  - 모듈과 패키지, 내장 메소드 
 - [170225 / Python 기초 간단 정리 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170225.md)
 - [170227 / Python 에서 싱글턴을 구현 하는 방법 정리 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170227.md)
 
@@ -94,22 +94,22 @@
 - [기본적으로 알아둬야 할 것들 정리](https://github.com/ksu3101/TIL/blob/master/Algorithm/base.md)  
 - [160710 / 기본기 BFS, DFS](https://github.com/ksu3101/TIL/blob/master/Algorithm/160710.md)  
 - [160712 / 백준 온라인 저지 / 문제 풀이 기록 1](https://github.com/ksu3101/TIL/blob/master/Algorithm/160712.md)
- - 주로 문자열 처리 관련 문제.  
+  - 주로 문자열 처리 관련 문제.  
 - [160713 / 백준 온라인 저지 / 문제 풀이 기록 2](https://github.com/ksu3101/TIL/blob/master/Algorithm/160713.md)
- - 정렬, 피보나치의수(DP)
- - [161014 / 추가 피보나치의 수 2, 3](https://github.com/ksu3101/TIL/blob/master/Algorithm/161014.md)
+  - 정렬, 피보나치의수(DP)
+  - [161014 / 추가 피보나치의 수 2, 3](https://github.com/ksu3101/TIL/blob/master/Algorithm/161014.md)
 - [160714 / 백준 온라인 저지 / 문제 풀이 기록 3](https://github.com/ksu3101/TIL/blob/master/Algorithm/160714.md)
- - 문자열 처리, 정렬
+  - 문자열 처리, 정렬
 - [160718 / Daily algorithms learning](https://github.com/ksu3101/TIL/blob/master/Algorithm/160718.md)
 - [160722 / 백준 온라인 저지 / 문제 풀이 기록 4](https://github.com/ksu3101/TIL/blob/master/Algorithm/160722.md)
 - [160922 / 문자열 관련 알고리즘](https://github.com/ksu3101/TIL/blob/master/Algorithm/160922.md)
 - [160929 / 알고리즘 공부 정리](https://github.com/ksu3101/TIL/blob/master/Algorithm/160929.md)
 - [161012 / 백준 온라인 저지 / 문제 풀이 기록 5](https://github.com/ksu3101/TIL/blob/master/Algorithm/161012.md)
 - [161013 / 백준 온라인 저지 / 문제 풀이 기록 6](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md)
- - [161014 / 소수 구하는 방법 중 `에라토스테네스의 체`의 접근 방법 추가.](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md#11-소수-찾기---에라토스테네스의-체) 
+  - [161014 / 소수 구하는 방법 중 `에라토스테네스의 체`의 접근 방법 추가.](https://github.com/ksu3101/TIL/blob/master/Algorithm/161013.md#11-소수-찾기---에라토스테네스의-체) 
 - [161014 / 백준 온라인 저지 / 문제 풀이 기록 7](https://github.com/ksu3101/TIL/blob/master/Algorithm/161014.md)
 - [161028 / 백준 온라인 저지 / 문제 풀이 기록 8](https://github.com/ksu3101/TIL/blob/master/Algorithm/161028.md)
- - 161029 / 문제 풀이 기록 추가
+  - 161029 / 문제 풀이 기록 추가
 
 ---
 ### Etc
