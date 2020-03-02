@@ -10,7 +10,7 @@
 
 
 <details>
-<summary>2016~2017 접기/펼치기</summary>
+<summary>2016~2017 이전 문서들 (접기/펼치기)</summary>
 <div markdown="old_1">
  
 ### Android
