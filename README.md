@@ -133,4 +133,5 @@
 
 ### Etc
 
-
+- [Redux 기본](https://github.com/ksu3101/TIL/blob/master/ETC/200305.md)
+  - redux based android architecture 를 적용 하기 위해 가볍게 정리한 redux. 
