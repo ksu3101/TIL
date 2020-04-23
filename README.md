@@ -131,6 +131,7 @@
 - [191102 / high order function, lambda](https://github.com/ksu3101/TIL/blob/master/kotlin/191102_hof_lambda.md)
 - [191103 / Data class mapping 방법 정리](https://github.com/ksu3101/TIL/blob/master/kotlin/191103_dto_problem.md)
 - [191104 ~ / Coroutine **IN PROGRESS...** ](https://github.com/ksu3101/TIL/blob/master/kotlin/191104_coroutine.md)
+- [200423 / 코틀린 표준 라이브러리 함수 일부 정리](https://github.com/ksu3101/TIL/blob/master/kotlin/200423_stdlib.md)
 
 ### Etc
 
