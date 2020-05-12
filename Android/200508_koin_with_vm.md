@@ -78,7 +78,7 @@ class SomeFragment: Fragment() {
 class AnotherFragment: Fragment() {
   val vm: SomeViewModel by shareViewModel()
 }
-``
+```
 
 ### 3. ViewModel with injection params
 
