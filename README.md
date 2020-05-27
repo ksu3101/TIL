@@ -124,3 +124,4 @@
 - [161113 / 객체지향 개발 5 원칙 정리](https://github.com/ksu3101/TIL/blob/master/ETC/161113.md)
 - [160717_TDD / 테스트 주도 개발 방법론 정리](https://github.com/ksu3101/TIL/blob/master/ETC/160717_TDD.md)
 - [160707_Git / commit log 제거 하기](https://github.com/ksu3101/TIL/blob/master/Git/160707_git.md)
+- [200527 / AMD Ryzen CPU, Windows 10 환경에서 HAXM AVD 사용 하기 - 삽질 ](https://github.com/ksu3101/TIL/blob/master/Android/200527_amdryzen_avd.md)
