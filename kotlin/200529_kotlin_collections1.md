@@ -234,3 +234,37 @@ val list = listOf(1, "two", 3, "four", 5, 6.2f, null)
 println(list.filterIsInstance<String>())    // [two, four]
 ```
 
+### 7. Grouping
+
+`List<T>` 에서 function 에서 반환되는 값`T` 를 기준으로 map 처럼 key-value 형태로 정렬 해 준다. 
+
+```kotlin
+val list = listOf("kim", "park", "kang", "lee", "paik", "jo")
+println(list.groupBy { it.first() })      // {k=[kim, kang], p=[park, paik], l=[lee], j=[jo]}
+```
+
+### 8. Retrieving Collection Parts
+
+list에서 보유한 원소의 일부를 가져오는 방법들 이다. 
+
+#### 8.1 Slice
+
+`slice()` 를 이용하여 특정 인덱스에서 특정 인덱스 까지의 원소들의 배열을 가져 온다. 
+
+```kotlin
+val list = listOf("kim", "park", "kang", "lee", "paik", "jo")
+println(list.slice(1..3))           // [park, kang, lee]
+println(list.slice(0..4 step 2))    // [kim, kang, paik]
+```
+
+#### 8.2 Take and Drop
+
+`take()` 를 이용 하여 특정 인덱스의 원소만 얻거나 `drop()` 을 이용하여 해당 원소만 제거한 나머지를 얻는다. 이 함수들에서 ...Last 가 붙은 경우 마지막 인덱스, 즉 `list.size()` 를 기준으로 해당 원소에 대한 처리를 한 결괄를 얻는다. 
+
+```kotlin
+val list = listOf("kim", "park", "kang", "lee", "paik", "jo")
+println(list.take(2))       // [kim, park]
+println(list.takeLast(2))   // [paik, jo]
+println(list.drop(1))       // [park, kang, lee, paik, jo]
+println(list.dropLast(1))   // [kim, park, kang, lee, paik]
+```
