@@ -1,4 +1,4 @@
-## Collection of Kotlin 1
+## Collection of Kotlin
 
 ### 1. Overview 
 
@@ -245,7 +245,7 @@ println(list.groupBy { it.first() })      // {k=[kim, kang], p=[park, paik], l=[
 
 ### 8. Retrieving Collection Parts
 
-list에서 보유한 원소의 일부를 가져오는 방법들 이다. 
+list에서 보유한 원소의 일부들을 가져오는 방법들 이다. 원소의 일부란 0개 일수도 있고 1개 혹은 list 의 size의 크기를 가질 수 있다. 
 
 #### 8.1 Slice
 
@@ -267,4 +267,70 @@ println(list.take(2))       // [kim, park]
 println(list.takeLast(2))   // [paik, jo]
 println(list.drop(1))       // [park, kang, lee, paik, jo]
 println(list.dropLast(1))   // [kim, park, kang, lee, paik]
+
+println(list.takeWhile { !it.startsWith("l") })   // [kim, park, kang]
+println(list.takeLastWhile { it !== ("lee") })    // [paik, jo]
+println(list.dropWhile { it.length == 2 })        // [kim, park, kang, lee, paik, jo]
+println(list.dropLastWhile { it.contains("o") })  // [kim, park, kang, lee, paik]
 ```
+
+#### 8.3 Chunked 
+
+`chunked()` 는 패러미터로 주는 int 값에 따라 list 의 원소들을 해당 값 크기 만큼 나누어 새로운 `List<List<T>>` 로 반환한다. 
+
+```kotlin
+val list = (0..15).toList()
+println(list.chunked(3))    // [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10, 11], [12, 13, 14], [15]]
+println(list.chunked(5))    // [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15]]
+```
+
+#### 8.4 Wndowed 
+
+`windowed()` 는 `chunked()` 와 비슷하게 패러미터 int 값 만큼 새로운 list 로 나누어주지만 조금 다르다. 기본적으로 `step` 이라 불리는 값(default value 는 1) 만큼 증가 하면서 해당 step 이 증가 될 때마다 step 의 인덱스로부터 패러미터로 전달받은 size 만큼 나눈다. 
+
+```kotlin
+val list = (0..5).toList()
+println(list.windowed(3)) // [[0, 1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5]]
+```
+
+### 9. Retrieving Single Elements
+
+컬렉션에서 하나의 원소를 가져오는 방법들 이다. 
+
+#### 9.1 Retrieving by position
+
+list 에서 특정 position 에 존재 하는 원소를 가져오기 위한 방법들이다. 
+
+```kotlin
+val list = listOf("kim", "park", "kang", "lee", "paik", "jo")
+println(list.elementAt(1))
+println(list.first())
+println(list.last())
+println(list.elementAtOrNull(10))
+println(list.elementAtOrElse(10) { index -> "$index value has not founded" })
+```
+
+#### 9.2 Retrieving by condition
+
+주어진 함수를 통해 특정 조건에 해당 하는 원소를 찾아 반환한다. 
+
+```kotlin
+val list = listOf("kim", "park", "kang", "lee", "paik", "jo")
+println(list.first { it.length == 2 })
+println(list.last { it.startsWith("k") })
+println(list.firstOrNull { it.length > 10 })
+println(list.find { it.length == 2 })
+```
+
+#### 9.3 Checking existence 
+
+list 에서 특정한 값을 가진 원소가 존재 하는지 여부를 얻는다. 
+
+```kotlin
+val list = listOf("kim", "park", "kang", "lee", "paik", "jo")
+println(list.contains("lee"))   // true
+println("lee" in list)          // true
+println(list.containsAll(listOf("park", "lee")))    // true
+```
+
+
