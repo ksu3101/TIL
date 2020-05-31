@@ -367,3 +367,59 @@ val list = (1 .. 10).toList()
 println(list.shuffled())    // [7, 1, 3, 8, 6, 9, 2, 4, 10, 5]
 println(list.shuffled())    // [9, 10, 8, 7, 4, 1, 5, 3, 2, 6]
 ```
+
+### 11. Collection Aggregate operations
+
+Kotlin 컬렉션에는 일반적으로 사용되는 집계 작업(컬렉션 내용에 따라 단일 값을 반환하는 작업)을위한 함수가 포함되어 있다. 일반적으로 잘 알려진 함수들이며 다른 언어들과 동일하게 작동한다. 
+
+예를 들면, `max(), min(), average(), sum(), count(), maxBy(), minBy(), maxWith(), minWith(), sumBy(), sumByDouble()` 함수들이 있다. 
+
+
+##### 11.1 Fold and reduce
+
+`reduce()` 와 `fold()` 함수는 각 리스트의 각 항목을 이터레이션 하면서 함수를 통해서 값을 반환하고 그것을 다음 원소와 함께 새로운 값을 도출 하기 위해 함수를 적용 한다. 설명 하면 어렵지만 아래의 `reduce()` 예제를 보면 쉽게 이해할 수 있다. 
+
+```kotlin
+val list = listOf(12, 3, 97, 32, 8)
+println(list.reduce { sum, element -> sum + element })
+```
+
+위 코드를 실행시 `152` 라는 최후 값을 얻는다. 이터레이션 상태를 보면 아래와 같다. 
+
+0. `sum = 12, element = 3, return value = 15`
+1. `sum = 15, element = 97, return value = 112`
+2. `sum = 112, element = 32, return value = 144`
+3. `sum = 144, element = 8, return value = 152`
+
+`reduce()` 에서 패러미터로 전달 되는 고차함수내 의 패러미터는 리스트의 원소를 이터레이션 할 때마다 그 결과값이 다음 함수의 패리미터로 전달됨을 알 수 있다. 최초 실행시 0번째와 1번째 인덱스의 값이 고차함수에 전달됨도 확인 할 수 있다. 
+
+`fold()` 는 `reduce()` 함수와 하는 역활은 동일하지만 처음에 주어지는 초기값을 설정 해야 한다. reduce() 함수의 경우 0번째 인덱스를 초기화 값으로 잡고 이터레이셔닝 하였지만 fold() 는 다르게 진행 된다. 위와 같은 코드지만 아래 예제를 보면 알 수 있다. 
+
+```kotlin
+val list = listOf(12, 3, 97, 32, 8)
+println(list.fold(0) { sum, element -> sum + element })
+```
+
+위 실행코드는 아까 reduce() 와 동일한 결과를 얻게되지만 내부의 흐름은 조금 다르다. `fold()` 함수를 실행할때 패러미터로 0 이라는 값이 주어졌음을 확인 하자. 
+
+0. `sum = 0, element = 12, return value = 12`
+1. `sum = 12, element = 3, return value = 15`
+2. `sum = 15, element = 97, return value = 112`
+3. `sum = 112, element = 32, return value = 144`
+4. `sum = 144, element = 8, return value = 152`
+
+만약 초기값을 다르게 주면 어떻게 될까? 그 흐름과 결과는 아래와 같다. 
+
+```kotlin
+val list = listOf(12, 3, 97, 32, 8)
+println(list.fold(46) { sum, element -> sum + element })
+```
+0. `sum = 45, element = 12, return value = 58`
+1. `sum = 58, element = 3, return value = 61`
+2. `sum = 61, element = 97, return value = 158`
+3. `sum = 158, element = 32, return value = 144`
+4. `sum = 144, element = 8, return value = 152`
+
+위 `reduce()` 와 `fold()` 의 경우 첫번째 인덱스부터 이터레이션이 시작된다. 만약 리스트의 size 즉, 마지막 원소부터 0번째 인덱스 까지 역순으로 이터레이션하면서 처리 하고 싶다면 `reduceRight()` 와 `foldRight()` 를 사용 하면 된다. 
+이터레이셔닝 하면서 index 를 얻고 싶다면 `reduceIndexed(), reduceRightIndexed()` 와 `foldIndexed(), foldRightIndexed()` 를 사용 하면 된다. 
+
