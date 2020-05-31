@@ -333,4 +333,37 @@ println("lee" in list)          // true
 println(list.containsAll(listOf("park", "lee")))    // true
 ```
 
+### 10. Ordering 
 
+코틀린의 Collection 의 원소들을 정렬 하는 방법은 여러가지가 있다. 예를 들어 Java 에서도 사용 되었었던 `Comparable` 인터페이스의 구현을 통해서도 동일하고 사용 할 수 있다. Comparable 인터페이스의 `compareTo()` 메소드의 구현 및 반환 값은 Java 와 동일 하다. 
+
+#### 10.1 Natural order and Custom order
+
+`sorted()` 함수와 `soretedDescending()` 을 통해 자연 정렬을 하여 원소들을 정렬 한다. 그리고 `sortedBy()` 와 `sortedWith()` 를 통해서 정렬 조건을 적용 할 수도 있다. 
+
+```kotlin
+val list = listOf("kim", "park", "kang", "lee", "paik", "jo")
+println(list.sorted())    // [jo, kang, kim, lee, paik, park]
+println(list.sortedBy { it.length })  // [jo, kim, lee, park, kang, paik]
+println(list.sortedWith(compareBy { it.length } ))  // [jo, kim, lee, park, kang, paik]
+```
+
+#### 10.2 Reverse Order
+
+`reversed()`, `asReversed()` 함수를 이용해 원소들을 역순으로 재 정렬 시켜준다. 
+
+```kotlin
+val list = (1 .. 10).toList()
+println(list.reversed())
+println(list.asReversed())    // -> [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+```
+
+#### 10.3 Random order 
+
+`shuffled()` 함수를 이용해 원소를 섞어준다. 
+
+```kotlin
+val list = (1 .. 10).toList()
+println(list.shuffled())    // [7, 1, 3, 8, 6, 9, 2, 4, 10, 5]
+println(list.shuffled())    // [9, 10, 8, 7, 4, 1, 5, 3, 2, 6]
+```
