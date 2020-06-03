@@ -13,5 +13,17 @@ Android 개발 환경에서 DI(Dependency Injection)를 위해 사용 되는 도
 
 [Android developer 의 Dependency Injection 문서](https://developer.android.com/training/dependency-injection#choosing-right-di-tool) 에서는 프로젝트의 크기(추가적으로 앱 내부에서 보여지게 될 화면의 갯수) 에 따라 크면 클 수록 Dagger 를, 그에 반해 작을수록 Service locator pattern 의 사용을 추천 하였다. 몰론 선택은 개발자의 자유 라고 생각 하긴 한다. 
 
-Dagger 와 Service locator pattern 을 기반으로 한 Koin은 장단점이 너무나도 명확하다. 작성자는 Dagger2 를 처음 사용 한 계기가 2016년 말에 처음 적용 하고 계속 사용해 왔었다. 하지만 kotlin 이 등장하고 난 뒤 기존 Java와 Annotation processor 기반의 Dagger 에서 발생 하는 보일러 플레이트 코드와 수많은 모듈 component, ViewModel 그리고 Redux 구조에서 발생 할 수 있는 Reducer, middleware 등 이 도메인의 갯수만큼 증가 함으로 인한 문제는 계속 눈엣가시였었다. 
+이 글에서는 Dagger 와 Koin 에서 주입되는 과정 및 예제 코드를 참고를 정리 하려 한다. 정리 대상의 포인트는 아래와 같다. 
+
+- Module - Components
+- Singleton, Factory, Qualifier
+- Android support
+  - Viewmodel provider
+  - State viewmodel
+
+
+### 1. Dagger 
+
+### 2. Koin
+
 
