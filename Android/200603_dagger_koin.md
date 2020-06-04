@@ -15,12 +15,16 @@ Android 개발 환경에서 DI(Dependency Injection)를 위해 사용 되는 도
 
 이 글에서는 Dagger 와 Koin 에서 주입되는 과정 및 예제 코드를 참고를 정리 하려 한다. 정리 대상의 포인트는 아래와 같다. 
 
-- Module - Components
+- Module, Components
+  - 어플리케이션 모듈과 각 하위단 모듈들의 선언및 injection 방법
+- Scope
+  - Activity, Fragment 외 특정 스코프 정의 
 - Singleton, Factory, Qualifier
+  - 모듈 인스턴스의 스코프 범위 지정 
 - Android support
-  - Viewmodel provider
-  - State viewmodel
-
+  - 안드로이드에 대한 지원 (ViewModel, State ViewModel)
+- 그 외
+  - 코드의 가독성, 유연성, 복잡성, 디버깅 등 
 
 ### 1. Dagger 
 
