@@ -1,4 +1,4 @@
-## Dagger vs Koin 
+# Dagger vs Koin 
 
 Android 개발 환경에서 DI(Dependency Injection)를 위해 사용 되는 도구로 [Dagger](https://dagger.dev/dev-guide/android.html) 와 [Koin](https://insert-koin.io/) 이 있다. 이 도구는 지향하는 목표는 비슷하지만 사용하는 방법과 내부 흐름은 전혀 다르다. 
 
@@ -24,15 +24,15 @@ Android 개발 환경에서 DI(Dependency Injection)를 위해 사용 되는 도
 - 그 외
   - 코드의 가독성, 유연성, 복잡성, 디버깅 등 
 
-### 1. Dagger 
+## 1. Dagger 
 
 Dagger는 Annotation processor를 통해 컴파일 시점에 annotation을 추가한 대상 (추상)클래스, 인터페이스, 클래스 멤버 프로퍼티, 클래스 생성자 등 대입되는 코드를 생성 해준다. 그래서 annotation 을 작성 한 뒤 최ㅏ소한 한번 컴파일을 거쳐 정상적으로 코드들이 생성 되고 난 뒤에 문제없이 사용 할 수 있다. 이때 생성되는 코드들은 순수한 Java 이며 라이브러리도 Java 기반으로 작성 되어 있다. 
 
-### 2. Koin
+## 2. Koin
 
 Koin 은 Service locator pattern을 기반으로 만들어진 도구 이다. 이는 Dependency injection tool 으로 사용 할 수 있다. 이 패턴은 장,단점을 명확하게 갖고 있다. Koin 은 순수 코틀린으로만 작성 되어 있고 다른 라이브러리나 APT 등에 대한 디펜던시가 없어 가볍게 사용하기에 좋다. 
 
-#### 2.1 Service Locator Pattern
+### 2.1 Service Locator Pattern
 
 Service locator pettern 은 서비스를 구현한 클래스의 인스턴스는 숨겨진채 로 외부 어디에서든 서비스에 접근하여 해당 서비스를 사용 하는 패턴이다. 개발자는 이 서비스의 구현은 몰라도 되며 제공될 기능들을 서비스에서 제공 하는 인터페이스들을 구현해 주기만 하면 된다. 
 
@@ -40,7 +40,9 @@ DI 로 사용되는 Service locator pattern 은 서비스 그 자체인 코어 �
 
 이 패턴은 런타임 시점에 필요한 상황에 따라 인스턴스를 생성 하거나 가져오게 한다. 이 때 인스턴스가 존재 하지 않으면(null) 예외를 발생 하게 되며 이는 런타임 시점에 에러핸들링이 필수 이며 DI 로 사용 하고 있을 떄 에는 DI 모듈들의 디자인이 중요해 진다. 필요 시점에 명확하게 해당 인스턴스를 제공 해야 하기 때문이다. 
 
-#### 2.2 Modules 
+### 2.2 Modules definitions
+
+Koin 에서 사용 되는 각 모듈들의 정의 방법에 대해서 정리 하였다. 모듈을 사용하기 전에 앞서 
 
 ```kotlin
 class ComponentA()
@@ -62,7 +64,7 @@ class MyApplication: Application() {
 
 위 코드는 Koin 을 안드로이드 앱 에서 사용 하기 위해서 작성한 코드 들 중 일부이다. `Application` 을 상속한 클래스에서 `startKoin` 의 함수 구현을 통해 모듈들을 등록했음을 확인 할 수 있다. Koin 을 안드로이드에서 시작할때에는 위와 같은 기본적인 코드를 바탕으로 작업 하게 된다. 
 
-##### 2.2.1 `single`
+#### 2.2.1 `single`
 
 ```kotlin
 class SomeService() 
@@ -74,7 +76,7 @@ val modules = module {
 
 `single` 함수를 통해 제공될 모듈은 싱글턴 패턴을 사용 하여 runtime 중 단 한개의 인스턴스를 보장 한다. `single` 함수로 제공 될 모듈의 인스턴스를 요청 시 이미 만들어진 인스턴스를 제공 하며 런타임 중 에는 다시 생성하지 않는다. (안드로이드의 경우 완전히 재시작 되지 않는 이상) 
 
-##### 2.3.2 `factory` 
+#### 2.3.2 `factory` 
 
 ```kotlin
 class SomeModel() 
