@@ -5,10 +5,10 @@
 ## 1.2 자주 사용되는 코드 
 ### 1.2.1 character to integer
 
- ```java
+```java
 char c ='1';
 int number = Character.getNumericValue(c);
- ```
+```
    
 ### 1.2.2 숫자 역전 시키기 
 ```java
@@ -167,7 +167,7 @@ public void swap(int x, int y) {
   c. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.  
   d. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.  
 
-  ```java
+```java
 public class Mergesort {
         private int[] numbers;
         private int[] helper;
@@ -224,7 +224,7 @@ public class Mergesort {
                 }
         }
 }
-  ```
+```
 
 ## 3. 탐색 
 ### 3.1 BFS (너비 우선 탐색) 
@@ -236,7 +236,7 @@ public class Mergesort {
  - 해가 존재하지 않는다면 유한 그래프(finite graph)의 경우에는 모든 그래프를 탐색한 후에 실패로 끝난다.
  - 무한 그래프(infinite graph)의 경우에는 결코 해를 찾지도 못하고, 끝내지도 못한다.
 
- ```java
+```java
 public static void bfs(int[][] mat, int startVertex) {
   Queue<Integer> queue = new LinkedList<>();
   boolean[] visited = new boolean[mat[startVertex].length];
@@ -257,7 +257,7 @@ public static void bfs(int[][] mat, int startVertex) {
     }
   }
 }
- ```
+```
 
 ### 3.2 DFS (깊이 우선 탐색)
 - 맹목적 탐색방법의 하나로 탐색트리의 최근에 첨가된 노드를 선택하고, 이 노드에 적용 가능한 동작자 중 하나를 적용하여 트리에 다음 수준(level)의 한 개의 자식노드를 첨가하며, 첨가된 자식 노드가 목표노드일 때까지 앞의 자식 노드의 첨가 과정을 반복해 가는 방식이다.
@@ -267,7 +267,8 @@ public static void bfs(int[][] mat, int startVertex) {
 - 단점
  - 해가 없는 경로에 깊이 빠질 가능성이 있다. 따라서 실제의 경우 미리 지정한 임의의 깊이까지만 탐색하고 목표노드를 발견하지 못하면 다음의 경로를 따라 탐색하는 방법이 유용할 수 있다.
  - 얻어진 해가 최단 경로가 된다는 보장이 없다. 이는 목표에 이르는 경로가 다수인 문제에 대해 깊이우선 탐색은 해에 다다르면 탐색을 끝내버리므로, 이때 얻어진 해는 최적이 아닐 수 있다는 의미이다.
- ```java
+
+```java
  int map[][], visit[];
 
 void dfs(int vertexSize, int v) { 
@@ -279,5 +280,5 @@ void dfs(int vertexSize, int v) {
     }
   }
 }
- ```
+```
  
