@@ -98,6 +98,7 @@
 
 ---
 ### Algorithm
+- [200719 / 프로그래머스 / 문제 풀이 기록 2](https://github.com/ksu3101/TIL/blob/master/Algorithm/200719.md)
 - [200716 / 프로그래머스 / 문제 풀이 기록 1](https://github.com/ksu3101/TIL/blob/master/Algorithm/200716.md)
 - [161028 / 백준 온라인 저지 / 문제 풀이 기록 8](https://github.com/ksu3101/TIL/blob/master/Algorithm/161028.md)
   - 161029 / 문제 풀이 기록 추가
