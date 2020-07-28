@@ -41,7 +41,7 @@ class PokeMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 딱히 별다른 문제는 없어보인다. 좌표를 네비게이션을 통해 Safe args로 받고 `OnMapReadyCallback`의 `onMapReady()`함수 에서 마커들을 설정하고 카메라에 대한 설정을 추가 하였다. 
 
-하지만 위를 실행 하였을 때 문제가 있을떄도 있고 없을때도 있었지만 발생한 문제는 아래와 같은 로그를 발생시켰다. 
+하지만 해당 구글맵이 포함된 액티비티 진입시 앱이 강제종료되며 아래와 같은 로그를 발생시켰다. 
 
 > com.google.maps.api.android.lib6.common.apiexception.c: Error using newLatLngBounds(LatLngBounds, int): Map size can't be 0. Most likely, layout has not yet occured for the map view.  Either wait until layout has occurred or use newLatLngBounds(LatLngBounds, int, int, int) which allows you to specify the map's dimensions.
 
