@@ -9,6 +9,8 @@
 ## 분류
  
 ### Android
+- [200730 / Koin - Activity Scope](https://github.com/ksu3101/TIL/blob/master/Android/200730_android.md)
+  - Koin이라는 DI tool을 사용해 Activity scope를 적용 하면서 Custom scope적용 방법에 대해서 정리 
 - [200729 / TextWatcher with ReactiveX](https://github.com/ksu3101/TIL/blob/master/Android/200729_android.md)
 - [200728 / 구글맵 이슈 처리](https://github.com/ksu3101/TIL/blob/master/Android/200728_android.md)
   - `Error using newLatLngBounds(LatLngBounds, int): Map size can't be 0.` 이슈
