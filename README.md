@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [200810 / AndroidX - CoodinatorLayout](https://github.com/ksu3101/TIL/blob/master/Android/200810_android.md)
 - [200730 / Koin - Activity Scope](https://github.com/ksu3101/TIL/blob/master/Android/200730_android.md)
   - Koin이라는 DI tool을 사용해 Activity scope를 적용 하면서 Custom scope적용 방법에 대해서 정리 
 - [200729 / TextWatcher with ReactiveX](https://github.com/ksu3101/TIL/blob/master/Android/200729_android.md)
