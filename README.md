@@ -9,7 +9,9 @@
 ## 분류
  
 ### Android
+- [200812 / Glide 2 - Options](https://github.com/ksu3101/TIL/blob/master/Android/200812_android.md)
 - [200811 / Glide 1 - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200811_android.md)
+  - Glide v4의 문서를 바탕으로 번역, 정리 하고 kotlin코드와 코드 직관성 및 개발편의를 위한 확장함수들을 추가
 - [200810 / AndroidX - CoodinatorLayout](https://github.com/ksu3101/TIL/blob/master/Android/200810_android.md)
 - [200730 / Koin - Activity Scope](https://github.com/ksu3101/TIL/blob/master/Android/200730_android.md)
   - Koin이라는 DI tool을 사용해 Activity scope를 적용 하면서 Custom scope적용 방법에 대해서 정리 
