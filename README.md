@@ -108,6 +108,8 @@
 
 ---
 ### Algorithm
+- [200813 / Matrix spiral traversal](https://github.com/ksu3101/TIL/blob/master/Algorithm/200813.md)
+  - n x n 2차원 배열에서 원소들을 시계방향, 역 시계방향으로 순회하는 방법에 대해 정리
 - [200808 / 프로그래머스 / 문제 풀이 기록 4](https://github.com/ksu3101/TIL/blob/master/Algorithm/200808.md)
 - [200807 / 프로그래머스 / 문제 풀이 기록 3](https://github.com/ksu3101/TIL/blob/master/Algorithm/200807.md)
 - [200806 / 2개의 Stack으로 Queue구현 예제](https://github.com/ksu3101/TIL/blob/master/Algorithm/200806.md)
