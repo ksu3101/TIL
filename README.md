@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [200814 / Glide 3 - Targets](https://github.com/ksu3101/TIL/blob/master/Android/200814_android.md)
 - [200813 / Glide 3 - Transformations](https://github.com/ksu3101/TIL/blob/master/Android/200813_android.md)
 - [200812 / Glide 2 - Options](https://github.com/ksu3101/TIL/blob/master/Android/200812_android.md)
 - [200811 / Glide 1 - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200811_android.md)
