@@ -9,7 +9,7 @@
 ## 분류
  
 ### Android
-- [200814 / Glide 5 - Transitions](https://github.com/ksu3101/TIL/blob/master/Android/200815_android.md)
+- [200815 / Glide 5 - Transitions](https://github.com/ksu3101/TIL/blob/master/Android/200815_android.md)
 - [200814 / Glide 4 - Targets](https://github.com/ksu3101/TIL/blob/master/Android/200814_android.md)
 - [200813 / Glide 3 - Transformations](https://github.com/ksu3101/TIL/blob/master/Android/200813_android.md)
 - [200812 / Glide 2 - Options](https://github.com/ksu3101/TIL/blob/master/Android/200812_android.md)
