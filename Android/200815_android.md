@@ -1,4 +1,4 @@
-## Glide 4 - Transitions
+## Glide 5 - Transitions
 
 Glide에 대한 숙련이 필요하다고 느낀 요즘, [Glide v4 Documentation](https://bumptech.github.io/glide/)를 참고 하여 내용을 번역하면서 필요한 내용들 위주로 정리 하였다.
 
