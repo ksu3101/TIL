@@ -277,26 +277,4 @@ class MyAppGlideModule: AppGlideModule() {
 }
 ```
 
-### 3. 컴포넌트의 등록 
-
-Application과 라이브러리 모두 Glide의 기능을 확장하는 여러 컴포넌트들을 등록할 수 있다. 사용 가능한 컴포넌트들은 아래와 같다. 
-
-1. `ModelLoader`는 Url들, Uri들 임의의 POJO들 과 같은 사용자 커스텀 모델들 및 `InputStream`이나 `FileDescriptor`등 데이터를 로드 한다. 
-2. `ResourceDecoder`는 새로운 Drawable이나 Bitmap과 같은 리소스들 혹은 `InputStream`이나 `FileDescriptor`등을 디코딩 한다. 
-3. `Encoder`는 `InputStream`이나 `FileDescriptor`등 데이터를 Glide의 디스크 캐시에 저장한다. 
-4. `ResourceTranscoder`는 `BitmapResource`와 같은 리소스를 다른 타입의 리소스로 변환한다. 
-5. `ResourceEndocer`는 `BitmapResource`나 `DrawableResource`와 같은 리소스를 Glide의 디스크 캐시에 저장한다. 
-
-컴포넌트는 `AppGlideModules`및 `LibraryGlideModules`의 `registerComponents()`메소드에서 `Registry`클래스를 이용해 등록하면 된다. 
-
-```kotlin
-@GlideModule
-class MyAppGlideModule: AppGlideModule() {
-    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
-        registry.append(...)
-    }
-}
-```
-
-`GlideModule`에는 여러개의 컴포넌트들을 등록 할 수 있다. 
-
+- [링크](https://github.com/ksu3101/TIL/blob/master/Android/200817_android.md)를 누르면 계속 이어서 볼 수 있습니다
