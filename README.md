@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [200819 / Glide 8 - Caching](https://github.com/ksu3101/TIL/blob/master/Android/200819_android.md)
 - [200817 / Glide 7 - Configuration (2/2)](https://github.com/ksu3101/TIL/blob/master/Android/200817_android.md)
 - [200816 / Glide 6 - Configuration (1/2)](https://github.com/ksu3101/TIL/blob/master/Android/200816_android.md)
 - [200815 / Glide 5 - Transitions](https://github.com/ksu3101/TIL/blob/master/Android/200815_android.md)
