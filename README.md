@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [200826 / LeakCanary 1 - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200826_android.md)
 - [200823 / Glide 11 - Hardware Bitmaps ](https://github.com/ksu3101/TIL/blob/master/Android/200823_android.md)
 - [200821 / Glide 10 - Debugging](https://github.com/ksu3101/TIL/blob/master/Android/200821_android.md)
 - [200820 / Glide 9 - Resource Reuse](https://github.com/ksu3101/TIL/blob/master/Android/200820_android.md)
