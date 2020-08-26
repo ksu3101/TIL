@@ -9,7 +9,8 @@
 ## 분류
  
 ### Android
-- [200826 / LeakCanary 1 - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200826_android.md)
+- [200827 / LeakCanary 2 - Fixing a memory leak](https://github.com/ksu3101/TIL/blob/master/Android/200827_android.md)
+- [200826 / LeakCanary 1 - Basic, How LeakCanary works](https://github.com/ksu3101/TIL/blob/master/Android/200826_android.md)
   - [LeakCanary문서](https://square.github.io/leakcanary/)를 바탕으로 번역, 정리
 - [200823 / Glide 11 - Hardware Bitmaps ](https://github.com/ksu3101/TIL/blob/master/Android/200823_android.md)
 - [200821 / Glide 10 - Debugging](https://github.com/ksu3101/TIL/blob/master/Android/200821_android.md)

@@ -1,10 +1,11 @@
-## LeakCanary 1 - Basic 
+## LeakCanary 1 - Basic, How LeakCanary works
 
 이전 회사에서 [LeakCanary](https://github.com/square/leakcanary)을 사용해본 경험이 있었다. 당시에는 적용 대상 안드로이드 앱 에서 발생할 수 있는 메모리누수에 대해 감지하고 정보를 제공하는 정도록 알고 있었으며 그에 대해 깊이 공부하지는 않았었다. 
 
 그래서 이번 기회에 [LeakCanary의 github.io문서](https://square.github.io/leakcanary/)를 기반으로 간단하게 정리해보려 한다. 
 
-- 이번 문서인 `Basic`에서는 LeakCanary의 기본 정보와 메모리 누수에 대해, 그리고 기본적인 작동원리에 대해서 정리 하였다. 
+- `Basic`에서는 LeakCanary의 기본 정보와 메모리 누수에 대해, 그리고 기본적인 작동원리에 대해서 정리 하였다. 
+- `How LeakCanary works`에서는 LeakCanar에서 어떻게 동작하는지 정리 하였다. 
 
 ### 1. [LeakCanary Basic](https://square.github.io/leakcanary/)
 
