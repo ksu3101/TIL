@@ -119,4 +119,43 @@ private val binding: MainFragmentBinding by viewModel()
 
 게다가 내부에서 알아서 `onDestroyView()`콜백까지 구현 되어 뷰 바인딩 객체를 알아서 null처리 해주니 안심하고 뷰 바인딩 객체를 사용할 수 있다. 
 
-자세한 내용은 [Kirill Rozov의 블로그](https://proandroiddev.com/make-android-view-binding-great-with-kotlin-b71dd9c87719)을 참고 하면 될거 같다. 
+`viewModel()`확장 함수의 실제 구현과 위임 클래스의 구현은 아래와 같으며, 자세한 내용은 [Kirill Rozov의 블로그](https://proandroiddev.com/make-android-view-binding-great-with-kotlin-b71dd9c87719)을 참고 하면 될거 같다. 
+
+```kotlin 
+class FragmentViewBindingProperty<T : ViewBinding>(
+    private val viewBinder: ViewBinder<T>
+) : ReadOnlyProperty<Fragment, T> {
+
+    private var viewBinding: T? = null
+    private val lifecycleObserver = BindingLifecycleObserver()
+
+    @MainThread
+    override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
+        checkIsMainThread()
+        this.viewBinding?.let { return it }
+
+        val view = thisRef.requireView()
+        thisRef.viewLifecycleOwner.lifecycle.addObserver(lifecycleObserver)
+        return viewBinder.bind(view).also { vb -> this.viewBinding = vb }
+    }
+
+    private inner class BindingLifecycleObserver : DefaultLifecycleObserver {
+
+        private val mainHandler = Handler(Looper.getMainLooper())
+
+        @MainThread
+        override fun onDestroy(owner: LifecycleOwner) {
+            owner.lifecycle.removeObserver(this)
+            viewBinding = null
+        }
+    }
+}
+
+/**
+ * Create new [ViewBinding] associated with the [Fragment][this]
+ */
+@Suppress("unused")
+inline fun <reified T : ViewBinding> Fragment.viewBinding(): ReadOnlyProperty<Fragment, T> {
+    return FragmentViewBindingProperty(DefaultViewBinder(T::class.java))
+}
+```
