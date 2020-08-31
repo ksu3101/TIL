@@ -62,10 +62,20 @@ class MyActivity: AppCompatActivity() {
 
 #### 4. `@ViewModelInject`
 
-Hilt에게 안드로이드 아키텍쳐 컴포넌트 요소중 하나인 `ViewModel`의 생성자 주입임을 알려준다. 
+`@ViewModelInject`어노테이션을 사용하려면 gradle에 아래를 추가해야 한다. 추가하지 않으면 이 어노테이션을 사용할 수 없으며 ViewModel의 인스턴스를 생성하거나 가져오기 위해 Factory를 만들고 Hilt에 알려야 한다.  
 
-- `ViewModel`의 경우 일반적으로 Factory패턴을 이용하여 인스턴스를 생성하거나 유지중인 인스턴스를 얻는다. 이런 Factory패턴을 직접 만들 필요 없이 dagger에서 제공 하는데 대상 ViewModel의 생성자에 `@ViewModelInject`어노테이션을 작성하면 된다. 
-- `ViewModel`의 상태 및 데이터를 유지시키려 하는 경우 `SavedStateHandle`클래스를 사용하는데 ViewModel의 Factory를 사용한다면 `@Assisted`어노테이션을 `SavedStateHandle`에 추가 하여 주입 받을 수 있다. 
+```
+dependencies {
+  ...
+  implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01'
+  kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha01'
+}
+```
+
+`@ViewModelInject`은 Hilt에게 안드로이드 아키텍쳐 컴포넌트 요소중 하나인 `ViewModel`의 생성자 주입임을 알려준다. 
+
+- `ViewModel`의 경우 일반적으로 Factory패턴을 이용하여 인스턴스를 생성하거나 유지중인 인스턴스를 얻는다. 이런 Factory패턴을 직접 구현할 필요 없이 대상 ViewModel의 생성자에 `@ViewModelInject`어노테이션을 작성하면 Hilt에서 ViewModel factory등을 생성해 주기때문에 불필요한 코드가 줄어든다. 
+- `ViewModel`의 상태 및 데이터를 유지시키려는 경우 `SavedStateHandle`을 사용해야 하는데, ViewModel의 생성자에 주입받을 `SavedStateHandle`패러미터에 대해 `@Assisted`어노테이션을 추가 하여 주입 받을 수 있다. 
 
 ```kotlin
 class SomeViewModel @ViewModelInject constructor(
