@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [200904 / Lottie for Android - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200905_android.md)
 - [200904 / Lottie for Android - Lottie란 무엇인가](https://github.com/ksu3101/TIL/blob/master/Android/200904_android.md)
 - [200902 / Android Clean architecture](https://github.com/ksu3101/TIL/blob/master/Android/200902_android.md)
 - [200831 / Dagger hilt cheat sheet 번역 및 추가 정리](https://github.com/ksu3101/TIL/blob/master/Android/200831_android.md)

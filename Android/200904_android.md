@@ -3,11 +3,11 @@
 Airbnb의 애니메이션 지운 라이브러리인 [Lottie](http://airbnb.io/lottie/#/README)에서 안드로이드 관련 문서를 번역하고 정리해보려 한다. 
 
 1. Lottie for Android - Lottie란 무엇인가
-2. Lottie for Android - Basic (WIP)
+2. [Lottie for Android - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200905_android.md)
 
 ### 1. Lottie 
 
-Lottie는 [Bodymovin](https://github.com/airbnb/lottie-web)과 렌더러를 사용하여 json으로 내보내진 Adobe After effects애니메이션을 파싱하여 Android, iOS, 웹 및 Windows용 애니메이션 지원 라이브러리 이다. 
+Lottie는 json으로 내보내진 Adobe After effects애니메이션을 파싱한뒤 [Bodymovin](https://github.com/airbnb/lottie-web)과 렌더러를 사용하여 Android, iOS, 웹 및 Windows용 애니메이션 라이브러리 이다. 
 
 Lottie를 사용 하면 디자이너는 개발자가 손으로 힘들게 아름다운 애니메이션을 다시 만들지 않고도 제공할 수 있다. Lottie에서 지원되는 애니메이션은 After Effects에서 생성되어 Bodymovin으로 내보내지고 추가 개발자들의 노력없이 기본적으로 렌더링 된다. 
 
