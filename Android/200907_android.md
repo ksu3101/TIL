@@ -5,7 +5,8 @@ Airbnb의 애니메이션 지운 라이브러리인 [Lottie](http://airbnb.io/lo
 1. [Lottie for Android - Lottie란 무엇인가](https://github.com/ksu3101/TIL/blob/master/Android/200904_android.md)
 2. [Lottie for Android - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200905_android.md)
 3. [Lottie for Android - Advanced 1](https://github.com/ksu3101/TIL/blob/master/Android/200906_android.md)
-4. Lottie for Android - Advanced 2
+4. [Lottie for Android - Advanced 2](https://github.com/ksu3101/TIL/blob/master/Android/200907_android.md)
+5. [Lottie for Android - Advanced 3](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
 
 ### 1. 동적 프로퍼티
 
@@ -137,3 +138,59 @@ animationView.addValueCallback(
 
 - 모든 변환 가능한 객체
 - `TIME_REMAP` (병합 레이어만 가능)
+
+#### 1.9 주목할만한 프로퍼티들
+
+##### 1.9.1 시간의 재 매핑
+
+컴포지션 및 사전 구성(컴포지션 레이어)에는 시간을 다시 매핑할 수 있는 프로퍼티가 있다. 시간 재 매핑에 대한 값의 콟백을 설정하면 특정 레이어의 진행률을 제어할 수 있다. 그렇게 하려면 값의 콜백에서 원하는 시간 값을 초 단위로 반환하면 된다. 
+
+##### 1.9.2 색상 필터
+
+After Effects속성에 1:1매핑을 하지 않는 유일한 애니메이션 가능 프로퍼티는 채우기(Fill)내용에 설정할 수 있는 색상 필터 프로퍼티이다. 이는 레이어에 블렌드 모드(blend mod)를 설정하는 데 사용할 수 있다. 겹치는 내용이 아닌 해당 채우기의 색상에만 적용 된다. 
+
+##### 1.10 `addColorFilter()`API에서의 마이그레이션
+
+이전 API인 `addColorFilter()`를 이용하여 색상을 동적으로 변경한 경우 새로운 API로 마이그레이션 해야 한다. 이렇게 하려면 아래처럼 코드를 변경 하면 된다. 
+
+```java
+// 이전 코드 1
+animationView.addColorFilter(colorFilter);
+
+// 새로운 코드 1 
+animationView.addValueCallback(
+  new KeyPath("**"), 
+  LottieProperty.COLOR_FILTER, 
+  new LottieValueCallback<ColorFilter>(colorFilter)
+);
+
+// 이전 코드 2
+animationView.addColorFilterToLayer("hello_layer", colorFilter);
+
+// 새로운 코드 2
+animationView.addValueCallback(
+  new KeyPath("hello_layer", "**"), 
+  LottieProperty.COLOR_FILTER, 
+  new LottieValueCallback<ColorFilter>(colorFilter)
+);
+
+// 이전 코드 3
+animationView.addColorFilterToContent("hello_layer", "hello", colorFilter);
+
+// 새로운 코드 3
+animationView.addValueCallback(
+  new KeyPath("hello_layer", "**", "hello"), 
+  LottieProperty.COLOR_FILTER, 
+  new LottieValueCallback<ColorFilter>(colorFilter)
+);
+
+// 이전 코드 4
+animationView.clearColorFilters();
+
+// 새로운 코드 4
+animationView.addValueCallback(
+  new KeyPath("**"), 
+  LottieProperty.COLOR_FILTER, 
+  null
+);
+```
