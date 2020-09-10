@@ -9,10 +9,16 @@
 ## 분류
  
 ### Android
+- [200911 / Lottie for Android - Advanced 4](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
+  - 성능과 관련된 정보 
 - [200910 / Lottie for Android - Advanced 3](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
+  - image asset, Lottie가 APK에 대한 영향
 - [200907 / Lottie for Android - Advanced 2](https://github.com/ksu3101/TIL/blob/master/Android/200907_android.md)
+  - 런타임 중 Lottie에 대한 설정
 - [200906 / Lottie for Android - Advanced 1](https://github.com/ksu3101/TIL/blob/master/Android/200906_android.md)
+  - 애니메이션의 콜백 구현, 애니메이션의 반복 
 - [200905 / Lottie for Android - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200905_android.md)
+  - Lottie의존 추가, 기본적인 사용 법
 - [200904 / Lottie for Android - Lottie란 무엇인가](https://github.com/ksu3101/TIL/blob/master/Android/200904_android.md)
 - [200902 / Android Clean architecture](https://github.com/ksu3101/TIL/blob/master/Android/200902_android.md)
 - [200831 / Dagger hilt cheat sheet 번역 및 추가 정리](https://github.com/ksu3101/TIL/blob/master/Android/200831_android.md)
