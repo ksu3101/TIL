@@ -53,7 +53,7 @@ val lastMovieIdFlow: Flow<Int> = dataStore.data
 
 ### 4. 환경 설정 쓰기
 
-쓰기를 할때엔 suspend함수인 `edit()`를 사용해서 쓰기를 하면 된다. 역시 `IOException`이 발생할 수 있으므로 핸딜랑 하기 위한 코드가 있으면 좋다. 
+쓰기를 할때엔 suspend함수인 `edit()`를 사용해서 쓰기를 하면 된다. 역시 `IOException`이 발생할 수 있으므로 핸들링 하기 위한 코드가 있으면 좋다. 
 
 ```kotlin
 dataStore.edit { preferences ->
