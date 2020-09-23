@@ -136,6 +136,7 @@
 
 ---
 ### Algorithm
+- [200924 / 프로그래머스 / 문제 풀이 기록 11 - 제일 작은 수 제거하기, 핸드폰 번호 가리기](https://github.com/ksu3101/TIL/blob/master/Algorithm/200924.md)
 - [200921 / 프로그래머스 / 문제 풀이 기록 10 - 정수 내림차순으로 배치하기, 평균 구하기](https://github.com/ksu3101/TIL/blob/master/Algorithm/200921.md)
 - [200918 / 프로그래머스 / 문제 풀이 기록 9 - 자릿수 더하기, 문자열을 정수로 바꾸기](https://github.com/ksu3101/TIL/blob/master/Algorithm/200918.md)
 - [200913 / 프로그래머스 / 문제 풀이 기록 8 - 문자열 다루기 기본, 자연수 뒤집어 배열로 만들기](https://github.com/ksu3101/TIL/blob/master/Algorithm/200916.md)
