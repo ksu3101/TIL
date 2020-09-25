@@ -174,6 +174,7 @@
 
 ---
 ### Etc
+- [200925 / (번역) 테크니컬 리더쉽을 위한 7단계 ](https://github.com/ksu3101/TIL/blob/master/ETC/200925.md)
 - [200923 / Android Studio(intellij)에서 특정 폰트가 보이지 않을 경우](https://github.com/ksu3101/TIL/blob/master/ETC/200923.md)
 - [200527 / AMD Ryzen CPU, Windows 10 환경에서 HAXM AVD 사용 하기 - 삽질 ](https://github.com/ksu3101/TIL/blob/master/Android/200527_amdryzen_avd.md)
 - [200305 / Redux 기초 조금 정리](https://github.com/ksu3101/TIL/blob/master/ETC/200305.md)
