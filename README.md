@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [201006 / 안드로이드에서 사용자 모듈 추가 하기](https://github.com/ksu3101/TIL/blob/master/Android/201006_android.md)
 - [200915 / `SharedPreference`에서 `DataStore` Preference으로 마이그래이션 ](https://github.com/ksu3101/TIL/blob/master/Android/200915_android.md)
 - [200914 / Moshi - 티끌같지만 도움이 될 수도 있는 팁](https://github.com/ksu3101/TIL/blob/master/Android/200914_android.md)
 - [200911 / Lottie for Android - Advanced 4](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
