@@ -32,7 +32,7 @@ Google드라이브 팀은 드라이브 앱을 기존 자바에서 코틀린으�
 
 일부 개발자는 성능상의 이유로 setter와 getter를 사용하는 대신 public으로 공개된 필드를 사용 한다. 일반적인 코드 패턴은 아래와 같으며 `getFoo()`를 getter로 사용 한다. 
 
-```kotlin
+```java
 public class ToyClass {
    public int foo;
    public int getFoo() { return foo; }
@@ -67,6 +67,36 @@ ToyClass tc = new ToyClass();
 코틀린을 사용하지 않는 경우 클래스의 필드를 공개해야 하는 타당한 이유가 없다면 캡슐화를 위반해서는 안된다. 클래스의 필드는 private로 데이터를 숨겨 캡슐화를 하는게 유용하며 성능상의 이유로 노출 할 필요는 없다. 그러므로 getter와 setter를 통해 클래스의 필드는 숨기는 게 맞다. 
 
 ### 팩트 체크 3: 람다(Lambda)는 내부 클래스(Inner class)보다 느리다? 
+
+스트리밍(streaming) API가 도입된 후 람다(Lambda)는 매우 간결한 코드를 작성할 수 있게 도와주는 편리한 언어 구조 이다. 객체로 이루어진 배열에서 내부의 일부 원소 값을 합산하는 예제 코드를 살펴 보면 첫째로, map-reduce 작업과 함께 스트리밍 API를 사용함을 알 수 있다. 
+
+```java
+ArrayList<ToyClass> array = build();
+int sum = array.stream().map(tc -> tc.foo).reduce(0, (a, b) -> a + b);
+```
+
+여기에서 첫번째 람다는 객체를 정수로 반환 한하고 두번째 람다는 생성된 두 값을 합산 하여 반환한다. 이는 람다 식에 대해 동등한 클래스를 정의하는 것 과 비교할 수 있다. 
+
+```java
+ToyClassToInteger toyClassToInteger = new ToyClassToInteger();
+SumOp sumOp = new SumOp();
+int sum = array.stream().map(toyClassToInteger).reduce(0, sumOp);
+```
+
+다음 예제로 두개의 중첩 클래스(nested class)가 있다. 하나는 객체를 정수로 변환하는 `toyClassToInteger`이고, 두번째 클래스는 합 연산을 하는 `SumOp`이라는 클래스 이다. 첫번째 예제 람다는 두번째 람다보다 훨씬 더 깔끔 하고 보기에 좋다. 대부분의 개발자들은 첫번째 람다와 같은 방법을 사용 할 것 이라고 할 것 이다. 
+
+그러나 이 둘의 성능 차이는 어떨까? 다시 한번 Android 10이 설치된 Pixel 3에서 Jetpack Benchmark 라이브러리를 사용하여 성능 차이를 확인 하였지만 별다른 성능 차이가 없음을 확인 할 수 있었다. 
+
+![img2](./images/201007_3.png)
+
+- 이미지 그래프 설명
+  - `topLevelClass` : 최상위 클래스를 재정의 하여 테스트 
+  - `nestedClass` : 중첩된 클래스를 이용한 구현 
+  - `lambda` : 람다를 이용한 구현
+
+그래프를 통해서 최상위 클래스를 정의한 것을 볼 수 있으며 이런 구현 방법을 통해서도 성능차이가 없음을 확인 하였다. 
+
+이러한 성능차이가 없는 이유는 람다가 익명의 내부 클래스로 변환되기 때문이다. 따라서, 내부 클래스를 작성하는 대신 람다를 사용 하는게 좋다. 실제 람다는 내부 클래스로 변환되기 때문에 중첩된 내부 클래스와 성능이 거의 동일할수 밖에 없으며 또한 코드가 간결하고 직관성이 좋아 깔끔한 코드를 만들어 내기에 좋다. 
 
 ### 팩트 체크 4: 객체의 할당은 비효율적이니, 객체 풀(pool)을 사용 해야 한다? 
 
