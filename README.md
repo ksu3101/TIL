@@ -9,9 +9,11 @@
 ## 분류
  
 ### Android
+- [201104 / (번역) 넷플릭스의 안드로이드와 iOS앱 - 코틀린 멀티플랫폼으로 만들어지다 ](https://github.com/ksu3101/TIL/blob/master/Android/201104_android.md)
+  - Netflix Technology Blog의 [Netflix Android and iOS Studio Apps - now powered by Kotlin Multiplatform](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)을 번역
 - [201103 / DayNight - 다크모드를 간단하게 적용 하는 방법 ](https://github.com/ksu3101/TIL/blob/master/Android/201103_android.md)
 - [201014 / Firebase - Crashlytics 추가 하기](https://github.com/ksu3101/TIL/blob/master/Android/201014_android.md)
-- [201007 / 안드로이드 퍼포먼스에 대한 팩트 체크](https://github.com/ksu3101/TIL/blob/master/Android/201007_android.md)
+- [201007 / (번역) 안드로이드 퍼포먼스에 대한 팩트 체크](https://github.com/ksu3101/TIL/blob/master/Android/201007_android.md)
   - Calin Juravle의 [Busting Android performance myths](https://medium.com/androiddevelopers/busting-android-performance-myths-d85ae1d87f22)를 번역. 
 - [201006 / 안드로이드에서 사용자 모듈 추가 하기](https://github.com/ksu3101/TIL/blob/master/Android/201006_android.md)
 - [200915 / `SharedPreference`에서 `DataStore` Preference으로 마이그래이션 ](https://github.com/ksu3101/TIL/blob/master/Android/200915_android.md)
