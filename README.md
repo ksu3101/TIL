@@ -9,43 +9,44 @@
 ## 분류
  
 ### Android
+- [201105 / (번역) Kotlin을 이용한 앱 크래시 감소와 안정성 향상](https://github.com/ksu3101/TIL/blob/master/Android/201105_android.md)
 - [201104 / (번역) 넷플릭스의 안드로이드와 iOS앱 - 코틀린 멀티플랫폼으로 만들어지다 ](https://github.com/ksu3101/TIL/blob/master/Android/201104_android.md)
   - Netflix Technology Blog의 [Netflix Android and iOS Studio Apps - now powered by Kotlin Multiplatform](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)을 번역
-- [201103 / DayNight - 다크모드를 간단하게 적용 하는 방법 ](https://github.com/ksu3101/TIL/blob/master/Android/201103_android.md)
+- [201103 / (번역) DayNight - 다크모드를 간단하게 적용 하는 방법 ](https://github.com/ksu3101/TIL/blob/master/Android/201103_android.md)
 - [201014 / Firebase - Crashlytics 추가 하기](https://github.com/ksu3101/TIL/blob/master/Android/201014_android.md)
 - [201007 / (번역) 안드로이드 퍼포먼스에 대한 팩트 체크](https://github.com/ksu3101/TIL/blob/master/Android/201007_android.md)
   - Calin Juravle의 [Busting Android performance myths](https://medium.com/androiddevelopers/busting-android-performance-myths-d85ae1d87f22)를 번역. 
 - [201006 / 안드로이드에서 사용자 모듈 추가 하기](https://github.com/ksu3101/TIL/blob/master/Android/201006_android.md)
-- [200915 / `SharedPreference`에서 `DataStore` Preference으로 마이그래이션 ](https://github.com/ksu3101/TIL/blob/master/Android/200915_android.md)
+- [200915 / (번역) `SharedPreference`에서 `DataStore` Preference으로 마이그래이션 ](https://github.com/ksu3101/TIL/blob/master/Android/200915_android.md)
 - [200914 / Moshi - 티끌같지만 도움이 될 수도 있는 팁](https://github.com/ksu3101/TIL/blob/master/Android/200914_android.md)
-- [200911 / Lottie for Android - Advanced 4](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
+- [200911 / (번역) Lottie for Android - Advanced 4](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
   - 성능과 관련된 정보 
-- [200910 / Lottie for Android - Advanced 3](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
+- [200910 / (번역) Lottie for Android - Advanced 3](https://github.com/ksu3101/TIL/blob/master/Android/200910_android.md)
   - image asset, Lottie가 APK에 대한 영향
-- [200907 / Lottie for Android - Advanced 2](https://github.com/ksu3101/TIL/blob/master/Android/200907_android.md)
+- [200907 / (번역) Lottie for Android - Advanced 2](https://github.com/ksu3101/TIL/blob/master/Android/200907_android.md)
   - 런타임 중 Lottie에 대한 설정
-- [200906 / Lottie for Android - Advanced 1](https://github.com/ksu3101/TIL/blob/master/Android/200906_android.md)
+- [200906 / (번역) Lottie for Android - Advanced 1](https://github.com/ksu3101/TIL/blob/master/Android/200906_android.md)
   - 애니메이션의 콜백 구현, 애니메이션의 반복 
-- [200905 / Lottie for Android - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200905_android.md)
+- [200905 / (번역) Lottie for Android - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200905_android.md)
   - Lottie의존 추가, 기본적인 사용 법
-- [200904 / Lottie for Android - Lottie란 무엇인가](https://github.com/ksu3101/TIL/blob/master/Android/200904_android.md)
+- [200904 / (번역) Lottie for Android - Lottie란 무엇인가](https://github.com/ksu3101/TIL/blob/master/Android/200904_android.md)
 - [200902 / Android Clean architecture](https://github.com/ksu3101/TIL/blob/master/Android/200902_android.md)
-- [200831 / Dagger hilt cheat sheet 번역 및 추가 정리](https://github.com/ksu3101/TIL/blob/master/Android/200831_android.md)
+- [200831 / (번역) Dagger hilt cheat sheet](https://github.com/ksu3101/TIL/blob/master/Android/200831_android.md)
 - [200828 / View Binding와 메모리 누수](https://github.com/ksu3101/TIL/blob/master/Android/200828_android.md)
-- [200827 / LeakCanary 2 - Fixing a memory leak](https://github.com/ksu3101/TIL/blob/master/Android/200827_android.md)
-- [200826 / LeakCanary 1 - Basic, How LeakCanary works](https://github.com/ksu3101/TIL/blob/master/Android/200826_android.md)
+- [200827 / (번역) LeakCanary 2 - Fixing a memory leak](https://github.com/ksu3101/TIL/blob/master/Android/200827_android.md)
+- [200826 / (번역) LeakCanary 1 - Basic, How LeakCanary works](https://github.com/ksu3101/TIL/blob/master/Android/200826_android.md)
   - [LeakCanary문서](https://square.github.io/leakcanary/)를 바탕으로 번역, 정리
-- [200823 / Glide 11 - Hardware Bitmaps ](https://github.com/ksu3101/TIL/blob/master/Android/200823_android.md)
-- [200821 / Glide 10 - Debugging](https://github.com/ksu3101/TIL/blob/master/Android/200821_android.md)
-- [200820 / Glide 9 - Resource Reuse](https://github.com/ksu3101/TIL/blob/master/Android/200820_android.md)
-- [200819 / Glide 8 - Caching](https://github.com/ksu3101/TIL/blob/master/Android/200819_android.md)
-- [200817 / Glide 7 - Configuration (2/2)](https://github.com/ksu3101/TIL/blob/master/Android/200817_android.md)
-- [200816 / Glide 6 - Configuration (1/2)](https://github.com/ksu3101/TIL/blob/master/Android/200816_android.md)
-- [200815 / Glide 5 - Transitions](https://github.com/ksu3101/TIL/blob/master/Android/200815_android.md)
-- [200814 / Glide 4 - Targets](https://github.com/ksu3101/TIL/blob/master/Android/200814_android.md)
-- [200813 / Glide 3 - Transformations](https://github.com/ksu3101/TIL/blob/master/Android/200813_android.md)
-- [200812 / Glide 2 - Options](https://github.com/ksu3101/TIL/blob/master/Android/200812_android.md)
-- [200811 / Glide 1 - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200811_android.md)
+- [200823 / (번역) Glide 11 - Hardware Bitmaps ](https://github.com/ksu3101/TIL/blob/master/Android/200823_android.md)
+- [200821 / (번역) Glide 10 - Debugging](https://github.com/ksu3101/TIL/blob/master/Android/200821_android.md)
+- [200820 / (번역) Glide 9 - Resource Reuse](https://github.com/ksu3101/TIL/blob/master/Android/200820_android.md)
+- [200819 / (번역) Glide 8 - Caching](https://github.com/ksu3101/TIL/blob/master/Android/200819_android.md)
+- [200817 / (번역) Glide 7 - Configuration (2/2)](https://github.com/ksu3101/TIL/blob/master/Android/200817_android.md)
+- [200816 / (번역) Glide 6 - Configuration (1/2)](https://github.com/ksu3101/TIL/blob/master/Android/200816_android.md)
+- [200815 / (번역) Glide 5 - Transitions](https://github.com/ksu3101/TIL/blob/master/Android/200815_android.md)
+- [200814 / (번역) Glide 4 - Targets](https://github.com/ksu3101/TIL/blob/master/Android/200814_android.md)
+- [200813 / (번역) Glide 3 - Transformations](https://github.com/ksu3101/TIL/blob/master/Android/200813_android.md)
+- [200812 / (번역) Glide 2 - Options](https://github.com/ksu3101/TIL/blob/master/Android/200812_android.md)
+- [200811 / (번역) Glide 1 - Basic](https://github.com/ksu3101/TIL/blob/master/Android/200811_android.md)
   - Glide v4의 문서를 바탕으로 번역, 정리 하고 kotlin코드와 코드 직관성 및 개발편의를 위한 확장함수들을 추가
 - [200810 / AndroidX - CoodinatorLayout](https://github.com/ksu3101/TIL/blob/master/Android/200810_android.md)
 - [200730 / Koin - Activity Scope](https://github.com/ksu3101/TIL/blob/master/Android/200730_android.md)
