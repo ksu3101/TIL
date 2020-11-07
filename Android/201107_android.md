@@ -54,7 +54,7 @@ Moshi는 이 강력한 API들을 활용하여 깔끔하게 작업할 수 있는 
 
 1. `buid.gradle`에 아래와 같이 라이브러리 디펜던시를 추가 한다. 추가되는 디펜던시의 텍스트는 개발 환경에 따라 다를 수 있다. 
 
-```
+```javascript
 /*Moshi*/
 def moshiVersion = "1.10.0"
 implementation("com.squareup.moshi:moshi:$moshiVersion")
