@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [201110 / (번역) Signature클래스를 이용한 데이터 확인](https://github.com/ksu3101/TIL/blob/master/Android/201110_android.md)
 - [201107 / (번역) Goobye Gson, Hello Moshi](https://github.com/ksu3101/TIL/blob/master/Android/201107_android.md)
 - [201105 / (번역) Kotlin을 이용한 앱 크래시 감소와 안정성 향상](https://github.com/ksu3101/TIL/blob/master/Android/201105_android.md)
 - [201104 / (번역) 넷플릭스의 안드로이드와 iOS앱 - 코틀린 멀티플랫폼으로 만들어지다 ](https://github.com/ksu3101/TIL/blob/master/Android/201104_android.md)
