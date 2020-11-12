@@ -35,7 +35,7 @@
 - [200904 / (번역) Lottie for Android - Lottie란 무엇인가](https://github.com/ksu3101/TIL/blob/master/Android/200904_android.md)
 - [200902 / Android Clean architecture](https://github.com/ksu3101/TIL/blob/master/Android/200902_android.md)
 - [200831 / (번역) Dagger hilt cheat sheet](https://github.com/ksu3101/TIL/blob/master/Android/200831_android.md)
-- [200828 / View Binding와 메모리 누수](https://github.com/ksu3101/TIL/blob/master/Android/200828_android.md)
+- [200828 / View Binding의 메모리누수와 해결 방법](https://github.com/ksu3101/TIL/blob/master/Android/200828_android.md)
 - [200827 / (번역) LeakCanary 2 - Fixing a memory leak](https://github.com/ksu3101/TIL/blob/master/Android/200827_android.md)
 - [200826 / (번역) LeakCanary 1 - Basic, How LeakCanary works](https://github.com/ksu3101/TIL/blob/master/Android/200826_android.md)
   - [LeakCanary문서](https://square.github.io/leakcanary/)를 바탕으로 번역, 정리

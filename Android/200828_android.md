@@ -1,6 +1,6 @@
-## Data Binding을 사용 할 때 메모리 누수를 막기 
+## View Binding을 사용 할 때 메모리 누수를 막기 
 
-최근 구독중인 android weekly에서 데이터 바인딩을 이용해 뷰 바인딩을 사용시 `Fragment`에서 바인딩 된 뷰 바인딩 객체가 `Framgent`가 더이상 사용되지 않음에도 유지된 상태로 남아 있어 메모리 누수가 발생할 수 있다는 [글](https://proandroiddev.com/avoiding-memory-leaks-when-using-data-binding-and-view-binding-3b91d571c150)을 읽어 보았다. 해당 글을 참고 하여 실제로 메모리 누수가 발생하는지, 그리고 해결방법은 어떤지 하나하나 정리해보려고 한다. 
+최근 구독중인 android weekly에서 뷰 바인딩을 사용시 `Fragment`에서 바인딩 된 뷰 바인딩 객체가 `Framgent`가 더이상 사용되지 않음에도 유지된 상태로 남아 있어 메모리 누수가 발생할 수 있다는 [글](https://proandroiddev.com/avoiding-memory-leaks-when-using-data-binding-and-view-binding-3b91d571c150)을 읽어 보았다. 해당 글을 참고 하여 실제로 메모리 누수가 발생하는지, 그리고 해결방법은 어떤지 하나하나 정리해보려고 한다. 
 
 ### 1. 메모리 누수는 어디에서 발생 하는가? 
 
