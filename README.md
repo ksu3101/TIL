@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [201117 / (번역) Kotlin으로 Dagger-Hilt를 사용할때 가이드 - Android에서 의존성 주입을 사용하는 쉬운 방법 ](https://github.com/ksu3101/TIL/blob/master/Android/201117_android.md)
 - [201111 / (번역) View Binding Android - 3개의 주요 이점](https://github.com/ksu3101/TIL/blob/master/Android/201111_android.md)
 - [201110 / (번역) Signature클래스를 이용한 데이터 확인](https://github.com/ksu3101/TIL/blob/master/Android/201110_android.md)
 - [201107 / (번역) 잘가~ Gson, 반가워! Moshi](https://github.com/ksu3101/TIL/blob/master/Android/201107_android.md)
