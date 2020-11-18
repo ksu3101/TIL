@@ -112,7 +112,8 @@
 - [191031 / extension, infix function 을 이용한 kotlin unit test](https://github.com/ksu3101/TIL/blob/master/kotlin/191031_infix_testing_codes.md)
 
 ---
-### Python Django
+### Python, Flask 공부
+- [201118 / pythonanywhere에 Flask세팅 하고 간단한 Restful API 세팅하기](https://github.com/ksu3101/TIL/blob/master/PythonDjango/201118.md)
 - [170227 / Python 에서 싱글턴을 구현 하는 방법 정리 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170227.md)
 - [170225 / Python 기초 간단 정리 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170225.md)
 - [170214 / Python 기초 공부 여섯번째 시간 ](https://github.com/ksu3101/TIL/blob/master/PythonDjango/170214.md)
