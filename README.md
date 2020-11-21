@@ -190,6 +190,8 @@
 
 ---
 ### Etc
+- [201121 / Project Diablo II 정리](https://github.com/ksu3101/TIL/blob/master/Android/201121_android.md)
+  - 계속 추가될 예정... 
 - [201021 / Agile 업무 기록 - 이전 회사 에서 애자일업무를 했을때 경험을 정리한 글](https://github.com/ksu3101/TIL/blob/master/Android/201021_android.md)
 - [200925 / (번역) 테크니컬 리더쉽을 위한 7단계 ](https://github.com/ksu3101/TIL/blob/master/ETC/200925.md)
 - [200923 / Android Studio(intellij)에서 특정 폰트가 보이지 않을 경우](https://github.com/ksu3101/TIL/blob/master/ETC/200923.md)
