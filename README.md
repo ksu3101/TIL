@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [201215 / (번역) Adapting to ListAdapter](https://github.com/ksu3101/TIL/blob/master/Android/201215_android.md)
 - [201117 / (번역) Kotlin으로 Dagger-Hilt를 사용할때 가이드 - Android에서 의존성 주입을 사용하는 쉬운 방법 ](https://github.com/ksu3101/TIL/blob/master/Android/201117_android.md)
 - [201111 / (번역) View Binding Android - 3개의 주요 이점](https://github.com/ksu3101/TIL/blob/master/Android/201111_android.md)
 - [201110 / (번역) Signature클래스를 이용한 데이터 확인](https://github.com/ksu3101/TIL/blob/master/Android/201110_android.md)
@@ -190,7 +191,7 @@
 
 ---
 ### Etc
-- [gRPC 기초 개념 정리](https://github.com/ksu3101/TIL/blob/master/ETC/201207_grpc_basic.md)
+- [201207 / gRPC 기초 개념 정리](https://github.com/ksu3101/TIL/blob/master/ETC/201207_grpc_basic.md)
 - [201121 / Project Diablo II 정리](https://github.com/ksu3101/TIL/blob/master/ETC/201121_pd2.md)
   - 계속 추가될 예정... 
 - [201021 / Agile 업무 기록 - 이전 회사 에서 애자일업무를 했을때 경험을 정리한 글](https://github.com/ksu3101/TIL/blob/master/Android/201021_android.md)
