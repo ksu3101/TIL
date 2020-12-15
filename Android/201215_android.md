@@ -1,6 +1,6 @@
 ## Adapting to ListAdapter
 
-> 이 문서는 [Adapting to ListAdapter](https://medium.com/androiddevelopers/adapting-to-listadapter-341da4218f5b)를 번역 하였다. 
+> 이 문서는 Meghan Mehta가 작성한 [Adapting to ListAdapter](https://medium.com/androiddevelopers/adapting-to-listadapter-341da4218f5b)를 번역 하였다. 
 
 `RecyclerView`는 데이터의 항목 목록을 효율적으로 표현하기 위한 좋은 방법이다. 정적인 데이터 목록을 화면에 표시하려면 기본 어댑터를 사용하면 훌륭하게 작동할 것 이다. 그러나 대부분의 RecyclerView를 사용하는 사례에서의 데이터는 대부분 동적이다. 예를 들어 "할 일"목록을 보여주는 목록 앱을 살펴 보도록 하자. 이 경우 새 할일 항목이 추가되고 완료된 할 일 항목이 제거될 것 이다. 
 
