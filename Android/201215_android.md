@@ -41,7 +41,7 @@ object UserDiffCallback: DiffUtil.ItemCallback<User>() {
 `RecyclerView.Adapter`대신 `ListAdapter`클래스를 상속하도록 만든 `Adapter`클래스의 상속구조를 변경 하고 생성자를 통해 구현한 `DiffCallBack`를 전달 한다. 
 
 ```kotlin
-class UserListAdapter: ListAdapter<String, UserListAdapter.ViewHolder>(UserDiffCallback)
+class UserListAdapter: ListAdapter<User, UserListAdapter.ViewHolder>(UserDiffCallback)
 ```
 
 ### 2. Updating the list
@@ -63,3 +63,124 @@ override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 ```
 
 `RecyclerView`를 `ListAdapter`으로 사용하도록 변환하려면 몇단계만 거치면 된다. 이제 앱은 `ListAdapter`를 사용하여 변경된 항목만 업데이트하게 함 으로서 더 나은 성능과 좋은 사용자 경험을 제공할 수 있다. 
+
+### 3. 예제 
+
+> 이 부분은 원 게시글과 관련없는 추가 내용. 
+
+개인적으로 토이 프로젝트에서 구현했었던 `ListAdapter`의 구현 예제이다. 예제에서는 우한 폐렴 코로나19바이러스의 현황을 보여주는 간단한 앱 으로서, 2개의 뷰 타입을 갖고 있고 데이터 바인딩을 사용해 각 뷰에선 필요한 데이터 인스턴스를 사용하도록 되어 있다. 
+
+이 에제 코드는 [이 링크](https://github.com/ksu3101/PlayGround/blob/master/app/src/main/java/com/swkang/playground/view/covid19/Covid19StatusListAdapter.kt)에서 전체 코드를 확인 할 수 있다. 
+
+#### 3.1 `DiffUtil` 
+
+`DiffUtil`의 구현은 간단하다. `areItemsTheSame()`에서는 각 아이템의 `date`라는 날짜 정보를 기반으로 데이터의 일치를 구분 하며, `areContentsTheSame()`에서는 데이터의 내용 전부를 확인한다. 
+
+```kotlin
+val diffUtil = object : DiffUtil.ItemCallback<LocationCovid19Infos>() {
+    override fun areItemsTheSame(
+        oldItem: LocationCovid19Infos,
+        newItem: LocationCovid19Infos
+    ): Boolean {
+      return oldItem.date == newItem.date
+    }
+
+    override fun areContentsTheSame(
+        oldItem: LocationCovid19Infos,
+        newItem: LocationCovid19Infos
+    ): Boolean {
+      return oldItem == newItem
+    }
+  }
+```
+
+#### 3.2 `ViewHolder`
+
+`ViewHolder`는 2개를 갖는다. 
+
+아래 `Covid19StatusTopViewHolder`는 목록의 탑 헤더 뷰와 데이터의 바인딩을 담당하고 있다. 이 뷰홀더에서는 상위 뷰모델인 `Covid19StatusViewModel`를 데이터 바인딩 객체로 필요로 하고 있다. 
+
+```kotlin
+class Covid19StatusTopViewHolder(
+    private val binding: ViewDataBinding
+) : RecyclerView.ViewHolder(binding.root) {
+  companion object {
+    fun create(parent: ViewGroup): Covid19StatusTopViewHolder {
+      val layoutInflater = LayoutInflater.from(parent.context)
+      val binding = DataBindingUtil.inflate<ViewDataBinding>(
+        layoutInflater,
+        R.layout.covid19status_item_top,
+        parent,
+        false
+      )
+      return Covid19StatusTopViewHolder(binding)
+    }
+  }
+
+  fun bind(vm: Covid19StatusViewModel) {
+    binding.setVariable(BR.vm, vm)
+    binding.executePendingBindings()
+  }
+}
+```
+
+두번째 뷰홀더인 `Civud18StatusCountryViewHolder`는 각 데이터 항목을 보여주기 위해 `LocationCovid19Infos`인스턴스를 필요로 한다. 
+
+```kotlin
+class Civud18StatusCountryViewHolder(
+    private val binding: ViewDataBinding
+) : RecyclerView.ViewHolder(binding.root) {
+  companion object {
+    fun create(parent: ViewGroup): Civud18StatusCountryViewHolder {
+      val layoutInflater = LayoutInflater.from(parent.context)
+      val binding = DataBindingUtil.inflate<ViewDataBinding>(
+        layoutInflater,
+        R.layout.covid19status_item_country,
+        parent,
+        false
+      )
+      return Civud18StatusCountryViewHolder(binding)
+    }
+  }
+
+  fun bind(covid19Location: LocationCovid19Infos) {
+    binding.setVariable(BR.covid19Location, covid19Location)
+    binding.executePendingBindings()
+  }
+}
+```
+
+#### 3.3 `ListAdapter`
+
+`ListAdapter`의 구현은 아래와 같다. `position`에 따라 뷰타입을 분기 해 주는 `getItemViewType()`을 재정의 하였으며, 제공될 뷰타입에 따라 뷰홀더를 create해주고 bind해주는 메소드들을 재정의 했음을 확인 할 수 있다. 
+
+```kotlin
+class Covid19StatusListAdapter(
+    private val vm: Covid19StatusViewModel
+) : ListAdapter<LocationCovid19Infos, RecyclerView.ViewHolder>(diffUtil) {
+
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    return when (viewType) {
+      VIEWTYPE_TOP -> Covid19StatusTopViewHolder.create(parent)
+      else -> Civud18StatusCountryViewHolder.create(parent)
+      }
+  }
+
+  override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    if (holder is Covid19StatusTopViewHolder) holder.bind(vm)
+    else if (holder is Civud18StatusCountryViewHolder) holder.bind(getItem(position))
+  }
+
+  override fun getItemViewType(position: Int): Int =
+    when (position) {
+      0 -> VIEWTYPE_TOP
+      else -> VIEWTYPE_DEFAULT
+    }
+}
+```
+
+#### 3.4 그 외 
+
+보면 알겠지만 `ListAdapter`와 `RecyclerView`는 데이터를 기반으로 뷰를 제공 한다. 그렇기 때문에 Top이나 각 아이템에 제공될 Header, Footer등의 뷰를 제공 하기 위해서는 실제 데이터 사이에 각 아이템이 끼어들어가야 할 필요성이 있다. 그렇기 때문에 뷰타입으로 제공될 인터페이스등으로 래핑하고 객체로 목록화 하여 제공 되어야 하는 불편함이 있다. 
+
+이렇게 래핑된 객체로 제공 될 데이터들은 아무래도 포지션 관리에 어려움이 있을거 같기 때문에 더 좋은 방법이 있는지를 찾아봐야 할 거 같다. 
