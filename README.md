@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [201222 / (번역) Ultimate Guide to Android Custom View](https://github.com/ksu3101/TIL/blob/master/Android/201222_android.md)
 - [201215 / (번역) Adapting to ListAdapter. and?](https://github.com/ksu3101/TIL/blob/master/Android/201215_android.md)
   - 번역 외에 `ListAdapter`를 이용하여 구현한 예제를 포함. 
 - [201117 / (번역) Kotlin으로 Dagger-Hilt를 사용할때 가이드 - Android에서 의존성 주입을 사용하는 쉬운 방법 ](https://github.com/ksu3101/TIL/blob/master/Android/201117_android.md)
