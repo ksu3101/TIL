@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210106 / (번역) Files, Boilerplate, and Testability](https://github.com/ksu3101/TIL/blob/master/Android/210106_android.md)
 - [201229 / (번역) How To Share Files With Android FileProvider](https://github.com/ksu3101/TIL/blob/master/Android/201229_android.md)
 - [201228 / (번역) The Quick Developers Guide to Migrate Their Apps to Android 11](https://github.com/ksu3101/TIL/blob/master/Android/201228_android.md)
 - [201222 / (번역) Ultimate Guide to Android Custom View](https://github.com/ksu3101/TIL/blob/master/Android/201222_android.md)
