@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210112 / (번역) Unit Tests and Concurrency](https://github.com/ksu3101/TIL/blob/master/Android/210112_android.md)
 - [210111 / (번역) 2 Best Ways To Use Custom Fonts In Android](https://github.com/ksu3101/TIL/blob/master/Android/210111_android.md)
 - [210106 / (번역) Files, Boilerplate, and Testability](https://github.com/ksu3101/TIL/blob/master/Android/210106_android.md)
 - [201229 / (번역) How To Share Files With Android FileProvider](https://github.com/ksu3101/TIL/blob/master/Android/201229_android.md)
