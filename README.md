@@ -199,6 +199,7 @@
 
 ---
 ### Etc
+- [210118 / 저나트륨 식단 및 도시락등 정리](https://github.com/ksu3101/TIL/blob/master/ETC/210118.md)
 - [201207 / gRPC 기초 개념 정리](https://github.com/ksu3101/TIL/blob/master/ETC/201207_grpc_basic.md)
 - [201121 / Project Diablo II 정리](https://github.com/ksu3101/TIL/blob/master/ETC/201121_pd2.md)
   - 계속 추가될 예정... 
