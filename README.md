@@ -9,8 +9,8 @@
 ## 분류
  
 ### Android
-- [210119 / Sonarqube 적용기](https://github.com/ksu3101/TIL/blob/master/Android/210119_android.md)
-  - 코드 퀄리티를 위한 정적 관리 도구인 소나큐브를 Docker에 컨테이너 올려 gradle설정 및 task을 구동 하여 실제 분석 화면 까지 적용 하는 방법 정리. 
+- [210121 / Sonarqube 적용기 2/2 - Jacoco를 이용해서 코드 커버리지를 Sonrqube에 전달하기](https://github.com/ksu3101/TIL/blob/master/Android/210121_android.md)
+- [210119 / Sonarqube 적용기 1/2 - Docker와 Sonarqube컨테이너 설정 및 안드로이드 앱 분석 해보기](https://github.com/ksu3101/TIL/blob/master/Android/210119_android.md)
 - [210114 / (번역) When LiveData and Kotlin don’t play well together](https://github.com/ksu3101/TIL/blob/master/Android/210114_android.md)
 - [210112 / (번역) Unit Tests and Concurrency](https://github.com/ksu3101/TIL/blob/master/Android/210112_android.md)
 - [210111 / (번역) 2 Best Ways To Use Custom Fonts In Android](https://github.com/ksu3101/TIL/blob/master/Android/210111_android.md)
