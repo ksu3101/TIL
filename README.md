@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210125 / (번역) Using Hilt’s ViewModelComponent](https://github.com/ksu3101/TIL/blob/master/Android/210125_android.md)
 - [210122 / (번역) Choose Wisely: 5 Ways To Show A Message In Android](https://github.com/ksu3101/TIL/blob/master/Android/210122_android.md)
 - [210121 / (수정중) Sonarqube 적용기 2/2 - Jacoco를 이용해서 코드 커버리지를 측정하고 Sonrqube에 전달하기](https://github.com/ksu3101/TIL/blob/master/Android/210121_android.md)
 - [210119 / Sonarqube 적용기 1/2 - Docker와 Sonarqube컨테이너 설정 및 안드로이드 앱 분석 해보기](https://github.com/ksu3101/TIL/blob/master/Android/210119_android.md)
