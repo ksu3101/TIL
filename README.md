@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210128 / (번역) LiveData under the hood](https://github.com/ksu3101/TIL/blob/master/Android/210128_android.md)
 - [210126 / (번역) Android Parcelable: There's a better way](https://github.com/ksu3101/TIL/blob/master/Android/210126_android.md)
 - [210125 / (번역) Using Hilt’s ViewModelComponent](https://github.com/ksu3101/TIL/blob/master/Android/210125_android.md)
 - [210122 / (번역) Choose Wisely: 5 Ways To Show A Message In Android](https://github.com/ksu3101/TIL/blob/master/Android/210122_android.md)
