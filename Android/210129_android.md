@@ -5,7 +5,7 @@
 - LiveData 관련 글 
   - [LiveData under the hood](https://alexzh.com/livedata-under-the-hood/) / [번역 글](https://github.com/ksu3101/TIL/blob/master/Android/210128_android.md)
   - [LiveData: Good practices](https://alexzh.com/livedata-good-practices/) / [번역 글](https://github.com/ksu3101/TIL/blob/master/Android/210129_android.md)
-  - [Migrate from LiveData to StateFlow and SharedFlow](https://alexzh.com/migrate-from-livedata-to-stateflow-and-sharedflow/)
+  - [Migrate from LiveData to StateFlow and SharedFlow](https://alexzh.com/migrate-from-livedata-to-stateflow-and-sharedflow/) / [번역 글](https://github.com/ksu3101/TIL/blob/master/Android/210201_android.md)
 
 LiveData는 Android jetpack에서 가장 많이 사용되는 컴포넌트들 중 하나이다. 현재 많은 안드로이드 앱에서 LiveData를 사용하고 있다. [이전 글](https://alexzh.com/livedata-good-practices/) 에서는 LiveData가 어떻게 내부적으로 동작하는지 살펴 보았었다. 이번 글에서는 `LiveData<T>`객체를 사용하는 좋은 방법들에 대해 공유 하려고 한다. 
 

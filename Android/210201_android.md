@@ -5,7 +5,7 @@
 - LiveData 관련 글 
   - [LiveData under the hood](https://alexzh.com/livedata-under-the-hood/) / [번역 글](https://github.com/ksu3101/TIL/blob/master/Android/210128_android.md)
   - [LiveData: Good practices](https://alexzh.com/livedata-good-practices/) / [번역 글](https://github.com/ksu3101/TIL/blob/master/Android/210129_android.md)
-  - [Migrate from LiveData to StateFlow and SharedFlow](https://alexzh.com/migrate-from-livedata-to-stateflow-and-sharedflow/)
+  - [Migrate from LiveData to StateFlow and SharedFlow](https://alexzh.com/migrate-from-livedata-to-stateflow-and-sharedflow/) / [번역 글](https://github.com/ksu3101/TIL/blob/master/Android/210201_android.md)
 
 > 이 글에서 수집(collect)은 observing 가능한 객체를 구독(subscribe)하는 것 과 동일 하게 생각 하면 될거 같다. 
 
