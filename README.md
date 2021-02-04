@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210204 / (번역) A Garbage Collection Story](https://github.com/ksu3101/TIL/blob/master/Android/210204_android.md)
 - [210202 / (번역) Modelling UI State on Android](https://github.com/ksu3101/TIL/blob/master/Android/210202_android.md)
 - [210201 / (번역) LiveData: Migrate from LiveData to StateFlow and SharedFlow](https://github.com/ksu3101/TIL/blob/master/Android/210201_android.md)
 - [210129 / (번역) LiveData: Good practices](https://github.com/ksu3101/TIL/blob/master/Android/210129_android.md)
