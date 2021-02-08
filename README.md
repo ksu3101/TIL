@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210208 / ViewBinding delegate functions](https://github.com/ksu3101/TIL/blob/master/Android/210208_android.md)
 - [210207 / (번역) Helpful ADB commands](https://github.com/ksu3101/TIL/blob/master/Android/210207_android.md)
 - [210204 / (번역) A Garbage Collection Story](https://github.com/ksu3101/TIL/blob/master/Android/210204_android.md)
 - [210202 / (번역) Modelling UI State on Android](https://github.com/ksu3101/TIL/blob/master/Android/210202_android.md)
