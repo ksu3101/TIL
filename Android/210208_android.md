@@ -93,4 +93,4 @@ fun <T : ViewBinding> Fragment.viewBinding(viewBinder: (View) -> T) =
 
 위 확장함수를 이용하면 보일러 플레이트 없이 편하게 ViewBinding객체를 위임 받아 not nullable 인스턴스로 활용 할 수 있다. 
 
-참고로 `DefaultLifecycleObserver`을 사용하려면 해당 모듈의 `build.gradle`에 `implementation "androidx.lifecycle:lifecycle-common-java8:$<version_number>"`와 같은 의존을 추가 해야 한다. 이 라이브러리의 최신 버전은 (여기)[https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-common-java8] 에서 확인 할 수 있다.
+참고로 `DefaultLifecycleObserver`을 사용하려면 해당 모듈의 `build.gradle`에 `implementation "androidx.lifecycle:lifecycle-common-java8:$<version_number>"`와 같은 의존을 추가 해야 한다. 이 라이브러리의 최신 버전은 [여기](https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-common-java8) 에서 확인 할 수 있다.
