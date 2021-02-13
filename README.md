@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210212 / (번역) Using gradient for styling text](https://github.com/ksu3101/TIL/blob/master/Android/210213_android.md)
 - [210212 / (번역) RxJava : Disposables Can Cause Memory Leaks](https://github.com/ksu3101/TIL/blob/master/Android/210212_android.md)
 - [210208 / ViewBinding delegate functions](https://github.com/ksu3101/TIL/blob/master/Android/210208_android.md)
 - [210207 / (번역) Helpful ADB commands](https://github.com/ksu3101/TIL/blob/master/Android/210207_android.md)
