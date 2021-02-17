@@ -1,20 +1,6 @@
-# 코틀린의 코루틴 
+# Coroutine #2
 
-Kotlin은 언어로, 표준 라이브러리에서 최소한의 저수준 API을 제공 하여 다양한 다른 라이브러리에서 코루틴을 활용할 수 있도록 도와준다. 
-
-`kotlinx.coroutines`는 JetBrains에서 개발한 코루틴을 위해 제공 되는 라이브러리이다. 여기에는 `launch`, `async`등을 포함하여 이 가이드에서 다루는 여러 고 수준의 코루틴 지원 요소들이 포함 되어 있다. 
-
-이 가이드는 `kotlinx.coroutines`의 핵심 기능에 대한 가이드 이며 여러 주제로 나누어진 예제들과 함께 제공 된다. 코루틴을 사용 하고 싶다면 코루틴에 대한 의존을 추가 해야 한다. 예를 들어 안드로이드의 경우 `build.gradle`에 아래와 같이 추가 한다. 
-
-```gradle
-dependencies {
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
-}
-```
-
-- 공부 한 내용은 [Kotlin 공식 가이드 문서](https://kotlinlang.org/docs/reference/coroutines/basics.html)을 바탕으로 하였다. 
-
-## 1. Asynchronous programming techniques
+## 2. 
 
 아래의 코드를 실행 하면 다음과 같은 출력 결과를 확인 할 수 있다. 
 
