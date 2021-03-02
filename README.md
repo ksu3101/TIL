@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210302 / (번역) Activity Result Contract – Outside the Activity](https://github.com/ksu3101/TIL/blob/master/Android/210302_android.md)
 - [210225 / (번역) An opinionated guide on improved Kotlin code](https://github.com/ksu3101/TIL/blob/master/Android/210225_android.md)
 - [210223 / (번역) Activity Result Contract – The Basics](https://github.com/ksu3101/TIL/blob/master/Android/210223_android.md)
 - [210222 / Webview data directory Android 9](https://github.com/ksu3101/TIL/blob/master/Android/210222_android.md)
