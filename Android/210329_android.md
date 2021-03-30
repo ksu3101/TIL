@@ -143,3 +143,42 @@ mutablePendingIntent.send(
 
 변경 가능한 PendingIntent를 만들 때 항상 Intent에서 시작될 구성 요소를 명시적으로 설정 하자. 이를 수신할 정확한 클래스를 명시적으로 설정하여 위에서 수행한 방식으로 수행할 수 있겠지만 `Intent.setComponent()`를 호출하여 수행할 수도 있다. 
 
+앱에 `Intent.setPackage()`를 호출하는 것이 더 간단할 수 있다. 이 메소드를 사용 하면 여러 구성요소들의 불일치 가능성에 대해 주의 해야 한다. 가능하면 Intent를 받을 특정 구성 요소들은 지정되어 있는게 좋다. 
+
+`FLAG_IMMUTABLE`로 생성된 PendingIntent의 값을 재정의하려고 하면 자동으로 실패되며 원래 래핑된 Intent가 수정되지 않은 상태로 전달 된다. 
+
+앱은 변경 불가능한 경우에도 항상 자체 PendingIntent를 업데이트 할 수 있다. PendingIntent를 변경 가능하게 만드는 유일한 이유는 어떤 방법으로든 래핑 된 Intent를 업데이트 할 수 있어야 하기 때문이다. 
+
+## Details on flags 
+
+우리는 PendingIntent를 만들 때 사용할 수 있는 몇가지 플래그에 대해 약간 이야기했지만 다루어야 할 몇가지 다른 플래그들도 있다. 
+
+`FLAG_IMMUTABLE` : `PendingIntent.send()`에 intent를 전달하는 다른 앱이 PendingIntent내부의 Intent를 수정할 수 없음을 나타낸다. 앱은 항상 `FLAG_UPDATE_CURRENT`를 사용하여 자체 PendingIntent를 수정할 수 있다. Android12버전 이전에는 플래그 없이 생성된 PendingIntent를 기본적으로 변경 할 수 있었다. 
+
+Android12버전(API23) 이후로 PendingIntent는 기본적으로 변경할수 없게 된다.   
+
+`FLAG_MUTABLE` : PendingIntent내부의 인텐트가 `PendingIntent.send()`의 인텐트 매개변수의 값을 병합하여 앱이 해당 내용을 업데이트 할 수 있도록 한다.
+
+항상 변경 가능한 PendingIntent의 래핑 된 Intent 컴포넌트이름(ComponentName)을 입력해야 한다. 그렇게 하지 않으면 보안 취약점이 발생하기 떄문이다. 
+
+이 플래그는 Android12버전에서 추가 되었으며 이전 버전에서는 `FLAG_IMMUTABLE`플래그 없이 생성된 모든 PendingIntent모두가 암시적으로 변경 가능 했었다.   
+
+`FLAG_UPDATE_CURRENT` : 시스템이 PendingIntent를 저장하는 대신 새 추가 데이터로 기존 PendingIntent를 업데이트 하도록 요청 한다. PendingIntent가 등록되지 않은 경우 이 플래그가 사용 된다.  
+
+`FLAG_ONE_SHOT` : PendingIntent가 한번만 전송되도록 한다. (`PendingIntent.send()`를 통해서) 이는 PendingIntent를 다른 앱에 전달 할 때 중요할 수 있다. Intent가 한번만 전송될 수 있어야 하는 경우에 사용 되기 떄문이다. 이는 편의성이나 일부 작업들을 여러분 수행하지 못하도록 하기 위함이다. 또한 `replay attacks`와 같은 문제를 미리 방지 할 수 있다.   
+
+`FLAG_CANCEL_CURRENT` : 새로 인텐트를 등록하기 전에 기존 PendingIntent가 존재 하는 경우 이를 취소한다. 특정 PendingIntent가 하나의 앱으로 전송 되었고 이를 다른앱으로 전송하여 잠재적으로 데이터를 업데이트 하려는 경우 중요하게 사용될 수 있다. 첫번째 경우 더이상 `send()`를 호출할 수 없지만 두번째의 경우에는 호출이 가능 하다. 
+
+## Receiving PendingIntents
+
+때로 시스템 또는 기타 프레임워크에서 API호출의 반환으로 `PendingIntent`를 제공 할 수 있다. 그 예로는 Android11에 추가 된 `MediaStore.createWriteRequest()`이다. 
+
+```kotlin
+static fun MediaStore.createWriteRequest(
+    resolver: ContentResolver, 
+    uris: MutableCollection<Uri>
+): PendingIntent
+```
+
+앱에서 생성 된 PendingIntent가 앱의 ID로 실행 되는 것 처럼 시스템에서 생성된 PendingIntent는 시스템의 고유 ID로 실행 되어 진다. 이 API의 경우 이를 통해 앱이 `Uris`컬렉션에 대한 쓰기 권한을 앱에 부여할 수 있는 Activity를 실행 할 수 있다. 
+
