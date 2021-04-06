@@ -2,33 +2,9 @@
 
 > 이 글은 Matt Luedke, Aaqib Hussain의 [Common Design Patterns and App Architectures for Android](https://www.raywenderlich.com/18409174-common-design-patterns-and-app-architectures-for-android)을 번역 하였다. 
 
-- 빠른 이동을 위한 목차  
-  1. Getting Started
-  2. Creational Patterns
-  3. Builder
-  4. Dependency Injection
-  5. Singleton
-  6. Factory
-  7. Structual Patterns
-  8. Adapter
-  9. Facade
-  10. Decorator
-  11. Composite
-  12. Behavioral Patterns
-  13. Command
-  14. Observer
-  15. Strategy
-  16. State
-  17. App Architecture
-  18. Types of App Architectures
-  19. Model View Controller
-  20. Model View ViewModel
-  21. Clean Architecture
-  22. Where to go from Here?
-
 # 1. Getting Started
 
-> "현재의 프로젝트에서 같은 코드들을 재사용 하고 있습니까?" 
+> "현재의 프로젝트에서 같은 코드들을 재사용 하고 있는가?" 
 
 개발자는 프로젝트내에서 복잡해진 의존들을 추적하기 위해 소요되는 시간을 최소화 해야 한다. 따라서 가능하면 재사용 가능하며 읽기 쉽고 알아보기 쉬운 코드들을 생산해내야 한다. 이런 목표들은 단일 개체에서 부터 전체 프로젝트에 이르기 까지 다음과 같은 범주에 속하는 패턴으로 구성 된다. 
 
@@ -224,4 +200,177 @@ val standardPackage = HostingPackageFactory.getHostingFrom(HostingPackageType.ST
 ```
 
 모든 객체의 생성을 하나의 클래스로 하는게 유지 보수에 도움이 된다. 하지만 팩토리 패턴을 부적절하게 사용 하면 과도한 객체들의 생성들로 인하여 팩토리 클래스 자체가 비대해질 수 있다. 그리고 팩토리 클래스 자체가 모든 객체를 제어하게 되므로 단위 테스트가 어려워질 수 도 있다. 
+
+# 3. Structural Patterns
+
+> "이 클래스에서는 어떤 일을 하고 있고 어떻게 합쳐졌는지 알고 있는가?"
+
+일반적인 작업을 수행하는 클래스와 객체 내부등에 익숙한 구조적 패턴을 사용하는 것 이 좋은 방법일 수 있다. 이 경우 Adapter와 Facade는 안드로이드에서 일반적으로 볼 수 있는 두가지 패턴 이다. 
+
+## 3.1 Adapter 
+
+영화 Apollo13의 유명한 장면에서는 사각형 못을 둥근 구멍에 맞추는 작업을 담당하는 엔지니어팀이 있었다. 이것은 은유적인 Adapter의 표현이다. 소프트웨어적인 측면에서 이 패턴을 사용 하면 클래스의 인터페이스를 호환하지 않는 클라이언트의 인터페이스로 변환하여 호환되지 않는 두 클래스가 함께 작동하도록 할 수 있게 한다. 
+
+앱의 비즈니스로직을 보았을때 데이터 조각, 어떠한 상품들, 사용자 또는 예제에서 보여질 Tribble등은 위의 예 에서 정사각형 못을 의미 한다. 그리고 `RecyclerView`는 모든 안드로이드 앱에서 동일 한 기본 개체로서 여기에선 둥근 구멍이 될 것 이다. 
+
+이 상황에서 `RecyclerView.Adapter`의 자식 클래스를 구현하고 문제 없이 작동할 수 있도록 필요한 메소드를 구현할 수 있다. 
+
+```kotlin
+class TribbleAdapter(private val tribbles: List<Tribble>) : RecyclerView.Adapter<TribbleViewHolder>() {
+  override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): TribbleViewHolder {
+    val inflater = LayoutInflater.from(viewGroup.context)
+    val view = inflater.inflate(R.layout.row_tribble, viewGroup, false)
+    return TribbleViewHolder(view)
+  }
+
+  override fun onBindViewHolder(viewHolder: TribbleViewHolder, itemIndex: Int) {
+    viewHolder.bind(tribbles[itemIndex])
+  }
+
+  override fun getItemCount() = tribbles.size
+}
+```
+
+`RecyclerView`는 Tribble이 뭔지 모른다. 스타트렉(StarTrek)의 에피소드를 단 하나도 보지 못했기 때문일 수 있다. 대신 데이터를 처리하고 올바른 `ViewHolder`에 bind하는것 이 Adapter가 하는 일 이다. 
+
+## 3.2 Facade 
+
+Facade패턴은 다른 인터페이스 세트를 더 쉽게 사용할 수 있는 상위 레벨의 인터페이스를 제공 한다. 아래의 다이어그램은 이 패턴에 대해 더 자세히 알려준다. 
+
+![facade](./images/facade.png)
+
+예를 들어 Activity에서 도서 목록들이 필요한 경우 로컬 저장소, 캐시 및 API클라이언트의 내부 구동을 몰라도 해당 도서 목록들에 대해 단일 객체를 요청할 수 있어야 한다. 또한 Activity및 Fragment의 코드를 깔끔하고 간결하게 유지 하는 것 외에도 다른 코드에 영향을 주지 않고 API구현에 필요한 작업들을 수행할 수 있어야 한다. 
+
+Square의 [Retrofit](http://square.github.io/retrofit/)은 Facade패턴을 구현하는데 도움이 되는 오픈소스 라이브러리이다. 아래와 같이 클라이언트 클래스에 API데이터를 제공하는 인터페이스를 만든다. 
+
+```kotlin
+interface BooksApi {
+  @GET("books")
+  fun listBooks(): Call<List<Book>>
+}
+```
+
+클라이언트는 콜백에서 `Book`객체 목록을 전달 받기 위해 `listBooks()`를 호출 해야 한다. 이는 API호출을 깔끔하게 처리 해준다. 이를 통해 클라이언트의 다른 코드에 영향을 주지 않고 작업을 수행할 수있다. 다른 예를 들면 retrofit에 사용자 지정 JSON desirializer를 지정할 때 에도 사용할 수 있다. 
+
+```kotlin
+val retrofit = Retrofit.Builder()
+  .baseUrl("http://www.myexampleurl.com")
+  .addConverterFactory(GsonConverterFactory.create())
+  .build()
+
+val api = retrofit.create<BooksApi>(BooksApi::class.java)
+```
+
+`GsonConverterFactory`을 사용하는 것 에 대해 보면 JSON deserializer로 작동하고 있음을 확인할 수 있다. Retrofit을 사용 하면 `Interceptor`및 `OkHttpClient`로 작업을 추가로 사용자 정의 하여 클라이언트가 무슨일을 하고 있는지에는 상관 없이 캐싱 및 로깅 작업등을 제어할 수 있다. 
+
+각 개체가 다른 면에서 일어나고 있는 일들에 대해 잘 알지 못하면 못할수록 향후 앱 에서 유지 보수하는게 더 쉬워진다. 
+
+## 3.3 Decorator 
+
+Decorator패턴은 런타임시 기능을 확장하기 위해 객체에 추가적인 책임을 동적으로 연결한다. 아래 예를 살펴 보도록 하자. 
+
+```kotlin
+//1
+interface Salad {
+  fun getIngredient(): String
+}
+
+//2
+class PlainSalad : Salad {
+  override fun getIngredient(): String {
+    return "Arugula & Lettuce"
+  }
+}
+
+//3
+open class SaladDecorator(protected var salad: Salad) : Salad {
+  override fun getIngredient(): String {
+    return salad.getIngredient()
+  }
+}
+
+//4
+class Cucumber(salad: Salad) : SaladDecorator(salad) {
+  override fun getIngredient(): String {
+    return salad.getIngredient() + ", Cucumber"
+  }
+}
+
+//5
+class Carrot(salad: Salad) : SaladDecorator(salad) {
+  override fun getIngredient(): String {
+    return salad.getIngredient() + ", Carrot"
+  }
+}
+```
+
+위 예제에서 보여주는 내용은 아래와 같다. 
+
+1. `Salad`인터페이스는 각종 재료들을 알게 해준다. 
+2. 모든 샐러드에는 기반이 필요하다. 이 기반에는 `Argula & Lettuce`인 `PlainSalad`이다.
+3. `SaladDecorator`는 `PlainSalad`에 더 많은 토핑을 추가하도록 해준다. 
+4. `Cucumber`는 `SaladDecorator`를 상속한다. 
+5. `Carrot`는 `SaladDecorator`를 상속 한다. 
+
+`SaladDecorator`클래스를 사용하면 `PlainSalad`를 변경하지 않아도 쉽게 샐러드를 확장 할 수 있다. 런타임중 샐러드 데코레이터를 제거하거나 추가할 수도 있다. 사용 방법은 아래와 같다. 
+
+```kotlin
+val cucumberSalad = Cucumber(Carrot(PlainSalad()))
+print(cucumberSalad.getIngredient()) // Arugula & Lettuce, Carrot, Cucumber
+
+val carrotSalad = Carrot(PlainSalad())
+print(carrotSalad.getIngredient()) // Arugula & Lettuce, Carrot
+```
+
+## 3.4 Composite
+
+같은 개체들로 구성된 나무와 같은 구조들을 표현하려하는 경우 Composite패턴을 사용 한다. Composite패턴은 composite와 leaf두가지 유형의 객체가 있을 수 있다. composite 개체는 추가 개체를 가질 수 있는 반면 leaf개체는 마지막으로서 다른 개체를 가지지 않는다. 
+
+아래 예제 코드를 보자. 
+
+```kotlin
+//1
+interface Entity {
+  fun getEntityName(): String
+}
+
+//2
+class Team(private val name: String) : Entity {
+  override fun getEntityName(): String {
+    return name
+  }
+}
+
+//3
+class Raywenderlich(private val name: String) : Entity {
+  private val teamList = arrayListOf<Entity>()
+
+  override fun getEntityName(): String {
+    return name + ", " + teamList.map { it.getEntityName() }.joinToString(", ")
+  }
+
+  fun addTeamMember(member: Entity) {
+    teamList.add(member)
+  }
+}
+```
+
+코드에 대해서는 아래를 참고 하자. 
+
+1. Composite패턴의 인터페이스 엔티티인 `Component`이다. 
+2. `Team`클래스는 엔티티를 구현한다. 이 클래스는 Leaf가 된다. 
+3. `Raywenderlich`는 엔티티 인터페읏도 구현한다. 이 클래스는 composite가 된다. 
+
+논리적으로나 기술적으로 조직(이 경우에는 `Raywenderlich`)은 팀에 엔티티를 추가 한다. 사용 방법은 아래와 같다. 
+
+```kotlin
+val composite = Raywenderlich("Ray")
+val ericTeamComposite = Raywenderlich("Eric")
+val aaqib = Team("Aaqib")
+val vijay = Team("Vijay")
+ericTeamComposite.addTeamMember(aaqib)
+ericTeamComposite.addTeamMember(vijay)
+composite.addTeamMember(ericTeamComposite)
+print(composite.getEntityName()) // Ray, Eric, Aaqib, Vijay
+```
 
