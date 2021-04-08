@@ -374,3 +374,201 @@ composite.addTeamMember(ericTeamComposite)
 print(composite.getEntityName()) // Ray, Eric, Aaqib, Vijay
 ```
 
+# 4. Behavioral Patterns 
+
+> "그래서... 어떤 클래스가 어떤 일을 담당하고 있는지 어떻게 알 수 있는가?"
+
+Behavioral pattern을 사용 하면 다양한 앱의 기능들에 대한 책임을 할당해 줄 수 있다. 그리고 나중에 프로젝트의 구조와 아키텍처에서 필요한 부분을 찾는데 사용할 수 도 있다. 
+
+이러한 패턴은 두 개체 간 관계에서부터 앱의 전체 아키텍쳐에 이르기 까지 범위가 다를 수 도 있다. 개발자는 동일한 앱 에서 여러가지 동작 패턴들을 같이 사용하곤 한다. 
+
+## 4.1 Command
+
+예를 들어, 인도 레스토랑에서 Saag Paneer를 주문 할 때 어떤 요리사가 요리를 담당할지는 모른다. 웨이터에게 주문만 하면 요리사를 위해 주방에 주문을 게시하게 될 것 이다. 
+
+마찬가지로 Command패턴을 사용하면 수신자를 몰라도 요청을 실행할 수 있게 한다. 요리 주문을 게시하는 것 처럼 요청을 객체로 캡슐화 하고 전송하기만 하면 된다. 해당 요청을 완료하는 방법은 완전히 별개의 매커니즘으로 보면 된다. 
+
+Greenrobot의 [EventBus](https://github.com/greenrobot/EventBus)는 다음과 같은 방식으로서 Command패턴을 사용하는 안드로이드 프레임워크이다. 
+
+![eventbus](./images/eventbus.png)
+
+`Event`는 사용자의 입력, 서버 데이터 또는 앱의 동작에 의해 트리거되는 명령 스타일 개체 이다. 데이터를 전달하는 특정 하위 클래스도 만들 수 있다. 
+
+```kotlin
+class MySpecificEvent { 
+  /* Additional fields if needed */ 
+}
+```
+
+이벤트를 정의한 후 `EventBus`인스턴스를 얻고 개체를 구독자로 등록 한다. 예를 들어 Activity를 등록한다면 아래처럼 된다. 
+
+```kotlin
+@Subscribe(threadMode = ThreadMode.MAIN)
+fun onEvent(event: MySpecificEvent?) {
+  /* Do something */
+}
+```
+
+마지막으로 기준에 따라 해당 이벤트 중 하나를 만들고 게시한다. 
+
+```kotlin
+EventBus.getDefault().post(MySpecificEvent())
+```
+
+이 패턴의 많은 부분이 런타임중에 작동하기 때문에 테스트 범위가 좋지 않으면서 패턴을 추적하는데 약간의 어려움이 있을 수 있다. 그럼에도 불구하고, 잘 설계된 명령의 흐름은 가독성의 균형을 유지하면서 나중에 쉽게 따라할수 있어야 한다. 
+
+## 4.2 Observer
+
+Observer패턴은 개체간의 일대다 종속성을 정의 해 준다. 한 객체가 상태를 변경한다면 해당 종속된 항목들이 알림을 받고 자동으로 스스로를 업데이트 하게 된다. 
+
+이 패턴은 다양한 형태를 갖고 있다. API호출과 같은 불확실한 시간의 작업에도 사용 할 수 있다. 혹은 사용자 입력에 응답하기 위해서 사용 될 수 도있다.
+
+이 패턴은 원래 ReactiveAndroid라고도 하는 [RxAndroid](https://github.com/ReactiveX/RxAndroid)프레임워크를 통해 잘 알려져 있다. 이 라이브러리를 사용하면 앱 전체에서 이 패턴을 구현하여 사용할 수 있다. 
+
+```kotlin
+apiService.getData(someData)
+  .subscribeOn(Schedulers.io())
+  .observeOn(AndroidSchedulers.mainThread())
+  .subscribe (/* an Observer */)
+```
+
+간단히 말해, 값을 방출할 `Observable`객체를 정의 한다. 이러한 값은 연속 스트림 또는 임의의 속도와 기간으로 한번에 모두 방출될 수 도 있다. 
+
+`Subscriber`는 이러한 값을 수신하고 도착하면 그에 따라 반응 한다. 예를 들어 API호출을 할 떄 Subscriber를 열고 서버의 응답을 확인한 뒤 그에 따라 반응 할 수 있는 것 이다. 
+
+## 4.3 Strategy 
+
+기능이 다른 동일한 특성의 여러 개체가 있는 경우 Strategy패턴을 사용한다. 더 나은 이해를 위해서는 아래 코드를 확인해 보자. 
+
+```kotlin
+// 1
+interface TransportTypeStrategy {
+  fun travelMode(): String
+}
+
+// 2
+class Car : TransportTypeStrategy {
+  override fun travelMode(): String {
+    return "Road"
+  }
+}
+
+class Ship : TransportTypeStrategy {
+  override fun travelMode(): String {
+    return "Sea"
+  }
+}
+
+class Aeroplane : TransportTypeStrategy {
+  override fun travelMode(): String {
+    return "Air"
+  }
+}
+
+// 3
+class TravellingClient(var strategy: TransportTypeStrategy) {
+  fun update(strategy: TransportTypeStrategy) {
+    this.strategy = strategy
+  }
+
+  fun howToTravel(): String {
+    return "Travel by ${strategy.travelMode()}"
+  }
+}
+```
+
+각 코드들을 설명하면 아래와 같다. 
+
+1. `TransportTypeStrategy`인터페이스는 다른 전략들에 대한 공통 유형이 있으므로 런타임중 교환 된다. 
+2. 모든 구현 클래스들은 `TransportTypeStrategy`를 따른다. 
+3. `TravellingClient`는 전략을 작성하고 클라이언트측에 노출 된 기능 내에서 기능만 사용 한다. 
+
+사용예는 아래와 같다. 
+
+```kotlin
+val travelClient = TravellingClient(Aeroplane())
+print(travelClient.howToTravel()) // Travel by Air
+// Change the Strategy to Ship
+travelClient.update(Ship())
+print(travelClient.howToTravel()) // Travel by Sea
+```
+
+## 4.4 State
+
+State패턴에서 개체의 상태는 개체 내부 상태가 변경될 떄 그에 따라 동작을 변경 한다. 다음 코드를 확인 해 보자. 
+
+```kotlin
+// 1
+interface PrinterState {
+  fun print()
+}
+
+// 2
+class Ready : PrinterState {
+  override fun print() {
+    print("Printed Successfully.")
+  }
+}
+
+// 3
+class NoInk : PrinterState {
+  override fun print() {
+    print("Printer doesn't have ink.")
+  }
+}
+
+// 4
+class Printer() {
+  private val noInk = NoInk()
+  private val ready = Ready()
+  private var state: PrinterState
+  private var ink = 2
+
+  init {
+    state = ready
+  }
+
+  private fun setPrinterState(state: PrinterState) {
+    this.state = state
+  }
+
+  // 5
+  fun startPrinting() {
+    ink--
+    if (ink >= 0) {
+      setPrinterState(ready)
+    } else {
+      setPrinterState(noInk)
+    }
+    state.print()
+  }
+
+  // 6
+  fun installInk() {
+    ink = 2
+    print("Ink installed.")
+  }
+}
+```
+
+각 코드를 설명하면 아래와 같다. 
+
+1. `PrinterState`는 프린터의 상태를 정의 한다. 
+2. `Ready`는 프린터의 준비 상태를 정의하기 위한 `PrinterState`를 구현한 구현 클래스이다. 
+3. `NoInk`는 프린터에 잉크가 없는 상태를 정의하기 위한 `PrinterState`를 구현한 구현 클래스이다. 
+4. `Printer`핸들러는 모든 인쇄를 수행하게 된다. 
+5. `startPrinting()`은 인쇄를 시작한다. 
+6. `installInk()`는 프린터에 잉크를 새로 설치 한다. 
+
+사용방법은 아래와 같다. 
+
+```kotlin
+val printing = Printer()
+printing.startPrinting() // Printed Successfully.
+printing.startPrinting() // Printed Successfully.
+printing.startPrinting() // Printer doesn't have ink.
+printing.installInk() // Ink installed.
+printing.startPrinting() // Printed Successfully.    
+```
+
+인쇄 할 `Printer`클래스의 개체를 만든다. `Printer`클래스는 프린터의 모든 상태를 내부적으로 처리 한다. 프린터는 `Ready`또는 `NoInk`상태 일 것 이다. 

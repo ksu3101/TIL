@@ -9,6 +9,8 @@
 ## 분류
  
 ### Android
+- [210329 / (번역) Common Design Patterns and App Architectures for Android](https://www.raywenderlich.com/18409174-common-design-patterns-and-app-architectures-for-android)
+  - 자주 사용되는 디자인 패턴 위주로 작성 하였음. 
 - [210329 / (번역) All About PendingIntents](https://github.com/ksu3101/TIL/blob/master/Android/210329_android.md)
 - [210315 / (번역) Measuring Realtime Database performance with Firebase Performance Monitoring](https://github.com/ksu3101/TIL/blob/master/Android/210315_android.md)
 - [210302 / (번역) Activity Result Contract – Outside the Activity](https://github.com/ksu3101/TIL/blob/master/Android/210302_android.md)
