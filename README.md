@@ -9,7 +9,7 @@
 ## 분류
  
 ### Android
-- [210420 / (번역) Android Runtime — How Dalvik and ART work?](https://github.com/ksu3101/TIL/blob/master/Android/210420_android.md)
+- [210420 / (번역) Android Runtime — How Dalvik and ART work?](https://github.com/ksu3101/TIL/blob/master/Android/210420_Android.md)
 - [210405 / (번역) Common Design Patterns and App Architectures for Android](https://github.com/ksu3101/TIL/blob/master/Android/210405_android.md)
   - 자주 사용되는 디자인 패턴 위주로 작성 하였음. 
 - [210329 / (번역) All About PendingIntents](https://github.com/ksu3101/TIL/blob/master/Android/210329_android.md)
