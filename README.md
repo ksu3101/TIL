@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210609 / Gradle 오류 "Minimum supported Gradle version is #최소버전 Current version is #현재버전"](https://github.com/ksu3101/TIL/blob/master/Android/210518_Android.md)
 - [210518 / (번역) Kotlin SharedFlow or: How I learned to stop using RxJava and love the Flow](https://github.com/ksu3101/TIL/blob/master/Android/210518_Android.md)
 - [210503 / (번역) Flow/LiveData….What Are They? Best Use Case. (Lets Build a Login System)](https://github.com/ksu3101/TIL/blob/master/Android/210503_Android.md)
 - [210420 / (번역) Android Runtime — How Dalvik and ART work?](https://github.com/ksu3101/TIL/blob/master/Android/210420_Android.md)
