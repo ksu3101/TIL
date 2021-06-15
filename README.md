@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210616 / (번역) The Kotlin modifier that shouldn't be there](https://github.com/ksu3101/TIL/blob/master/Android/210616_Android.md)
 - [210609 / Gradle 오류 "Minimum supported Gradle version is #최소버전 Current version is #현재버전"](https://github.com/ksu3101/TIL/blob/master/Android/210609_Android.md)
 - [210518 / (번역) Kotlin SharedFlow or: How I learned to stop using RxJava and love the Flow](https://github.com/ksu3101/TIL/blob/master/Android/210518_Android.md)
 - [210503 / (번역) Flow/LiveData….What Are They? Best Use Case. (Lets Build a Login System)](https://github.com/ksu3101/TIL/blob/master/Android/210503_Android.md)
