@@ -147,7 +147,7 @@ Android의 업데이트는 노티피케이션의 정밀 검사도 다루었었�
 
 ![notification 1](./images/1_lgsDasE4ifWeiPvJGS5lqw.png)
 
-![notification 2](./images/1_Nteb9aiyC9UMcziUr201bw.png.png)
+![notification 2](./images/1_Nteb9aiyC9UMcziUr201bw.png)
 
 스프링보드는 노티피케이션을 클릭 하면 Activity이 시작되는 경우이지만 직접 수행하지는 않는다. 예를 들면, 먼저 BroadcastReceiver를 통해 Activity가 시작 될 것 이다. 하지만 이방법은 성능과 UX를 개선하기 위해 금지 된다. 이제는 노티피케이션에서 직접 Acitivty를 직접 열어야 한다. 그렇지 않다면 아무일도 일어나지 않으며 로그는 아래와 같은 메시지를 보게 될 것 이다. 
 
