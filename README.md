@@ -9,6 +9,7 @@
 ## 분류
  
 ### Android
+- [210830 / (번역) Clean Code with Kotlin](https://github.com/ksu3101/TIL/blob/master/Android/210830_Android.md)
 - [210817 / (번역) Safe delay in Android Views: goodbye Handlers, Hello Coroutines!](https://github.com/ksu3101/TIL/blob/master/Android/210817_Android.md)
 - [210726 / (번역) Guidelines for writing better tests](https://github.com/ksu3101/TIL/blob/master/Android/210726_Android.md)
 - [210712 / (번역) How To Securely Build and Sign Your Android App With GitHub Actions](https://github.com/ksu3101/TIL/blob/master/Android/210712_Android.md)
