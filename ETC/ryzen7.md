@@ -10,6 +10,8 @@
   - (CPU 내장 그래픽 비활성화) Advanced > NB Config > Integrated Graphics -> Disabled
   - Ai Tweaker > Precision Boost Overdrive(PBO) -> Manual -> PPT Limit -> `100` 입력
   - (최대 온도 제한) Platform Termal Throttle Limit -> `90` 입력
-  - Curve Optimizer -> All Cores -> All Core Curve Optimizer Sign -> `Negative` 선택 -> All Core Curve Optimizer Magnitude -> `30` 입력
+  - Curve Optimizer -> All Cores -> All Core Curve Optimizer Sign -> `Negative` 선택
+    - All Core Curve Optimizer Magnitude -> `30` 입력
+    - 위 전압 네거티브 30 값은 상황에 따라서 10 씩 내려가면서 세팅 하면 된다. (30 > 20 > 10)
 
 - 참고 : [체험판 유튜브 - 라이젠 7천번대 세팅 무작정 따라하기 - 아수스 편](https://youtu.be/td9Oxx-hCKc)
