@@ -10,6 +10,7 @@
 
 ### AI
 - [260124 / Claude code 처음 설정 도전기](./ai/260124_claude_set.md)
+- [260125 / Claude code 기본 슬래시 명령어](./ai/260125_claude.md)
 
 ### Android
 - [211005 / (번역) Measure, measure, measure](https://github.com/ksu3101/TIL/blob/master/Android/211005.md)
